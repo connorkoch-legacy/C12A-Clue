@@ -3,7 +3,8 @@ import java.util.*;
 
 public class IntBoard {
 	
-	private static BoardCell[][] board = new BoardCell[3][3];
+	public static final int BOARD_SIZE = 4;
+	public static BoardCell[][] board = new BoardCell[BOARD_SIZE][BOARD_SIZE];
 	
 	private Map<BoardCell, HashSet<BoardCell>> adjMtx = new HashMap<BoardCell, HashSet<BoardCell>>();
 	HashSet<BoardCell> targets = new HashSet<BoardCell>();
@@ -80,7 +81,7 @@ public class IntBoard {
 		IntBoard ib = new IntBoard();
 		//ib.calcAdjacencies();
 		//HashSet<BoardCell> test = new HashSet<BoardCell>();
-		System.out.println(ib.AdjList(board[0][0]));
+		System.out.println(ib.AdjList(board[1][1]));
 		
 		
 		}

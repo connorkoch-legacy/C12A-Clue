@@ -1,13 +1,22 @@
 package experiment;
 import java.util.*;
 
+/**
+ * Creates a game board and calculates relationships between different pieces aon the board
+ * @author Daniel Winternitz && Connor Koch
+ *
+ */
+
 public class IntBoard {
 	
 	public static final int BOARD_SIZE = 4;
 	public static BoardCell[][] board = new BoardCell[BOARD_SIZE][BOARD_SIZE];
 	
+	
+	public HashSet<BoardCell> visited = new HashSet<BoardCell>();
+	
 	private Map<BoardCell, HashSet<BoardCell>> adjMtx = new HashMap<BoardCell, HashSet<BoardCell>>();
-	HashSet<BoardCell> targets = new HashSet<BoardCell>();
+	public HashSet<BoardCell> targets = new HashSet<BoardCell>();
 	
 	public IntBoard(){
 		for(int i = 0; i < board.length; ++i){
@@ -19,7 +28,9 @@ public class IntBoard {
 		}
 		calcAdjacencies();
 	}
-	
+	/**
+	 * Calculates agacent pieces and stores the in a map
+	 */
 	public void calcAdjacencies(){
 		for(int i = 0; i < board.length; ++i){
 			for(int j = 0; j < board[i].length; ++j){
@@ -43,37 +54,55 @@ public class IntBoard {
 			}
 		}
 	}
-	
+	/**
+	 * returns set of adjacent pieces
+	 * @param cell
+	 * @return
+	 */
 	public HashSet<BoardCell> AdjList(BoardCell cell){
 		for(BoardCell i: adjMtx.get(cell)){
 			i.getRow();
 		}
 		return adjMtx.get(cell);
 	}
-	
+	/**
+	 * Calculates targets base don a given space and move distance
+	 * @param startCell
+	 * @param pathLength
+	 */
 	public void calcTargets(BoardCell startCell, int pathLength){
-		targets.clear();
-		HashSet<BoardCell> visited = new HashSet<BoardCell>();
-		for(BoardCell adjCell: AdjList(startCell)){
-			if(!visited.contains(adjCell)){
-				visited.add(adjCell);
-				if(pathLength == 1){
-					visited.add(adjCell);
-				}
-				else{
-					calcTargets(adjCell, pathLength-1);
-				}
-				for(Iterator<BoardCell> i = visited.iterator(); i.hasNext();){
-					BoardCell b = i.next();
-					if(b.getCol() == adjCell.getCol() && b.getRow() == adjCell.getRow()){
-						i.remove();
-					}
-				}
+		
+		
+		for (BoardCell adjacent : AdjList(startCell)) {
+			if (visited.contains(adjacent)) {
+				continue;
 			}
+			
+			visited.add(adjacent);
+			if (pathLength == 1) {
+				targets.add(adjacent);
+			}
+			else {
+				calcTargets(adjacent, pathLength - 1);
+			}
+			visited.remove(adjacent);
 		}
 	}
-	
-	public Set<BoardCell> getTargets(){
+	/**
+	 * must be called before calling calcTargets
+	 * @param startCell
+	 */
+	public void prepCalcTargets(BoardCell startCell){
+		targets.clear();
+		visited.clear();
+		visited.add(startCell);
+		
+	}
+	/**
+	 * returns targets set
+	 * @return
+	 */
+	public HashSet<BoardCell> getTargets(){
 		return targets;
 	}
 	

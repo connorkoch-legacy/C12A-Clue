@@ -110,7 +110,7 @@ public class IntBoard {
 		IntBoard ib = new IntBoard();
 		//ib.calcAdjacencies();
 		//HashSet<BoardCell> test = new HashSet<BoardCell>();
-		System.out.println(ib.AdjList(board[1][1]));
+		//System.out.println(ib.AdjList(board[1][1]));
 		
 		
 		}

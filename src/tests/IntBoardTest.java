@@ -18,7 +18,7 @@ import experiment.IntBoard;
  */
 
 public class IntBoardTest {
-	public IntBoard ib;
+	private IntBoard ib;
 	@Before
 	public void beforeAll(){
 		ib = new IntBoard();
@@ -30,10 +30,10 @@ public class IntBoardTest {
 	 */
 	@Test
 	public void testAdjacencies0_0() {
-		BoardCell cell = ib.board[0][0];
+		BoardCell cell = IntBoard.board[0][0];
 		HashSet<BoardCell> testList = ib.AdjList(cell);
-		assertTrue(testList.contains(ib.board[1][0]));
-		assertTrue(testList.contains(ib.board[0][1]));
+		assertTrue(testList.contains(IntBoard.board[1][0]));
+		assertTrue(testList.contains(IntBoard.board[0][1]));
 		assertEquals(2,testList.size());
 	}
 
@@ -42,10 +42,10 @@ public class IntBoardTest {
 	 */
 	@Test
 	public void testAdjacencies3_3() {
-		BoardCell cell = ib.board[3][3];
+		BoardCell cell = IntBoard.board[3][3];
 		HashSet<BoardCell> testList = ib.AdjList(cell);
-		assertTrue(testList.contains(ib.board[3][2]));
-		assertTrue(testList.contains(ib.board[2][3]));
+		assertTrue(testList.contains(IntBoard.board[3][2]));
+		assertTrue(testList.contains(IntBoard.board[2][3]));
 		assertEquals(2,testList.size());
 	}
 	
@@ -54,11 +54,11 @@ public class IntBoardTest {
 	 */
 	@Test
 	public void testAdjacencies1_3() {
-		BoardCell cell = ib.board[1][3];
+		BoardCell cell = IntBoard.board[1][3];
 		HashSet<BoardCell> testList = ib.AdjList(cell);
-		assertTrue(testList.contains(ib.board[0][3]));
-		assertTrue(testList.contains(ib.board[2][3]));
-		assertTrue(testList.contains(ib.board[1][2]));
+		assertTrue(testList.contains(IntBoard.board[0][3]));
+		assertTrue(testList.contains(IntBoard.board[2][3]));
+		assertTrue(testList.contains(IntBoard.board[1][2]));
 		assertEquals(3,testList.size());
 	}
 	
@@ -67,10 +67,10 @@ public class IntBoardTest {
 	 */
 	@Test
 	public void testAdjacencies3_0() {
-		BoardCell cell = ib.board[3][0];
+		BoardCell cell = IntBoard.board[3][0];
 		HashSet<BoardCell> testList = ib.AdjList(cell);
-		assertTrue(testList.contains(ib.board[2][0]));
-		assertTrue(testList.contains(ib.board[3][1]));
+		assertTrue(testList.contains(IntBoard.board[2][0]));
+		assertTrue(testList.contains(IntBoard.board[3][1]));
 		assertEquals(2,testList.size());
 	}
 	
@@ -79,12 +79,12 @@ public class IntBoardTest {
 	 */
 	@Test
 	public void testAdjacencies1_1() {
-		BoardCell cell = ib.board[1][1];
+		BoardCell cell = IntBoard.board[1][1];
 		HashSet<BoardCell> testList = ib.AdjList(cell);
-		assertTrue(testList.contains(ib.board[1][2]));
-		assertTrue(testList.contains(ib.board[1][0]));
-		assertTrue(testList.contains(ib.board[0][1]));
-		assertTrue(testList.contains(ib.board[2][1]));
+		assertTrue(testList.contains(IntBoard.board[1][2]));
+		assertTrue(testList.contains(IntBoard.board[1][0]));
+		assertTrue(testList.contains(IntBoard.board[0][1]));
+		assertTrue(testList.contains(IntBoard.board[2][1]));
 		assertEquals(4,testList.size());
 	}
 	/**
@@ -92,12 +92,12 @@ public class IntBoardTest {
 	 */
 	@Test
 	public void testAdjacencies2_2() {
-		BoardCell cell = ib.board[2][2];
+		BoardCell cell = IntBoard.board[2][2];
 		HashSet<BoardCell> testList = ib.AdjList(cell);
-		assertTrue(testList.contains(ib.board[1][2]));
-		assertTrue(testList.contains(ib.board[3][2]));
-		assertTrue(testList.contains(ib.board[2][1]));
-		assertTrue(testList.contains(ib.board[2][3]));
+		assertTrue(testList.contains(IntBoard.board[1][2]));
+		assertTrue(testList.contains(IntBoard.board[3][2]));
+		assertTrue(testList.contains(IntBoard.board[2][1]));
+		assertTrue(testList.contains(IntBoard.board[2][3]));
 		assertEquals(4,testList.size());
 	}
 	// below are targets tests
@@ -108,19 +108,19 @@ public class IntBoardTest {
 	
 	@Test
 	public void testTargets_0_0_3(){
-		BoardCell cell = ib.board[0][0];
-		ib.prepCalcTargets(ib.board[0][0]);
+		BoardCell cell = IntBoard.board[0][0];
+		ib.prepCalcTargets(IntBoard.board[0][0]);
 		//ib.targets.clear();
 		//ib.visited.clear();
 		//ib.visited.add(ib.board[0][0]);
 		ib.calcTargets(cell, 3);
 		HashSet<BoardCell> targets = ib.getTargets();
-		assertTrue(targets.contains(ib.board[3][0]));
-		assertTrue(targets.contains(ib.board[1][2]));
-		assertTrue(targets.contains(ib.board[0][1]));
-		assertTrue(targets.contains(ib.board[2][1]));
-		assertTrue(targets.contains(ib.board[0][3]));
-		assertTrue(targets.contains(ib.board[1][0]));
+		assertTrue(targets.contains(IntBoard.board[3][0]));
+		assertTrue(targets.contains(IntBoard.board[1][2]));
+		assertTrue(targets.contains(IntBoard.board[0][1]));
+		assertTrue(targets.contains(IntBoard.board[2][1]));
+		assertTrue(targets.contains(IntBoard.board[0][3]));
+		assertTrue(targets.contains(IntBoard.board[1][0]));
 		assertEquals(6,targets.size());
 		
 	}
@@ -129,16 +129,16 @@ public class IntBoardTest {
 	 */
 	@Test
 	public void testTargets_0_0_2(){
-		BoardCell cell = ib.board[0][0];
-		ib.prepCalcTargets(ib.board[0][0]);
+		BoardCell cell = IntBoard.board[0][0];
+		ib.prepCalcTargets(IntBoard.board[0][0]);
 		//ib.targets.clear();
 		//ib.visited.clear();
 		//ib.visited.add(ib.board[0][0]);
 		ib.calcTargets(cell, 2);
 		HashSet<BoardCell> targets = ib.getTargets();
-		assertTrue(targets.contains(ib.board[2][0]));
-		assertTrue(targets.contains(ib.board[0][2]));
-		assertTrue(targets.contains(ib.board[1][1]));
+		assertTrue(targets.contains(IntBoard.board[2][0]));
+		assertTrue(targets.contains(IntBoard.board[0][2]));
+		assertTrue(targets.contains(IntBoard.board[1][1]));
 		assertEquals(3,targets.size());
 		
 	}
@@ -147,19 +147,19 @@ public class IntBoardTest {
 	 */
 	@Test
 	public void testTargets_3_3_3(){
-		BoardCell cell = ib.board[3][3];
-		ib.prepCalcTargets(ib.board[3][3]);
+		BoardCell cell = IntBoard.board[3][3];
+		ib.prepCalcTargets(IntBoard.board[3][3]);
 		//ib.targets.clear();
 		//ib.visited.clear();
 		//ib.visited.add(ib.board[3][3]);
 		ib.calcTargets(cell, 3);
 		HashSet<BoardCell> targets = ib.getTargets();
-		assertTrue(targets.contains(ib.board[3][0]));
-		assertTrue(targets.contains(ib.board[2][1]));
-		assertTrue(targets.contains(ib.board[3][2]));
-		assertTrue(targets.contains(ib.board[1][2]));
-		assertTrue(targets.contains(ib.board[0][3]));
-		assertTrue(targets.contains(ib.board[2][3]));
+		assertTrue(targets.contains(IntBoard.board[3][0]));
+		assertTrue(targets.contains(IntBoard.board[2][1]));
+		assertTrue(targets.contains(IntBoard.board[3][2]));
+		assertTrue(targets.contains(IntBoard.board[1][2]));
+		assertTrue(targets.contains(IntBoard.board[0][3]));
+		assertTrue(targets.contains(IntBoard.board[2][3]));
 		assertEquals(6,targets.size());
 		
 	}
@@ -168,16 +168,16 @@ public class IntBoardTest {
 	 */
 	@Test
 	public void testTargets_3_3_2(){
-		BoardCell cell = ib.board[3][3];
-		ib.prepCalcTargets(ib.board[3][3]);
+		BoardCell cell = IntBoard.board[3][3];
+		ib.prepCalcTargets(IntBoard.board[3][3]);
 		//ib.targets.clear();
 		//ib.visited.clear();
 		//ib.visited.add(ib.board[3][3]);
 		ib.calcTargets(cell, 2);
 		HashSet<BoardCell> targets = ib.getTargets();
-		assertTrue(targets.contains(ib.board[2][2]));
-		assertTrue(targets.contains(ib.board[3][1]));
-		assertTrue(targets.contains(ib.board[1][3]));
+		assertTrue(targets.contains(IntBoard.board[2][2]));
+		assertTrue(targets.contains(IntBoard.board[3][1]));
+		assertTrue(targets.contains(IntBoard.board[1][3]));
 		assertEquals(3,targets.size());
 		
 	}
@@ -188,19 +188,19 @@ public class IntBoardTest {
 	
 	@Test
 	public void testTargets_1_1_2(){
-		BoardCell cell = ib.board[1][1];
-		ib.prepCalcTargets(ib.board[1][1]);
+		BoardCell cell = IntBoard.board[1][1];
+		ib.prepCalcTargets(IntBoard.board[1][1]);
 		//ib.targets.clear();
 		//ib.visited.clear();
 		//ib.visited.add(ib.board[1][1]);
 		ib.calcTargets(cell, 2);
 		HashSet<BoardCell> targets = ib.getTargets();
-		assertTrue(targets.contains(ib.board[0][0]));
-		assertTrue(targets.contains(ib.board[0][2]));
-		assertTrue(targets.contains(ib.board[2][0]));
-		assertTrue(targets.contains(ib.board[1][3]));
-		assertTrue(targets.contains(ib.board[3][1]));
-		assertTrue(targets.contains(ib.board[2][2]));
+		assertTrue(targets.contains(IntBoard.board[0][0]));
+		assertTrue(targets.contains(IntBoard.board[0][2]));
+		assertTrue(targets.contains(IntBoard.board[2][0]));
+		assertTrue(targets.contains(IntBoard.board[1][3]));
+		assertTrue(targets.contains(IntBoard.board[3][1]));
+		assertTrue(targets.contains(IntBoard.board[2][2]));
 		assertEquals(6,targets.size());
 		
 	}
@@ -211,17 +211,17 @@ public class IntBoardTest {
 	
 	@Test
 	public void testTargets_1_1_1(){
-		BoardCell cell = ib.board[1][1];
-		ib.prepCalcTargets(ib.board[1][1]);
+		BoardCell cell = IntBoard.board[1][1];
+		ib.prepCalcTargets(IntBoard.board[1][1]);
 		//ib.targets.clear();
 		//ib.visited.clear();
 		//ib.visited.add(ib.board[1][1]);
 		ib.calcTargets(cell, 1);
 		HashSet<BoardCell> targets = ib.getTargets();
-		assertTrue(targets.contains(ib.board[1][0]));
-		assertTrue(targets.contains(ib.board[0][1]));
-		assertTrue(targets.contains(ib.board[2][1]));
-		assertTrue(targets.contains(ib.board[1][2]));
+		assertTrue(targets.contains(IntBoard.board[1][0]));
+		assertTrue(targets.contains(IntBoard.board[0][1]));
+		assertTrue(targets.contains(IntBoard.board[2][1]));
+		assertTrue(targets.contains(IntBoard.board[1][2]));
 		assertEquals(4,targets.size());
 		
 	}

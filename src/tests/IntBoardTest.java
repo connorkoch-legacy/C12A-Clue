@@ -22,7 +22,6 @@ public class IntBoardTest {
 	@Before
 	public void beforeAll(){
 		ib = new IntBoard();
-		
 	}
 	
 	/**

@@ -1,3 +1,5 @@
+//Connor Koch and Dan Winternitz
+
 package clueGame;
 
 import java.util.HashMap;
@@ -24,6 +26,7 @@ public class Board {
 	
 	private int numRows;
 	private int numColumns;
+	private int numDoors;
 	public static final int MAX_BOARD_SIZE = 50;
 	public static BoardCell[][] board = new BoardCell[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
 	public HashMap<Character, String> legend = new HashMap<Character, String>();
@@ -64,6 +67,10 @@ public class Board {
 	public HashMap<Character, String> getLegend() {
 		return legend;
 	}
+	
+	public int getNumDoors(){
+		return numDoors;
+	}
 
 
 
@@ -78,8 +85,8 @@ public class Board {
 	}
 	public clueGame.BoardCell getCellAt(int i, int j) {
 		clueGame.BoardCell b = new clueGame.BoardCell();
-		b.setRow(1);
-		b.setCol(1);
+		b.setRow(i);
+		b.setCol(j);
 		return b;
 	}
 

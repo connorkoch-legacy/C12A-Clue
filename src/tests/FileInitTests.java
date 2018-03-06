@@ -3,12 +3,13 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
 import java.util.Map;
 
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import clueGame.BadConfigFormatException;
 import clueGame.Board;
 import clueGame.BoardCell;
 import clueGame.DoorDirection;
@@ -62,16 +63,17 @@ public class FileInitTests {
 	@Test
 	public void testDoorDirections(){
 		//these tests make sure that the given cells are doors, and that these doors open in a direction that matches our board layout
-		BoardCell cell = board.getCellAt(2, 5);
+		BoardCell cell = board.getCellAt(3, 2);
+		System.out.println(cell.getDoorDirection());
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.DOWN, cell.getDoorDirection());
-		cell = board.getCellAt(1, 15);
+		cell = board.getCellAt(13, 1);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
-		cell = board.getCellAt(5, 15);
+		cell = board.getCellAt(13, 5);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.RIGHT, cell.getDoorDirection());
-		cell = board.getCellAt(0, 24);
+		cell = board.getCellAt(22, 0);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.UP, cell.getDoorDirection());
 		

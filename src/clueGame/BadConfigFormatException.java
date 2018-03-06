@@ -1,12 +1,14 @@
 package clueGame;
 
-public class BadConfigFormatException extends Throwable {
+import java.io.FileNotFoundException;
+
+public class BadConfigFormatException extends Exception {
 	
-	public BadConfigFormatException(){
-		
+	public BadConfigFormatException() throws FileNotFoundException{
+		super("Bad Config");
 	}
 	
-	public BadConfigFormatException(char c){
+	public BadConfigFormatException(String str) throws FileNotFoundException{
 		
 	}
 

@@ -4,6 +4,7 @@ public class BoardCell {
 	private int row;
 	private int col;
 	private char initial;
+	private DoorDirection dir;
 	
 	private boolean walkway;
 	private boolean room;
@@ -45,8 +46,7 @@ public class BoardCell {
 		return doorway;
 	}
 	public Object getDoorDirection() {
-		// TODO Auto-generated method stub
-		return null;
+		return dir;
 	}
 	public void setDoorway(boolean doorway) {
 		this.doorway = doorway;
@@ -57,7 +57,9 @@ public class BoardCell {
 	public void setRoom(boolean room) {
 		this.room = room;
 	}
-	
+	public void setDoorDirection(DoorDirection dir) {
+		this.dir = dir;
+	}
 	
 	
 	

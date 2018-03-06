@@ -1,3 +1,4 @@
+// ours?
 package tests;
 
 import static org.junit.Assert.*;
@@ -25,7 +26,7 @@ public class FileInitTests {
 		// Board is singleton, get the only instance
 		board = Board.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("CTest_ClueLayout.csv", "CTest_ClueLegend.txt");		
+		board.setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt");		
 		// Initialize will load BOTH config files 
 		board.initialize();
 	}
@@ -41,7 +42,7 @@ public class FileInitTests {
 		assertEquals("Kitchen", legend.get('K'));
 		assertEquals("Bathroom", legend.get('T'));
 		assertEquals("Cellar", legend.get('L'));
-		assertEquals("Laundry Room", legend.get('D'));
+		assertEquals("Laundry room", legend.get('D'));
 		assertEquals("Attic", legend.get('A'));
 		assertEquals("Vault", legend.get('V'));
 		assertEquals("Ballroom", legend.get('B'));
@@ -84,7 +85,14 @@ public class FileInitTests {
 	@Test
 	public void testNumDoors(){
 		//esnsure the number of doors read = 16
-		assertEquals(NUM_DOORS, board.getNumDoors());
+		int numDoors = 0;
+		for (int row=0; row<board.getNumRows(); row++)
+			for (int col=0; col<board.getNumColumns(); col++) {
+				BoardCell cell = board.getCellAt(row, col);
+				if (cell.isDoorway())
+					numDoors++;
+			}
+		assertEquals(NUM_DOORS, numDoors);
 	}
 	
 	@Test
@@ -92,9 +100,9 @@ public class FileInitTests {
 		//tests that the given cell has initials matching our board layout
 		BoardCell cell = board.getCellAt(1, 1);
 		assertEquals('A', cell.getInitial());
-		cell = board.getCellAt(1, 8);
+		cell = board.getCellAt(8, 1);
 		assertEquals('W', cell.getInitial());
-		cell = board.getCellAt(1, 11);
+		cell = board.getCellAt(11, 1);
 		assertEquals('V', cell.getInitial());
 	}
 	

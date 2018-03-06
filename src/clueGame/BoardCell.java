@@ -28,7 +28,7 @@ public class BoardCell {
 		this.col = col;
 	}
 	public char getInitial() {
-		return 'a';
+		return initial;
 	}
 	public void setInitial(char initial) {
 		this.initial = initial;
@@ -47,6 +47,15 @@ public class BoardCell {
 	public Object getDoorDirection() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public void setDoorway(boolean doorway) {
+		this.doorway = doorway;
+	}
+	public void setWalkway(boolean walkway) {
+		this.walkway = walkway;
+	}
+	public void setRoom(boolean room) {
+		this.room = room;
 	}
 	
 	

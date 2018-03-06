@@ -52,6 +52,7 @@ public class CTest_FileInitTests {
 		assertEquals("Billiard room", legend.get('R'));
 		assertEquals("Dining room", legend.get('D'));
 		assertEquals("Walkway", legend.get('W'));
+		
 	}
 	
 	@Test

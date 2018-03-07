@@ -16,6 +16,8 @@ import java.util.*;
 //import java.util.Scanner;
 //import java.util.Set;
 
+//import experiment.BoardCell;
+
 
 public class Board {
 	
@@ -193,7 +195,7 @@ public class Board {
 		}
 		System.out.println(getNumDoors());
 	}
-	
+	//////////////
 	public void calcAdjacencies(){
 		for(int i = 0; i < board.length; ++i){
 			for(int j = 0; j < board[i].length; ++j){
@@ -218,6 +220,11 @@ public class Board {
 		}
 	}
 	
+	public Set<BoardCell> getAdjList(int row, int col){
+		calcAdjacencies();
+		return adjMtx.get(board[row][col]);
+	}
+	
 	public void calcTargets(BoardCell startCell, int pathLength){
 		
 		
@@ -237,10 +244,33 @@ public class Board {
 		}
 	}
 	
-	public HashSet<BoardCell> AdjList(BoardCell cell){
-		for(BoardCell i: adjMtx.get(cell)){
-			i.getRow();
+	
+public void calcTargets(int row, int col, int pathLength){
+		
+		System.out.println(board[row][col]);
+		
+		for (BoardCell adjacent : AdjList(board[col][row])) {
+			if (visited.contains(adjacent)) {
+				continue;
+			}
+			
+			visited.add(adjacent);
+			if (pathLength == 1) {
+				targets.add(adjacent);
+			}
+			else {
+				calcTargets(adjacent, pathLength - 1);
+			}
+			visited.remove(adjacent);
 		}
+	}
+	
+	
+	public HashSet<BoardCell> AdjList(BoardCell cell){
+		/*for(BoardCell i: adjMtx.get(cell)){
+			i.getRow();
+		}*/
+		
 		return (HashSet<BoardCell>) adjMtx.get(cell);
 	}
 	
@@ -301,6 +331,8 @@ public class Board {
 		
 		return board[i][j];
 	}
+	
+	
 	
 
 	

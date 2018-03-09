@@ -249,6 +249,9 @@ public void calcTargets(int row, int col, int pathLength){
 		
 		System.out.println(board[row][col]);
 		
+		//HashSet<BoardCell> temp = new HashSet<BoardCell>();
+		//temp = AdjList(board[col][row]);
+		
 		for (BoardCell adjacent : AdjList(board[col][row])) {
 			if (visited.contains(adjacent)) {
 				continue;
@@ -270,7 +273,7 @@ public void calcTargets(int row, int col, int pathLength){
 		/*for(BoardCell i: adjMtx.get(cell)){
 			i.getRow();
 		}*/
-		
+		calcAdjacencies();
 		return (HashSet<BoardCell>) adjMtx.get(cell);
 	}
 	

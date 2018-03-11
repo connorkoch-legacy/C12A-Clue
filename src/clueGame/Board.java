@@ -193,26 +193,50 @@ public class Board {
 			}catch (FileNotFoundException e){
 				e.printStackTrace();
 		}
-		System.out.println(getNumDoors());
+		//System.out.println(getNumDoors());
 	}
 	//////////////
 	public void calcAdjacencies(){
 		for(int i = 0; i < board.length; ++i){
 			for(int j = 0; j < board[i].length; ++j){
 				HashSet<BoardCell> adjacencies = new HashSet<BoardCell>();
-				if(i-1 >= 0){
-					//System.out.println("Hello");
-					adjacencies.add(board[i-1][j]);
+				if(board[i][j].isWalkway() == true){ // calcs adjacencies for cells that are walkways
+					
+					if(i-1 >= 0 && board[i-1][j].isRoom() == false){
+						if(board[i-1][j].isDoorway() != true || board[i-1][j].getDoorDirection() == DoorDirection.DOWN){
+							adjacencies.add(board[i-1][j]);
+						}
+					}
+					if(i+1 < numRows && board[i+1][j].isRoom() == false){
+						if(board[i+1][j].isDoorway() != true || board[i+1][j].getDoorDirection() == DoorDirection.UP){
+							adjacencies.add(board[i+1][j]);
+						}
+					}
+					if(j-1 >= 0 && board[i][j-1].isRoom() == false){
+						if(board[i][j-1].isDoorway() != true || board[i][j-1].getDoorDirection() == DoorDirection.RIGHT){
+							adjacencies.add(board[i][j-1]);
+						}
+					}
+					if(j+1 < numColumns && board[i][j+1].isRoom() == false){
+						if(board[i][j+1].isDoorway() != true || board[i][j+1].getDoorDirection() == DoorDirection.LEFT){
+						adjacencies.add(board[i][j+1]);
+						}
+					}
+				} else if(board[i][j].isDoorway() == true){ // puts the one cell in front of a door in the doors adjacency list
+					if(board[i][j].getDoorDirection() == DoorDirection.RIGHT){
+						adjacencies.add(board[i][j+1]);
+					}
+					if(board[i][j].getDoorDirection() == DoorDirection.LEFT){
+						adjacencies.add(board[i][j-1]);
+					}
+					if(board[i][j].getDoorDirection() == DoorDirection.DOWN){
+						adjacencies.add(board[i+1][j]);
+					}
+					if(board[i][j].getDoorDirection() == DoorDirection.UP){
+						adjacencies.add(board[i-1][j]);
+					}
 				}
-				if(i+1 < board.length){
-					adjacencies.add(board[i+1][j]);
-				}
-				if(j-1 >= 0){
-					adjacencies.add(board[i][j-1]);
-				}
-				if(j+1 < board[i].length){
-					adjacencies.add(board[i][j+1]);
-				}
+				// cells in a room get empty adjacency lists
 				
 				adjMtx.put(board[i][j], adjacencies);
 				//System.out.println(adjMtx.size());
@@ -247,7 +271,7 @@ public class Board {
 	
 public void calcTargets(int row, int col, int pathLength){
 		
-		System.out.println(board[row][col]);
+		//System.out.println(board[row][col]);
 		
 		//HashSet<BoardCell> temp = new HashSet<BoardCell>();
 		//temp = AdjList(board[col][row]);

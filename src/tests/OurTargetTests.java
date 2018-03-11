@@ -31,38 +31,38 @@ public class OurTargetTests {
 	@Test
 	public void testTargetsAlongWalkway() {
 		// tests block (5,24) with pathLength 2
-		board.calcTargets(5, 24, 2);
+		board.calcTargets(24, 5, 2);
 		Set<BoardCell> targets = board.getTargets();
-		assertTrue(targets.contains(board.getCellAt(5, 22)));
-		assertTrue(targets.contains(board.getCellAt(7, 22)));
-		assertTrue(targets.contains(board.getCellAt(6, 23)));
+		assertTrue(targets.contains(board.getCellAt(22, 5)));
+		assertTrue(targets.contains(board.getCellAt(22, 7)));
+		assertTrue(targets.contains(board.getCellAt(23, 6)));
 		assertEquals(3, targets.size());
 		// tests block (14,19) with pathlength 1
-		board.calcTargets(14, 19, 1);
+		board.calcTargets(19, 14, 1);
 		targets = board.getTargets();
-		assertTrue(targets.contains(board.getCellAt(14, 20)));
-		assertTrue(targets.contains(board.getCellAt(14, 18)));
-		assertTrue(targets.contains(board.getCellAt(13, 19)));
-		assertTrue(targets.contains(board.getCellAt(15, 19)));
+		assertTrue(targets.contains(board.getCellAt(20, 14)));
+		assertTrue(targets.contains(board.getCellAt(18, 14)));
+		assertTrue(targets.contains(board.getCellAt(19, 13)));
+		assertTrue(targets.contains(board.getCellAt(19, 15)));
 		assertEquals(4, targets.size());
 		// tests block (12,3) with pathLength 2
-		board.calcTargets(12, 3, 2);
+		board.calcTargets(3, 12, 2);
 		targets = board.getTargets();
-		assertTrue(targets.contains(board.getCellAt(12, 1)));
-		assertTrue(targets.contains(board.getCellAt(12, 5)));
-		assertTrue(targets.contains(board.getCellAt(11, 2)));
-		assertTrue(targets.contains(board.getCellAt(11, 4)));
-		assertTrue(targets.contains(board.getCellAt(13, 2)));
-		assertTrue(targets.contains(board.getCellAt(13, 4)));
+		assertTrue(targets.contains(board.getCellAt(1, 12)));
+		assertTrue(targets.contains(board.getCellAt(5, 12)));
+		assertTrue(targets.contains(board.getCellAt(2, 11)));
+		assertTrue(targets.contains(board.getCellAt(4,11)));
+		assertTrue(targets.contains(board.getCellAt(2, 13)));
+		assertTrue(targets.contains(board.getCellAt(4, 13)));
 		assertEquals(6, targets.size());
 		// tests block (24,8) with pathLength 3
-		board.calcTargets(24, 8, 3);
+		board.calcTargets(8, 24, 3);
 		targets = board.getTargets();
-		assertTrue(targets.contains(board.getCellAt(22, 9)));
-		assertTrue(targets.contains(board.getCellAt(23, 10)));
-		assertTrue(targets.contains(board.getCellAt(24, 9)));
-		assertTrue(targets.contains(board.getCellAt(24, 11)));
-		assertTrue(targets.contains(board.getCellAt(23, 8)));
+		assertTrue(targets.contains(board.getCellAt(9, 22)));
+		assertTrue(targets.contains(board.getCellAt(10, 23)));
+		assertTrue(targets.contains(board.getCellAt(9, 24)));
+		assertTrue(targets.contains(board.getCellAt(11, 24)));
+		assertTrue(targets.contains(board.getCellAt(8, 23)));
 		assertEquals(5, targets.size());
 		
 		
@@ -71,33 +71,33 @@ public class OurTargetTests {
 	@Test
 	public void testEnterRoom(){
 		// folowing tests in front of a left-facing door
-		board.calcTargets(0, 13, 1);
+		board.calcTargets(13, 0, 1);
 		Set<BoardCell> targets = board.getTargets();
 		assertEquals(3, targets.size());
-		assertTrue(targets.contains(board.getCellAt(1, 13)));
-		assertTrue(targets.contains(board.getCellAt(0, 12)));
-		assertTrue(targets.contains(board.getCellAt(0, 14)));
+		assertTrue(targets.contains(board.getCellAt(13, 1)));
+		assertTrue(targets.contains(board.getCellAt(12, 0)));
+		assertTrue(targets.contains(board.getCellAt(14, 0)));
 		// following tests in front of an up-facing door
-		board.calcTargets(0, 21, 1);
+		board.calcTargets(21, 0, 1);
 		assertEquals(2, targets.size());
-		assertTrue(targets.contains(board.getCellAt(0, 20)));
-		assertTrue(targets.contains(board.getCellAt(0, 22)));
+		assertTrue(targets.contains(board.getCellAt(20, 0)));
+		assertTrue(targets.contains(board.getCellAt(22, 0)));
 	}
 	
 	@Test
 	public void testLeavingRoom(){
 		// following tests leaving a right-facing door
-		board.calcTargets(5, 13, 2);
+		board.calcTargets(13, 5, 2);
 		Set<BoardCell> targets = board.getTargets();
 		assertEquals(3, targets.size());
-		assertTrue(targets.contains(board.getCellAt(6, 12)));
-		assertTrue(targets.contains(board.getCellAt(6, 14)));
-		assertTrue(targets.contains(board.getCellAt(7, 13)));
+		assertTrue(targets.contains(board.getCellAt(12, 6)));
+		assertTrue(targets.contains(board.getCellAt(14, 6)));
+		assertTrue(targets.contains(board.getCellAt(13, 7)));
 		// following tests leaving an up-facing door
-		board.calcTargets(23, 14, 1);
+		board.calcTargets(14, 23, 1);
 		targets = board.getTargets();
 		assertEquals(1, targets.size());
-		assertTrue(targets.contains(board.getCellAt(23, 13)));
+		assertTrue(targets.contains(board.getCellAt(13, 23)));
 		
 		
 	}

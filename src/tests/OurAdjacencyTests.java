@@ -50,17 +50,18 @@ public class OurAdjacencyTests {
 	@Test
 	public void testAdjacenciesWalkway(){
 		//Test to see that walkway near room and wall only contains two adj cells
-		Set<BoardCell> testList = board.getAdjList(5, 0);
-		assertTrue(testList.contains(board.getCellAt(6, 0)));
-		assertTrue(testList.contains(board.getCellAt(5, 1)));
+		Set<BoardCell> testList = board.getAdjList(0, 5);
+		assertTrue(testList.contains(board.getCellAt(0, 6)));
+		assertTrue(testList.contains(board.getCellAt(1, 5)));
 		//System.out.println(testList.size());
 		assertEquals(2, testList.size());
 		
 		//Test adj list has two cells at the corner of a room
 		testList = board.getAdjList(19, 4);
 		assertTrue(testList.contains(board.getCellAt(19, 3)));
+		assertTrue(testList.contains(board.getCellAt(19, 5)));
 		assertTrue(testList.contains(board.getCellAt(18, 4)));
-		assertEquals(2, testList.size());
+		assertEquals(3, testList.size());
 	}
 	
 	//Test 4 corners

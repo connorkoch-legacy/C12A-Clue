@@ -38,9 +38,9 @@ public class OurAdjacencyTests {
 		//Test to see adjacency lists in rooms are empty
 		Set<BoardCell> tester = board.getAdjList(1, 0);
 		assertEquals(0, tester.size());
-		tester = board.getAdjList(3, 12);
+		tester = board.getAdjList(12, 3);
 		assertEquals(0, tester.size());
-		tester = board.getAdjList(4, 25);
+		tester = board.getAdjList(4, 23);
 		assertEquals(0, tester.size());
 		
 		
@@ -86,25 +86,25 @@ public class OurAdjacencyTests {
 	@Test
 	public void testBesideADoor(){
 		// tests by an upward doorway
-		Set<BoardCell> testList = board.getAdjList(0,21);
+		Set<BoardCell> testList = board.getAdjList(21,0);
 		assertEquals(2, testList.size());
 		assertTrue(testList.contains(board.getCellAt(0, 20)));
 		assertTrue(testList.contains(board.getCellAt(0, 22)));
 		//tests by a downward door way
-		testList = board.getAdjList(8, 6);
+		testList = board.getAdjList(6, 8);
 		assertEquals(4, testList.size());
 		assertTrue(testList.contains(board.getCellAt(8, 5)));
 		assertTrue(testList.contains(board.getCellAt(8, 4)));
 		assertTrue(testList.contains(board.getCellAt(7, 6)));
 		assertTrue(testList.contains(board.getCellAt(9, 6)));
 		// tests by a left facing doorway
-		testList = board.getAdjList(21, 23);
+		testList = board.getAdjList(23, 21);
 		assertEquals(3, testList.size());
 		assertTrue(testList.contains(board.getCellAt(21, 24)));
 		assertTrue(testList.contains(board.getCellAt(20, 23)));
 		assertTrue(testList.contains(board.getCellAt(22, 23)));
 		// tests by a right facing door
-		testList = board.getAdjList(6, 13);
+		testList = board.getAdjList(13, 6);
 		assertEquals(4, testList.size());
 		assertTrue(testList.contains(board.getCellAt(5, 13)));
 		assertTrue(testList.contains(board.getCellAt(7, 13)));
@@ -116,19 +116,19 @@ public class OurAdjacencyTests {
 	@Test
 	public void testDoorWays(){
 		// tests adjacency of left facing door
-		Set<BoardCell> testList = board.getAdjList(1,13);
+		Set<BoardCell> testList = board.getAdjList(13,1);
 		assertEquals(1, testList.size());
 		assertTrue(testList.contains(board.getCellAt(0, 13)));
 		// tests adjacency of right facing door
-		testList = board.getAdjList(5,13);
+		testList = board.getAdjList(13,5);
 		assertEquals(1, testList.size());
 		assertTrue(testList.contains(board.getCellAt(6, 13)));
 		// tests adjacency of upward facing door
-		testList = board.getAdjList(23,14);
+		testList = board.getAdjList(14,23);
 		assertEquals(1, testList.size());
 		assertTrue(testList.contains(board.getCellAt(23, 13)));
 		// tests adjacency of downward facing door
-		testList = board.getAdjList(8,5);
+		testList = board.getAdjList(5,8);
 		//assertEquals(1, testList.size());
 		assertTrue(testList.contains(board.getCellAt(8, 6)));
 	}

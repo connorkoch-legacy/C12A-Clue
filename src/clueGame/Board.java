@@ -284,6 +284,10 @@ public void doCalcTargets(int row, int col, int pathLength){
 				continue;
 			}
 			
+			if(adjacent.isDoorway() && pathLength>0){
+				targets.add(adjacent);
+			}
+			
 			visited.add(adjacent);
 			if (pathLength == 1) {
 				targets.add(adjacent);

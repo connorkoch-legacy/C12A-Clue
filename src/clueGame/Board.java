@@ -18,6 +18,8 @@ import java.util.*;
 
 //import experiment.BoardCell;
 
+//import experiment.BoardCell;
+
 
 public class Board {
 	
@@ -195,7 +197,7 @@ public class Board {
 		}
 		//System.out.println(getNumDoors());
 	}
-	//////////////
+	
 	public void calcAdjacencies(){
 		for(int i = 0; i < board.length; ++i){
 			for(int j = 0; j < board[i].length; ++j){
@@ -248,7 +250,7 @@ public class Board {
 		calcAdjacencies();
 		return adjMtx.get(board[row][col]);
 	}
-	
+/*	
 	public void calcTargets(BoardCell startCell, int pathLength){
 		
 		
@@ -267,16 +269,17 @@ public class Board {
 			visited.remove(adjacent);
 		}
 	}
-	
-	
-public void calcTargets(int row, int col, int pathLength){
+	*/
+	////////////////////////////
+
+public void doCalcTargets(int row, int col, int pathLength){
 		
 		//System.out.println(board[row][col]);
 		
 		//HashSet<BoardCell> temp = new HashSet<BoardCell>();
 		//temp = AdjList(board[col][row]);
 		
-		for (BoardCell adjacent : AdjList(board[col][row])) {
+		for (BoardCell adjacent : AdjList(board[row][col])) {
 			if (visited.contains(adjacent)) {
 				continue;
 			}
@@ -286,12 +289,22 @@ public void calcTargets(int row, int col, int pathLength){
 				targets.add(adjacent);
 			}
 			else {
-				calcTargets(adjacent, pathLength - 1);
+				doCalcTargets(adjacent.getRow(), adjacent.getCol(), pathLength - 1);
 			}
 			visited.remove(adjacent);
 		}
 	}
-	
+
+public void calcTargets(int i, int j, int path){
+	targets.clear();
+	visited.clear();
+	visited.add(board[i][j]);
+	doCalcTargets(i,j,path);
+}
+
+
+
+	////////////////////////////////
 	
 	public HashSet<BoardCell> AdjList(BoardCell cell){
 		/*for(BoardCell i: adjMtx.get(cell)){

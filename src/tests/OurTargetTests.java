@@ -34,7 +34,7 @@ public class OurTargetTests {
 		board.calcTargets(24, 5, 2);
 		Set<BoardCell> targets = board.getTargets();
 		assertTrue(targets.contains(board.getCellAt(22, 5)));
-		assertTrue(targets.contains(board.getCellAt(22, 7)));
+		assertTrue(targets.contains(board.getCellAt(24, 7)));
 		assertTrue(targets.contains(board.getCellAt(23, 6)));
 		assertEquals(3, targets.size());
 		// tests block (14,19) with pathlength 1

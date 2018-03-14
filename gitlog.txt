@@ -1,0 +1,120 @@
+commit d6ac108be04db665e745bbf246516bb9b7cfdd4f
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Tue Mar 13 16:36:11 2018 -0600
+
+    Finished
+
+commit a145fc1b7d2ef71d5b450860610ceb25ebb92faa
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Mon Mar 12 18:05:56 2018 -0600
+
+    All except two tests passing. Changed calcTargets() function.
+
+commit abbcd4d0ed1274f0fefebbb83466ee0a7fb5b76d
+Merge: bfbcaae 4e6bf4e
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Sun Mar 11 16:56:27 2018 -0600
+
+    fixed merge conflict
+
+commit bfbcaae148388eb0b2ffc411059b4c00e2a0bb4f
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Sun Mar 11 16:52:51 2018 -0600
+
+    Changed excel sheet to include colored cells for correct tests
+
+commit 4e6bf4eb8f26a9e3ba5a778b104e3a09e7e34a63
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Sun Mar 11 13:43:45 2018 -0600
+
+    Passing adjacency tests. Fixed my row/col errors in the tests.
+
+commit a3ec5d66d3bd97984b3e933f738278c3c6fdb3c9
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Sat Mar 10 18:11:51 2018 -0700
+
+    Fixed some cell row/cols in the tests
+
+commit 24b42e6236d910eb62de9140a264a5f1f184caef
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Fri Mar 9 15:40:11 2018 -0700
+
+    Fixed test errors. Added OurAdjacencyTests. Part 3 completed.
+
+commit a4165ef77eb3e8abc8171c2abcd168fa4bd3cd5b
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Mar 7 16:44:30 2018 -0700
+
+    Added some adjacency tests
+
+commit 0255c2405a94c6b0b59bc5d4ecd1f74df2a7281f
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Tue Mar 6 18:23:29 2018 -0700
+
+    Added adjacency tests
+
+commit 4b71bf4b6f4863e46a1ad6b9f32d2e5cd3b68827
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Tue Mar 6 00:37:13 2018 -0700
+
+    C13A Part 2
+
+commit aa4dfa05e59cdfbf7bc08c12582e8769821f3766
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Mon Mar 5 20:38:30 2018 -0700
+
+    Passing most of ours and his fileInit tests. Added our data files to the Data folder.
+
+commit 258f9d22d34ceb12e14c1800745575bb242c711c
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Mon Mar 5 16:41:32 2018 -0700
+
+    added testing classes for board layout
+
+commit 7684e5dafd8cf581e3e395ad83a4a022b83cc7d5
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Mon Mar 5 16:39:25 2018 -0700
+
+    Added tests to check correct board layout and file input
+
+commit 5f9e7e9343e865c406ffceb42300d166634850e3
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Sun Mar 4 11:49:33 2018 -0700
+
+    Added clueGame package to repository. This contains Board class, DoorDirection enum, Failing tests.
+
+commit a9994802da833a4a165b28084b439e4cc57f488c
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Sun Mar 4 11:42:01 2018 -0700
+
+    Added dummy Board class. Added to BoardCell class. Added DoorDirection enum type. Failing given tests.
+
+commit 06107e34bd18bdc9c954a85ddc6396f0e502e35e
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Fri Mar 2 15:54:18 2018 -0700
+
+    Made target tests. Fixed Bugs.
+
+commit c2e46004f93c7c932d6c5bac23829632e990a248
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Fri Mar 2 14:01:19 2018 -0700
+
+    Made adjacency tests
+
+commit 4ef9d651b999167ace8070654c08c7b73967deea
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Thu Mar 1 16:52:43 2018 -0700
+
+    Initial commit
+
+commit c92bdea917840dc26a7452ec605447e10c86b6f0
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Thu Mar 1 16:47:02 2018 -0700
+
+    Initial Commit
+
+commit e83901be43e0f919e3ca211dfe480e4f8d183bbc
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Tue Feb 27 16:50:16 2018 -0700
+
+    Initial Commit

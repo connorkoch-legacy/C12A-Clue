@@ -13,33 +13,31 @@ public class Board {
 	private int numDoors;
 	public static final int MAX_BOARD_SIZE = 50;
 	public static clueGame.BoardCell[][] board = new clueGame.BoardCell[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
-	public HashMap<Character, String> legend = new HashMap<Character, String>();
-	public HashMap<BoardCell, Set<BoardCell>> adjMtx = new HashMap<BoardCell, Set<BoardCell>>();
-	public HashSet<BoardCell> targets = new HashSet<BoardCell>();
-	public HashSet<BoardCell> visited = new HashSet<BoardCell>();
+	public Map<Character, String> legend = new HashMap<Character, String>();
+	public Map<BoardCell, Set<BoardCell>> adjMtx = new HashMap<BoardCell, Set<BoardCell>>();
+	public Set<BoardCell> targets = new HashSet<BoardCell>();
+	public Set<BoardCell> visited = new HashSet<BoardCell>();
 	private String boardConfigFile;
 	private String roomConfigFile;
 	
-	
 	// variable used for singleton pattern
-		private static Board theInstance = new Board();
-		// constructor is private to ensure only one can be created
-		private Board() {
-			for(int i = 0; i < board.length; ++i){
-				for(int j = 0; j < board[i].length; ++j){
-					board[i][j] = new BoardCell();
-					board[i][j].setCol(i);
-					board[i][j].setRow(j);
-				}
+	private static Board theInstance = new Board();
+	// constructor is private to ensure only one can be created
+	private Board() {
+		for(int i = 0; i < board.length; ++i){
+			for(int j = 0; j < board[i].length; ++j){
+				board[i][j] = new BoardCell();
+				board[i][j].setCol(i);
+				board[i][j].setRow(j);
 			}
-			calcAdjacencies();
 		}
-		// this method returns the only Board
-		public static Board getInstance() {
-			return theInstance;
-		}
-	
-	
+		calcAdjacencies();
+	}
+	// this method returns the only Board
+	public static Board getInstance() {
+		return theInstance;
+	}
+		
 	public int getNumRows() {
 		return numRows;
 	}
@@ -56,7 +54,7 @@ public class Board {
 		this.numColumns = numColumns;
 	}
 
-	public HashSet<BoardCell> getTargets() {
+	public Set<BoardCell> getTargets() {
 		return targets;
 	}
 
@@ -64,7 +62,7 @@ public class Board {
 		this.targets = targets;
 	}
 	
-	public HashMap<Character, String> getLegend() {
+	public Map<Character, String> getLegend() {
 		return legend;
 	}
 	

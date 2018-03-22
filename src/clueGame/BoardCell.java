@@ -5,7 +5,6 @@ public class BoardCell {
 	private int col;
 	private char initial;
 	private DoorDirection dir;
-	
 	private boolean walkway;
 	private boolean room;
 	private boolean doorway;
@@ -37,11 +36,9 @@ public class BoardCell {
 	public boolean isWalkway(){
 		return walkway;
 	}
-	
 	public boolean isRoom(){
 		return room;
 	}
-	
 	public boolean isDoorway(){
 		return doorway;
 	}

@@ -5,8 +5,6 @@ package clueGame;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.PrintWriter;
 import java.util.*;
 
 
@@ -85,14 +83,11 @@ public class Board {
 		Scanner inputStream = new Scanner(file);
 		while(inputStream.hasNext()){
 			String data = inputStream.nextLine();
-			//System.out.println(data);
 			String[] foo = data.split(",\\s*");
 			
 			String first = foo[0];
 			String second = foo[1];
 			char c = first.charAt(0);
-			//System.out.println(c);
-			//System.out.println(second);
 			
 			legend.put(c, second);
 		}
@@ -165,8 +160,6 @@ public class Board {
 						bc.setWalkway(false);
 						bc.setDoorway(false);
 					}
-					
-					//System.out.println(bc.getDoorDirection());
  					board[i][j] = bc;
 				}
 	
@@ -233,12 +226,6 @@ public class Board {
 
 
 	public void doCalcTargets(int row, int col, int pathLength){
-		
-		//System.out.println(board[row][col]);
-		
-		//HashSet<BoardCell> temp = new HashSet<BoardCell>();
-		//temp = AdjList(board[col][row]);
-		
 		for (BoardCell adjacent : AdjList(board[row][col])) {
 			if (visited.contains(adjacent)) {
 				continue;

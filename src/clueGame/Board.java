@@ -2,11 +2,9 @@
 
 package clueGame;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
-
 
 public class Board {
 	
@@ -93,9 +91,9 @@ public class Board {
 		}
 		inputStream.close();
 		}catch(FileNotFoundException e) {
-			
+			System.out.println("File not found, please correct file name.");
 		}
-		
+	
 		// handles "testBoardDimensions" tests
 		File file1 = new File(boardConfigFile);
 		int count = 0;
@@ -115,7 +113,7 @@ public class Board {
 			setNumRows(count);
 			input.close();
 		}catch(FileNotFoundException e) {
-		
+			System.out.println("File not found, please correct file name.");
 		}
 	}
 
@@ -162,13 +160,11 @@ public class Board {
 					}
  					board[i][j] = bc;
 				}
-	
 				i++;
-			}
+			}	
 			input.close();
-				
-			}catch (FileNotFoundException e){
-				e.printStackTrace();
+		}catch (FileNotFoundException e){
+			System.out.println("File not found, please correct file name.");
 		}
 	}
 	

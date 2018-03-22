@@ -123,22 +123,22 @@ public class Board {
 		try {
 			Scanner input = new Scanner(file1);
 			while(input.hasNext()){
-				String temp = input.nextLine();
-				String[] bar = temp.split(",");
+				String nextRow = input.nextLine();
+				String[] roomLine = nextRow.split(",");
 				
-				for(int j = 0; j < bar.length; j++){
+				for(int j = 0; j < roomLine.length; j++){
 					clueGame.BoardCell bc = new clueGame.BoardCell();
 					bc.setCol(j);
  					bc.setRow(i);
- 					bc.setInitial(bar[j].charAt(0));
- 					if(bar[j].length() == 2 && bar[j].charAt(1) != 'N'){
-						if(bar[j].charAt(1) == 'U') {
+ 					bc.setInitial(roomLine[j].charAt(0));
+ 					if(roomLine[j].length() == 2 && roomLine[j].charAt(1) != 'N'){
+						if(roomLine[j].charAt(1) == 'U') {
 							bc.setDoorDirection(DoorDirection.UP);
 						}
-						else if(bar[j].charAt(1) == 'R') {
+						else if(roomLine[j].charAt(1) == 'R') {
 							bc.setDoorDirection(DoorDirection.RIGHT);
 						}
-						else if(bar[j].charAt(1) == 'D') {
+						else if(roomLine[j].charAt(1) == 'D') {
 							bc.setDoorDirection(DoorDirection.DOWN);
 						} else {
 							bc.setDoorDirection(DoorDirection.LEFT);
@@ -147,7 +147,7 @@ public class Board {
 						bc.setDoorway(true);
 						bc.setRoom(false);
 						bc.setWalkway(false);
- 					} else if (bar[j].charAt(0) == 'W'){
+ 					} else if (roomLine[j].charAt(0) == 'W'){
 						bc.setWalkway(true);
 						bc.setRoom(false);
 						bc.setDoorway(false);
@@ -256,20 +256,20 @@ public class Board {
 		
 		// handles "testRooms" tests
 		File file = new File(roomConfigFile);
-			Scanner inputStream = new Scanner(file);
-			while(inputStream.hasNext()){
-				String data = inputStream.nextLine();
-				String[] foo = data.split(",\\s*");
-				
-				String first = foo[0];
-				String second = foo[1];
-				String third = foo[2];
-				if(third != "Card" || third != "Other") {
-					throw new BadConfigFormatException();     // throws if the third word is anything but card or other
-				}
-				char c = first.charAt(0);
-				
-				legend.put(c, second);
+		Scanner inputStream = new Scanner(file);
+		while(inputStream.hasNext()){
+			String data = inputStream.nextLine();
+			String[] lineContents = data.split(",\\s*");
+
+			String first = lineContents[0];
+			String second = lineContents[1];
+			String third = lineContents[2];
+			if(third != "Card" || third != "Other") {
+				throw new BadConfigFormatException();     // throws if the third word is anything but card or other
+			}
+			char c = first.charAt(0);
+
+			legend.put(c, second);
 			}
 			inputStream.close();
 	}
@@ -282,15 +282,15 @@ public class Board {
 
 			Scanner input = new Scanner(file1);
 			while(input.hasNext()){
-				String temp = input.nextLine();
-				String[] bar = temp.split(",");
-				setNumColumns(bar.length);
+				String nextLine = input.nextLine();
+				String[] roomLine = nextLine.split(",");
+				setNumColumns(roomLine.length);
 				for(int i = 0; i < numColumns; i++) {
-					for(int j = 0; j < bar.length; ++j) {
-						board[i][count].setInitial(bar[j].charAt(0));
+					for(int j = 0; j < roomLine.length; ++j) {
+						board[i][count].setInitial(roomLine[j].charAt(0));
 						boolean isIn = false;
 						for(char c: legend.keySet()) {
-							if(bar[j].charAt(0) == c) isIn = true;
+							if(roomLine[j].charAt(0) == c) isIn = true;
 						}
 						if(!isIn) throw new BadConfigFormatException(); // throws if the char is not in the legend
 					}

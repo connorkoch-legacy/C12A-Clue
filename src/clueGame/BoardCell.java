@@ -60,8 +60,4 @@ public class BoardCell {
 	public void setDoorDirection(DoorDirection dir) {
 		this.dir = dir;
 	}
-	
-	
-	
-	
 }

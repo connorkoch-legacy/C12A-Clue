@@ -8,17 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.*;
-//import java.util.ArrayList;
-//import java.util.Arrays;
-//import java.util.HashMap;
-//import java.util.HashSet;
-//import java.util.Map;
-//import java.util.Scanner;
-//import java.util.Set;
-
-//import experiment.BoardCell;
-
-//import experiment.BoardCell;
 
 
 public class Board {
@@ -55,7 +44,6 @@ public class Board {
 		}
 	
 	
-	
 	public int getNumRows() {
 		return numRows;
 	}
@@ -81,9 +69,6 @@ public class Board {
 	}
 	
 	public HashMap<Character, String> getLegend() {
-		
-		
-		
 		return legend;
 	}
 	
@@ -117,7 +102,6 @@ public class Board {
 		}
 		
 		// handles "testBoardDimensions" tests
-		
 		File file1 = new File(boardConfigFile);
 		int count = 0;
 		try {
@@ -138,7 +122,6 @@ public class Board {
 		}catch(FileNotFoundException e) {
 		
 		}
-
 	}
 
 	public void initialize() {
@@ -169,7 +152,6 @@ public class Board {
 						} else {
 							bc.setDoorDirection(DoorDirection.LEFT);
 						}
-						
 						
 						bc.setDoorway(true);
 						bc.setRoom(false);
@@ -250,7 +232,7 @@ public class Board {
 	}
 
 
-public void doCalcTargets(int row, int col, int pathLength){
+	public void doCalcTargets(int row, int col, int pathLength){
 		
 		//System.out.println(board[row][col]);
 		

@@ -218,7 +218,6 @@ public class Board {
 		return adjMtx.get(board[row][col]);
 	}
 
-
 	public void doCalcTargets(int row, int col, int pathLength){
 		for (BoardCell adjacent : AdjList(board[row][col])) {
 			if (visited.contains(adjacent)) {

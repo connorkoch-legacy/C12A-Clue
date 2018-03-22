@@ -195,7 +195,6 @@ public class Board {
 			}catch (FileNotFoundException e){
 				e.printStackTrace();
 		}
-		//System.out.println(getNumDoors());
 	}
 	
 	public void calcAdjacencies(){
@@ -241,7 +240,6 @@ public class Board {
 				// cells in a room get empty adjacency lists
 				
 				adjMtx.put(board[i][j], adjacencies);
-				//System.out.println(adjMtx.size());
 			}
 		}
 	}
@@ -250,27 +248,7 @@ public class Board {
 		calcAdjacencies();
 		return adjMtx.get(board[row][col]);
 	}
-/*	
-	public void calcTargets(BoardCell startCell, int pathLength){
-		
-		
-		for (BoardCell adjacent : AdjList(startCell)) {
-			if (visited.contains(adjacent)) {
-				continue;
-			}
-			
-			visited.add(adjacent);
-			if (pathLength == 1) {
-				targets.add(adjacent);
-			}
-			else {
-				calcTargets(adjacent, pathLength - 1);
-			}
-			visited.remove(adjacent);
-		}
-	}
-	*/
-	////////////////////////////
+
 
 public void doCalcTargets(int row, int col, int pathLength){
 		
@@ -299,21 +277,15 @@ public void doCalcTargets(int row, int col, int pathLength){
 		}
 	}
 
-public void calcTargets(int i, int j, int path){
-	targets.clear();
-	visited.clear();
-	visited.add(board[i][j]);
-	doCalcTargets(i,j,path);
-}
-
-
-
-	////////////////////////////////
+	public void calcTargets(int i, int j, int path){
+		targets.clear();
+		visited.clear();
+		visited.add(board[i][j]);
+		doCalcTargets(i,j,path);
+	}
+	
 	
 	public HashSet<BoardCell> AdjList(BoardCell cell){
-		/*for(BoardCell i: adjMtx.get(cell)){
-			i.getRow();
-		}*/
 		calcAdjacencies();
 		return (HashSet<BoardCell>) adjMtx.get(cell);
 	}
@@ -325,7 +297,6 @@ public void calcTargets(int i, int j, int path){
 			Scanner inputStream = new Scanner(file);
 			while(inputStream.hasNext()){
 				String data = inputStream.nextLine();
-				//System.out.println(data);
 				String[] foo = data.split(",\\s*");
 				
 				String first = foo[0];
@@ -335,8 +306,6 @@ public void calcTargets(int i, int j, int path){
 					throw new BadConfigFormatException();     // throws if the third word is anything but card or other
 				}
 				char c = first.charAt(0);
-				//System.out.println(c);
-				//System.out.println(second);
 				
 				legend.put(c, second);
 			}
@@ -372,14 +341,6 @@ public void calcTargets(int i, int j, int path){
 	}
 	
 	public clueGame.BoardCell getCellAt(int i, int j) {
-		
 		return board[i][j];
 	}
-	
-	
-	
-
-	
-	
-	
 }

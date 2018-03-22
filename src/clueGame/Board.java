@@ -256,22 +256,22 @@ public class Board {
 		
 		// handles "testRooms" tests
 		File file = new File(roomConfigFile);
-		Scanner inputStream = new Scanner(file);
-		while(inputStream.hasNext()){
-			String data = inputStream.nextLine();
-			String[] lineContents = data.split(",\\s*");
-
-			String first = lineContents[0];
-			String second = lineContents[1];
-			String third = lineContents[2];
-			if(third != "Card" || third != "Other") {
-				throw new BadConfigFormatException();     // throws if the third word is anything but card or other
-			}
-			char c = first.charAt(0);
-
-			legend.put(c, second);
-			}
-			inputStream.close();
+		try(Scanner inputStream = new Scanner(file)){
+			while(inputStream.hasNext()){
+				String data = inputStream.nextLine();
+				String[] lineContents = data.split(",\\s*");
+	
+				String first = lineContents[0];
+				String second = lineContents[1];
+				String third = lineContents[2];
+				if(third != "Card" || third != "Other") {
+					throw new BadConfigFormatException();     // throws if the third word is anything but card or other
+				}
+				char c = first.charAt(0);
+	
+				legend.put(c, second);
+				}
+		}
 	}
 	
 	public void loadBoardConfig() throws FileNotFoundException, BadConfigFormatException {
@@ -280,25 +280,25 @@ public class Board {
 		File file1 = new File(boardConfigFile);
 		int count = 0;
 
-			Scanner input = new Scanner(file1);
-			while(input.hasNext()){
-				String nextLine = input.nextLine();
-				String[] roomLine = nextLine.split(",");
-				setNumColumns(roomLine.length);
-				for(int i = 0; i < numColumns; i++) {
-					for(int j = 0; j < roomLine.length; ++j) {
-						board[i][count].setInitial(roomLine[j].charAt(0));
-						boolean isIn = false;
-						for(char c: legend.keySet()) {
-							if(roomLine[j].charAt(0) == c) isIn = true;
+			try(Scanner input = new Scanner(file1)){
+				while(input.hasNext()){
+					String nextLine = input.nextLine();
+					String[] roomLine = nextLine.split(",");
+					setNumColumns(roomLine.length);
+					for(int i = 0; i < numColumns; i++) {
+						for(int j = 0; j < roomLine.length; ++j) {
+							board[i][count].setInitial(roomLine[j].charAt(0));
+							boolean isIn = false;
+							for(char c: legend.keySet()) {
+								if(roomLine[j].charAt(0) == c) isIn = true;
+							}
+							if(!isIn) throw new BadConfigFormatException(); // throws if the char is not in the legend
 						}
-						if(!isIn) throw new BadConfigFormatException(); // throws if the char is not in the legend
 					}
+					count++;
 				}
-				count++;
 			}
 			setNumRows(count);
-			input.close();
 			if(numColumns != numRows) throw new BadConfigFormatException(); // throws if cols ! = rows
 	}
 	

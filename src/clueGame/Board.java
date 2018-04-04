@@ -17,8 +17,12 @@ public class Board {
 	public Map<BoardCell, Set<BoardCell>> adjMtx = new HashMap<BoardCell, Set<BoardCell>>();
 	public Set<BoardCell> targets = new HashSet<BoardCell>();
 	public Set<BoardCell> visited = new HashSet<BoardCell>();
+	private Card[] cards;
+	private Player[] players;
 	private String boardConfigFile;
 	private String roomConfigFile;
+	private String playersConfigFile;
+	private String cardsConfigFile;
 	
 	// variable used for singleton pattern
 	private static Board theInstance = new Board();
@@ -70,10 +74,13 @@ public class Board {
 		return numDoors;
 	}
 
-	public void setConfigFiles(String layOut, String csv) {
-		roomConfigFile = csv;
+	public void setConfigFiles(String layOut, String csvRooms, String csvPlayers, String csvCards) {
+		roomConfigFile = csvRooms;
+		playersConfigFile = csvPlayers;
+		cardsConfigFile = csvCards;
 		boardConfigFile = layOut;
 		
+		//Room Loading
 		try {
 		File file = new File(roomConfigFile);
 		Scanner inputStream = new Scanner(file);
@@ -91,6 +98,73 @@ public class Board {
 		}catch(FileNotFoundException e) {
 			System.out.println("File not found, please correct file name.");
 		}
+		
+		//Players Loading
+		try {
+		File file = new File(playersConfigFile);
+		Scanner inputStream = new Scanner(file);
+		int counter = 0;
+		players = new Player[6];
+		while(inputStream.hasNext()){
+			String data = inputStream.nextLine();
+			String[] foo = data.split(",\\s*");
+			
+			String name = foo[0];
+			String color = foo[1];
+			String type = foo[2];
+			int startingRow = Integer.parseInt(foo[3]);
+			int startingCol = Integer.parseInt(foo[4]);
+			
+			if(type == "Human"){
+				HumanPlayer player = new HumanPlayer();
+				player.setPlayerName(name);
+				player.setColor(color);
+				player.setRow(startingRow);
+				player.setColumn(startingCol);
+				players[counter] = player;
+			}else {
+				ComputerPlayer player = new ComputerPlayer();
+				player.setPlayerName(name);
+				player.setColor(color);
+				player.setRow(startingRow);
+				player.setColumn(startingCol);
+				players[counter] = player;
+			}
+			counter++;
+		}
+		inputStream.close();
+		}catch(FileNotFoundException e) {
+			System.out.println("File not found, please correct file name.");
+		}
+		
+		//Cards Loading
+		try {
+		File file = new File(cardsConfigFile);
+		Scanner inputStream = new Scanner(file);
+		int counter = 0;
+		cards = new Card[23];
+		while(inputStream.hasNext()){
+			String data = inputStream.nextLine();
+			if(counter <= 10) {
+				cards[counter] = new Card();
+				cards[counter].setCardName(data);
+				cards[counter].setCardType(CardType.ROOM);
+			} else if(counter > 10 && counter <= 16){
+				cards[counter] = new Card();
+				cards[counter].setCardName(data);
+				cards[counter].setCardType(CardType.PERSON);
+			} else{
+				cards[counter] = new Card();
+				cards[counter].setCardName(data);
+				cards[counter].setCardType(CardType.WEAPON);
+			}
+			counter++;
+		}
+		inputStream.close();
+		}catch(FileNotFoundException e) {
+			System.out.println("File not found, please correct file name.");
+		}
+	
 	
 		// handles "testBoardDimensions" tests
 		File file1 = new File(boardConfigFile);
@@ -304,5 +378,26 @@ public class Board {
 	
 	public clueGame.BoardCell getCellAt(int i, int j) {
 		return board[i][j];
+	}
+	
+	public void selecTAnswer(){
+		
+	}
+	
+	public Card handleSuggestion(){
+		Card c = new Card();
+		return c;
+	}
+	
+	public boolean checkAccusation(Solution accusation){
+		return true;
+	}
+	
+	public Card[] getCards() {
+		return cards;
+	}
+	
+	public Player[] getPlayers() {
+		return players;
 	}
 }

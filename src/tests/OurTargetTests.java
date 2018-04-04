@@ -23,7 +23,7 @@ public class OurTargetTests {
 		// Board is singleton, get the only instance
 		board = Board.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt");		
+		board.setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
 		// Initialize will load BOTH config files 
 		board.initialize();
 	}

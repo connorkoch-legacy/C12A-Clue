@@ -74,15 +74,32 @@ public class gameSetupTests{
 		assertTrue(cards[21].getCardType() == CardType.WEAPON);
 		assertTrue(cards[21].getCardName().equals("Rope"));
 		
+	}
 	
-	
-	
-
+	// tests the cards were dealt right
+	@Test
+	public void testDealingCards() {
+		Player[] players = board.getPlayers();
+		// makes sure there are no cards dealt twice
+		boolean noDuplicate = true;
+		for(int i = 0; i < players.length; i++){
+			for(Card c: players[i].ownedCards){
+				for(int j = 0; j < players.length; j++){
+					if(players[j].ownedCards.contains(c) && (i != j)){
+						noDuplicate = false;
+					}
+				}
+			}
+		}
 		
+		assertTrue(!noDuplicate);
+		
+		
+		
+
 		
 	}
 	
-	//Game Actions Tests below
 
 	
 	

@@ -164,8 +164,30 @@ public class Board {
 		}catch(FileNotFoundException e) {
 			System.out.println("File not found, please correct file name.");
 		}
-	
-	
+		
+		
+		//////////////////////////
+		// deals the cards
+		///////////////////////////
+		
+		Random r = new Random();
+		int counter = 0;
+		ArrayList<Card> dealingCards = new ArrayList<Card>();
+		for(int i = 0; i < cards.length; i++){
+			dealingCards.add(cards[i]);
+		}
+		while(dealingCards.size() > 0){
+			counter++;
+			Player chosenP = players[(counter % players.length)];
+			
+			int randCard = r.nextInt(dealingCards.size());
+			Card rCard = dealingCards.get(randCard);
+			chosenP.addCard(rCard);
+			dealingCards.remove(rCard);
+			
+		}
+		
+		
 		// handles "testBoardDimensions" tests
 		File file1 = new File(boardConfigFile);
 		int count = 0;

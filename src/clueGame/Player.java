@@ -2,12 +2,22 @@ package clueGame;
 
 import java.awt.Color;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Player {
 	private String playerName;
 	private int row;
 	private int column;
 	private Color color;
+	
+	public Set<Card> ownedCards = new HashSet<Card>();
+	
+	public void addCard(Card c){
+		ownedCards.add(c);
+	}
+	
 	
 	public String getPlayerName() {
 		return playerName;

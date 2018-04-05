@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import clueGame.Board;
 import clueGame.Card;
+import clueGame.CardType;
 import clueGame.Player;
 
 public class gameSetupTests{
@@ -35,11 +36,21 @@ public class gameSetupTests{
 	public void testCardLoading() {
 		Card[] cards = board.getCards();
 		assertEquals(23, cards.length);///////////////
-		//int personCount;
-		//int weaponCount;
-		//int roomCount;
-		
-		
+		int personCount = 0;
+		int weaponCount = 0;
+		int roomCount = 0;
+		for(int i = 0; i < 23; i++){
+			if(cards[i].getCardType() == CardType.PERSON){
+				personCount++;
+			}else if(cards[i].getCardType() == CardType.WEAPON){
+				weaponCount++;
+			} else if (cards[i].getCardType() == CardType.ROOM){
+				roomCount++;
+			}
+		}
+		assertEquals(1, personCount);
+		assertEquals(1, weaponCount);
+		assertEquals(1, roomCount);
 		
 		
 		

@@ -92,7 +92,7 @@ public class gameSetupTests{
 			}
 		}
 		
-		assertTrue(!noDuplicate);
+		assertTrue(noDuplicate);
 		
 		
 		

@@ -109,7 +109,7 @@ public class gameSetupTests{
 				}
 			}
 		}
-		assertTrue(!itsGood);
+		assertTrue(itsGood);
 		
 	}
 	

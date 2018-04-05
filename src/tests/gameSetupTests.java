@@ -52,7 +52,7 @@ public class gameSetupTests{
 		assertEquals(6, weaponCount);
 		assertEquals(11, roomCount);
 		// check existance of one of each type of card
-		assertTrue(cards[1].getCardName().equals(""));
+		assertTrue(cards[1].getCardName().equals("Kitchen"));
 		assertTrue(cards[13].getCardType() == CardType.PERSON);
 		assertTrue(cards[21].getCardType() == CardType.WEAPON);
 		assertTrue(cards[21].getCardName().equals("Rope"));

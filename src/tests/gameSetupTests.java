@@ -99,7 +99,7 @@ public class gameSetupTests{
 		for(int i = 0; i < players.length; i++){
 			numCardsDealt += players[i].ownedCards.size();
 		}
-		assertTrue(numCardsDealt != cards.length);
+		assertTrue(numCardsDealt == cards.length);
 		
 
 		

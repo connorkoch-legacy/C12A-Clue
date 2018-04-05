@@ -34,7 +34,7 @@ public class gameSetupTests{
 	@Test
 	public void testCardLoading() {
 		Card[] cards = board.getCards();
-		assertEquals(232, cards.length);///////////////
+		assertEquals(23, cards.length);///////////////
 		//int personCount;
 		//int weaponCount;
 		//int roomCount;

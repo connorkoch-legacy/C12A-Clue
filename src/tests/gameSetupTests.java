@@ -100,8 +100,16 @@ public class gameSetupTests{
 			numCardsDealt += players[i].ownedCards.size();
 		}
 		assertTrue(numCardsDealt == cards.length);
-		
-
+		// make sure all players have about same number of cards
+		boolean itsGood = true;
+		for(int i = 0; i < players.length; i++){
+			for(int j = 0; j < players.length; j++){
+				if(players[i].ownedCards.size() - players[j].ownedCards.size() > 1 || players[i].ownedCards.size() - players[j].ownedCards.size() < -1){
+					itsGood = false;
+				}
+			}
+		}
+		assertTrue(!itsGood);
 		
 	}
 	

@@ -11,8 +11,7 @@ public class Player {
 	private int row;
 	private int column;
 	private Color color;
-	
-	public Set<Card> ownedCards = new HashSet<Card>();
+	public Set<Card> ownedCards = new HashSet<Card>(); //Stores cards in hand
 	
 	public void addCard(Card c){
 		ownedCards.add(c);

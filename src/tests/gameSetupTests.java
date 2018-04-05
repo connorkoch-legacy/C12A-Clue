@@ -10,6 +10,7 @@ import clueGame.Player;
 import clueGame.HumanPlayer;
 import clueGame.ComputerPlayer;
 import java.awt.Color;
+import java.util.ArrayList;
 
 public class gameSetupTests{
 	
@@ -76,6 +77,16 @@ public class gameSetupTests{
 		
 	}
 	
+	// tests envelope has correct cards in it
+	@Test
+	public void testEnvelope(){
+		ArrayList<Card> testEnvelope = board.getEnvelope();
+		assertEquals(3, board.getEnvelope().size());
+		assertTrue(testEnvelope.get(0).getCardType() == CardType.ROOM);
+		assertTrue(testEnvelope.get(1).getCardType() == CardType.PERSON);
+		assertTrue(testEnvelope.get(2).getCardType() == CardType.WEAPON);
+	}
+	
 	// tests the cards were dealt right
 	@Test
 	public void testDealingCards() {
@@ -99,7 +110,7 @@ public class gameSetupTests{
 		for(int i = 0; i < players.length; i++){
 			numCardsDealt += players[i].ownedCards.size();
 		}
-		assertTrue(numCardsDealt == cards.length);
+		assertTrue(numCardsDealt == cards.length-3);
 		// make sure all players have about same number of cards
 		boolean itsGood = true;
 		for(int i = 0; i < players.length; i++){
@@ -112,8 +123,5 @@ public class gameSetupTests{
 		assertTrue(itsGood);
 		
 	}
-	
-
-	
 	
 }

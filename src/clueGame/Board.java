@@ -18,6 +18,7 @@ public class Board {
 	public Set<BoardCell> targets = new HashSet<BoardCell>();
 	public Set<BoardCell> visited = new HashSet<BoardCell>();
 	private Card[] cards;
+	private ArrayList<Card> envelope = new ArrayList<Card>();
 	private Player[] players;
 	private String boardConfigFile;
 	private String roomConfigFile;
@@ -172,10 +173,23 @@ public class Board {
 		
 		Random r = new Random();
 		int counter = 0;
-		ArrayList<Card> dealingCards = new ArrayList<Card>();
+		ArrayList<Card> dealingCards = new ArrayList<Card>(); //dealingCards holds current cards needed to be dealt
 		for(int i = 0; i < cards.length; i++){
 			dealingCards.add(cards[i]);
 		}
+		
+		//Deals 3 cards to the envelope
+		Card room = dealingCards.get(r.nextInt(11));
+		dealingCards.remove(room);
+		envelope.add(room);
+		Card player = dealingCards.get(r.nextInt(6)+10);
+		dealingCards.remove(player);
+		envelope.add(player);
+		Card weapon = dealingCards.get(r.nextInt(6)+15);
+		dealingCards.remove(weapon);
+		envelope.add(weapon);
+		
+		//Loops through undealt cards and deals them
 		while(dealingCards.size() > 0){
 			counter++;
 			Player chosenP = players[(counter % players.length)];
@@ -184,7 +198,6 @@ public class Board {
 			Card rCard = dealingCards.get(randCard);
 			chosenP.addCard(rCard);
 			dealingCards.remove(rCard);
-			
 		}
 		
 		
@@ -422,4 +435,9 @@ public class Board {
 	public Player[] getPlayers() {
 		return players;
 	}
+	
+	public ArrayList<Card> getEnvelope() {
+		return envelope;
+	}
+	
 }

@@ -1,0 +1,297 @@
+commit 29c6b09843bd8a601af20933c7dc380d160d44f8
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Thu Apr 5 16:16:43 2018 -0600
+
+    Completed gameSetupTests
+
+commit fd0c0c57fb0fe270597843cc4d6f15d742ad91b6
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 22:04:46 2018 -0600
+
+    Passed test to make sure all hands have about the same cards
+
+commit ccb1979893db66a7e2da2e2bc32fcee604bf7001
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 22:04:02 2018 -0600
+
+    added failing test to make sure all hands have about the same number fo cards
+
+commit d48cd62f82953441de1ee85427f1221880a234e7
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 21:59:52 2018 -0600
+
+    passed test making sure all cards dealt
+
+commit b5deb1170f93d86580f08d493c7bee7f498f9480
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 21:59:26 2018 -0600
+
+    added failing test for making sure all cards are dealt
+
+commit 23991d19a792e7b9982bdcc0dbbc3c2150809458
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 21:54:59 2018 -0600
+
+    got test checking for duplicate deals to pass
+
+commit f083c9507b4ad1f2cbe84f6ece5db60c3db1d172
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 21:54:28 2018 -0600
+
+    added failing test to check for duplicately dealt cards
+
+commit c205fd6be2a798c9996c03dc678c1d9285455417
+Merge: f2720f4 b29053f
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 20:07:14 2018 -0600
+
+    fixed merging trouble
+
+commit f2720f4ed073c6e48ddc791cdf0515dcb00f62d0
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 20:03:21 2018 -0600
+
+    got tests to check individual cards to pass
+
+commit 08df71b9bc2b28ee7b07056027606a476dd29301
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 20:02:35 2018 -0600
+
+    made failing tests to check individual cards
+
+commit 9d653d755a51d74b0c9fe5ffe7ab4e777dcc22ce
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 19:51:50 2018 -0600
+
+    got tests checking number of each type of cards to pass
+
+commit 55c3e6382a662c6366b16d4488b92fb2807a03df
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 19:50:28 2018 -0600
+
+    added failing test to check number of each type of card
+
+commit 096d58c4c569de002bfdbefe6effaa475c164a06
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 19:43:28 2018 -0600
+
+    Got test checking deck size to pass
+
+commit b50e01a6e1864e4568af4b33f7ac5d98107e2725
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 19:42:31 2018 -0600
+
+    Added failing test for checking deck size
+
+commit b29053f7925d6868c8cac87e409d86eb88756a73
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Wed Apr 4 19:38:33 2018 -0600
+
+    Passed player loading tests
+
+commit 1d29b5c98bd78f5f023ff61a77ab4e419195345a
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Wed Apr 4 19:10:02 2018 -0600
+
+    Created failing load player tests
+
+commit 298be5b5dd68238138a52bf9107fa5701382380e
+Merge: 026c594 99a3ffa
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 19:00:37 2018 -0600
+
+    Merge branch 'master' of https://github.com/connorkoch/C12A-Clue
+
+commit 99a3ffa6f21addc4a8c3fff9940df6cbd3c61ab7
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Wed Apr 4 18:54:09 2018 -0600
+
+    Added all new files which I forgot to add last commit
+
+commit 026c594590de2191ed765002f3e665e27a068a1f
+Merge: f631551 7f68e04
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Apr 4 18:08:42 2018 -0600
+
+    Merge branch 'master' of https://github.com/connorkoch/C12A-Clue
+
+commit 7f68e043b08f9207bd81868962b2494383735a93
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Tue Apr 3 18:50:43 2018 -0600
+
+    Added Players and Cards config files, and made sure they parse to their respective arrays correcly. Also Set up failing test to make sure we are loading people corretly,
+
+commit 15f6efd9b39db015af03c359afec6e1574cb210c
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Thu Mar 22 16:06:26 2018 -0600
+
+    Fixed warnings from unclosed scanner streams with a try block
+
+commit 127bad7cbb26a9eb05e77fc5d1bbab5d9df27457
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Thu Mar 22 16:02:46 2018 -0600
+
+    Changed non-descriptive variable names to be more significant
+
+commit a1cdd5bd8a17e30ad57423abc7a294c0b2445997
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Thu Mar 22 15:57:15 2018 -0600
+
+    Removed a redundant function that did the same thing as another function.
+
+commit 321c3f07461d10b7ac2cb35a6bdb50700225c7e3
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Thu Mar 22 15:54:47 2018 -0600
+
+    Changed declaration of maps and sets to not explicitly declare a subtype of map or set, so hashmaps were changed to just maps etc,
+
+commit a906cf2caf3bcd875eec546ece93717258c97ad4
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Thu Mar 22 15:50:34 2018 -0600
+
+    We had a few try-catch clauses that didn't do anything in the catch block, so we added meaningful outputs here
+
+commit 2cfb158d011ad7ac79251374269d50a4061196d3
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Thu Mar 22 15:45:40 2018 -0600
+
+    Cleared out unused imports and organized import headers
+
+commit dd32fb9b805e078b35a1925ef9efc9e34361b450
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Thu Mar 22 15:41:05 2018 -0600
+
+    Fixed sloppy indentations and deleted new lines and spaces that made the code look unorganized
+
+commit 7f84c6ebb36d4df09d15be89e2155a0d3e97c441
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Thu Mar 22 15:38:01 2018 -0600
+
+    Cleared all unused and commented out printlns or other lines
+
+commit f631551abcac0e124e96608f10c44d792ee0b7a5
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Tue Mar 13 22:37:28 2018 -0600
+
+    fixing erors
+
+commit d6ac108be04db665e745bbf246516bb9b7cfdd4f
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Tue Mar 13 16:36:11 2018 -0600
+
+    Finished
+
+commit a145fc1b7d2ef71d5b450860610ceb25ebb92faa
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Mon Mar 12 18:05:56 2018 -0600
+
+    All except two tests passing. Changed calcTargets() function.
+
+commit abbcd4d0ed1274f0fefebbb83466ee0a7fb5b76d
+Merge: bfbcaae 4e6bf4e
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Sun Mar 11 16:56:27 2018 -0600
+
+    fixed merge conflict
+
+commit bfbcaae148388eb0b2ffc411059b4c00e2a0bb4f
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Sun Mar 11 16:52:51 2018 -0600
+
+    Changed excel sheet to include colored cells for correct tests
+
+commit 4e6bf4eb8f26a9e3ba5a778b104e3a09e7e34a63
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Sun Mar 11 13:43:45 2018 -0600
+
+    Passing adjacency tests. Fixed my row/col errors in the tests.
+
+commit a3ec5d66d3bd97984b3e933f738278c3c6fdb3c9
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Sat Mar 10 18:11:51 2018 -0700
+
+    Fixed some cell row/cols in the tests
+
+commit 24b42e6236d910eb62de9140a264a5f1f184caef
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Fri Mar 9 15:40:11 2018 -0700
+
+    Fixed test errors. Added OurAdjacencyTests. Part 3 completed.
+
+commit a4165ef77eb3e8abc8171c2abcd168fa4bd3cd5b
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Wed Mar 7 16:44:30 2018 -0700
+
+    Added some adjacency tests
+
+commit 0255c2405a94c6b0b59bc5d4ecd1f74df2a7281f
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Tue Mar 6 18:23:29 2018 -0700
+
+    Added adjacency tests
+
+commit 4b71bf4b6f4863e46a1ad6b9f32d2e5cd3b68827
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Tue Mar 6 00:37:13 2018 -0700
+
+    C13A Part 2
+
+commit aa4dfa05e59cdfbf7bc08c12582e8769821f3766
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Mon Mar 5 20:38:30 2018 -0700
+
+    Passing most of ours and his fileInit tests. Added our data files to the Data folder.
+
+commit 258f9d22d34ceb12e14c1800745575bb242c711c
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Mon Mar 5 16:41:32 2018 -0700
+
+    added testing classes for board layout
+
+commit 7684e5dafd8cf581e3e395ad83a4a022b83cc7d5
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Mon Mar 5 16:39:25 2018 -0700
+
+    Added tests to check correct board layout and file input
+
+commit 5f9e7e9343e865c406ffceb42300d166634850e3
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Sun Mar 4 11:49:33 2018 -0700
+
+    Added clueGame package to repository. This contains Board class, DoorDirection enum, Failing tests.
+
+commit a9994802da833a4a165b28084b439e4cc57f488c
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Sun Mar 4 11:42:01 2018 -0700
+
+    Added dummy Board class. Added to BoardCell class. Added DoorDirection enum type. Failing given tests.
+
+commit 06107e34bd18bdc9c954a85ddc6396f0e502e35e
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Fri Mar 2 15:54:18 2018 -0700
+
+    Made target tests. Fixed Bugs.
+
+commit c2e46004f93c7c932d6c5bac23829632e990a248
+Author: Daniel Winternitz <dwinternitz@mines.edu>
+Date:   Fri Mar 2 14:01:19 2018 -0700
+
+    Made adjacency tests
+
+commit 4ef9d651b999167ace8070654c08c7b73967deea
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Thu Mar 1 16:52:43 2018 -0700
+
+    Initial commit
+
+commit c92bdea917840dc26a7452ec605447e10c86b6f0
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Thu Mar 1 16:47:02 2018 -0700
+
+    Initial Commit
+
+commit e83901be43e0f919e3ca211dfe480e4f8d183bbc
+Author: connorkoch <connorkoch@mymail.mines.edu>
+Date:   Tue Feb 27 16:50:16 2018 -0700
+
+    Initial Commit

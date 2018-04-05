@@ -80,6 +80,7 @@ public class gameSetupTests{
 	@Test
 	public void testDealingCards() {
 		Player[] players = board.getPlayers();
+		Card[] cards = board.getCards();
 		// makes sure there are no cards dealt twice
 		boolean noDuplicate = true;
 		for(int i = 0; i < players.length; i++){
@@ -93,8 +94,12 @@ public class gameSetupTests{
 		}
 		
 		assertTrue(noDuplicate);
-		
-		
+		// makes sure all cards are dealt
+		int numCardsDealt = 0;
+		for(int i = 0; i < players.length; i++){
+			numCardsDealt += players[i].ownedCards.size();
+		}
+		assertTrue(numCardsDealt != cards.length);
 		
 
 		

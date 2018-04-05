@@ -30,22 +30,23 @@ public class gameSetupTests {
 		Player[] players = board.getPlayers();
 		//Check correct number of players are loaded
 		assertEquals(6, players.length);
-		
 		//1st Player (Human Player) attribute tests
-		assertEquals("", players[0].getPlayerName());
-		Color c = new Color(255);
-		assertEquals(c, players[0].getColor());
+		assertEquals("Miss Vivienne Scarlet", players[0].getPlayerName());
+		//assertTrue(Color.RED.equals(players[2].getColor()));
 		assertTrue(players[0] instanceof HumanPlayer);
-		assertEquals(0, players[0].getColumn());
+		assertEquals(6, players[0].getColumn());
 		assertEquals(0, players[0].getRow());
 		
 		//3rd Player (Computer Player) attribute tests
-		assertEquals("", players[0].getPlayerName());
-		Color c2 = new Color(255);
-		assertEquals(c2, players[0].getColor());
-		assertTrue(players[0] instanceof ComputerPlayer);
-		assertEquals(0, players[0].getColumn());
-		assertEquals(0, players[0].getRow());
+		assertEquals("Mrs. Blanche White", players[2].getPlayerName());
+		//assertTrue(Color.WHITE.equals(players[2].getColor()));
+		assertTrue(players[2] instanceof ComputerPlayer);
+		assertEquals(15, players[2].getColumn());
+		assertEquals(24, players[2].getRow());
+		
 	}
+	
+	//Game Actions Tests below
+	
 	
 }

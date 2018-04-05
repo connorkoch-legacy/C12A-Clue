@@ -115,7 +115,7 @@ public class Board {
 			int startingRow = Integer.parseInt(foo[3]);
 			int startingCol = Integer.parseInt(foo[4]);
 			
-			if(type == "Human"){
+			if(counter == 0){
 				HumanPlayer player = new HumanPlayer();
 				player.setPlayerName(name);
 				player.setColor(color);

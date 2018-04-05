@@ -48,9 +48,9 @@ public class gameSetupTests{
 				roomCount++;
 			}
 		}
-		assertEquals(1, personCount);
-		assertEquals(1, weaponCount);
-		assertEquals(1, roomCount);
+		assertEquals(6, personCount);
+		assertEquals(6, weaponCount);
+		assertEquals(11, roomCount);
 		
 		
 		

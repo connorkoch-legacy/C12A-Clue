@@ -5,6 +5,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import clueGame.Board;
 import clueGame.Player;
+import clueGame.HumanPlayer;
+import clueGame.ComputerPlayer;
+import java.awt.Color;
 
 public class gameSetupTests {
 	
@@ -22,13 +25,27 @@ public class gameSetupTests {
 	//Test that players are loaded correctly
 	@Test
 	public void testPlayerLoading(){
+		
 		//Make a player array called players
 		Player[] players = board.getPlayers();
 		//Check correct number of players are loaded
-		assertEquals(1, players.length);
+		assertEquals(6, players.length);
 		
+		//1st Player (Human Player) attribute tests
+		assertEquals("", players[0].getPlayerName());
+		Color c = new Color(255);
+		assertEquals(c, players[0].getColor());
+		assertTrue(players[0] instanceof HumanPlayer);
+		assertEquals(0, players[0].getColumn());
+		assertEquals(0, players[0].getRow());
 		
-
+		//3rd Player (Computer Player) attribute tests
+		assertEquals("", players[0].getPlayerName());
+		Color c2 = new Color(255);
+		assertEquals(c2, players[0].getColor());
+		assertTrue(players[0] instanceof ComputerPlayer);
+		assertEquals(0, players[0].getColumn());
+		assertEquals(0, players[0].getRow());
 	}
 	
 }

@@ -4,9 +4,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import clueGame.Board;
+import clueGame.Card;
 import clueGame.Player;
 
-public class gameSetupTests {
+public class gameSetupTests{
 	
 	private static Board board;
 	@BeforeClass
@@ -27,8 +28,24 @@ public class gameSetupTests {
 		//Check correct number of players are loaded
 		assertEquals(1, players.length);
 		
-		
-
 	}
+	
+	// tests cards are loaded correctly
+	@Test
+	public void testCardLoading() {
+		Card[] cards = board.getCards();
+		assertEquals(232, cards.length);///////////////
+		//int personCount;
+		//int weaponCount;
+		//int roomCount;
+		
+		
+		
+		
+		
+	}
+	
+	
+	
 	
 }

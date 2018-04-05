@@ -1,0 +1,6 @@
+Miss Vivienne Scarlet, Red, Human, 0, 6
+Colonel Michael Mustard, Yellow, Computer, 21, 6
+Mrs. Blanche White, White, Computer, 24, 15
+Reverend Jonathan Green, Green, Computer, 11, 24
+Mrs. Elizabeth Peacock, Blue, Computer, 6, 16
+Professor Peter Plum, Purple, Computer, 15, 12

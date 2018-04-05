@@ -1,0 +1,23 @@
+Conservatory
+Kitchen
+Ballroom
+Billiard room
+Bathroom
+Cellar
+Laundry room
+Attic
+Vault
+Closet
+Walkway
+Miss Vivienne Scarlet
+Colonel Michael Mustard
+Mrs. Blanche White
+Reverend Jonathan Green
+Mrs. Elizabeth Peacock
+Professor Peter Plum
+Candlestick
+Knife
+Lead Pipe
+Revolver
+Rope
+Wrench

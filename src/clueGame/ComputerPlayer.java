@@ -4,14 +4,15 @@ import java.util.Random;
 import java.util.Set;
 
 public class ComputerPlayer extends Player{
-	private Card prevRoom; // tracks the last room player was in
+	private BoardCell prevRoom; // tracks the last room player was in
 	
 	
 	
 	
-	// choses the target location based on a given targets set
+	// chooses the target location based on a given targets set
 	public BoardCell pickLocation(Set<BoardCell> targets){
 		BoardCell target = null; 
+		// selects target randomly and stores in target variable
 		Random r = new Random();
 		int targetIndex = r.nextInt(targets.size());
 		int indexCheck = 0;
@@ -22,6 +23,13 @@ public class ComputerPlayer extends Player{
 			}
 			indexCheck++;
 		}
+		// overrides previous target selection if set contains a door
+		for(BoardCell b: targets){
+			if(b.isDoorway()){
+				target = b;
+			}
+		}
+		
 		return target;
 	}
 	
@@ -33,11 +41,11 @@ public class ComputerPlayer extends Player{
 		
 	}
 
-	public Card getPrevRoom() {
+	public BoardCell getPrevRoom() {
 		return prevRoom;
 	}
 
-	public void setPrevRoom(Card prevRoom) {
+	public void setPrevRoom(BoardCell prevRoom) {
 		this.prevRoom = prevRoom;
 	}
 

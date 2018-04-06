@@ -21,7 +21,7 @@ public class gameActionTests {
 		// Board is singleton, get the only instance
 		board = Board.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("CTest_ClueLayout.csv", "CTest_ClueLegend.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
+		board.setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
 		// Initialize will load BOTH config files 
 		board.initialize();
 	}
@@ -32,26 +32,26 @@ public class gameActionTests {
 	public void testTargetRandomSelection(){
 		 ComputerPlayer player = new ComputerPlayer();
 		 // Pick a location with no rooms in target, just three targets
-		 board.calcTargets(14, 0, 2);
-		 boolean loc_12_0 = false;
-		 boolean loc_14_2 = false;
-		 boolean loc_15_1 = false;
+		 board.calcTargets(17, 10, 1);
+		 boolean left = false;
+		 boolean right = false;
+		 boolean up = false;
 		 // Run the test a large number of times
 		 for (int i=0; i<100; i++) {
 		 BoardCell selected = player.pickLocation(board.getTargets());
-		 if (selected == board.getCellAt(12, 0))
-		 loc_12_0 = true;
-		 else if (selected == board.getCellAt(14, 2))
-		 loc_14_2 = true;
-		 else if (selected == board.getCellAt(15, 1))
-		 loc_15_1 = true;
+		 if (selected == board.getCellAt(17, 9))
+		 left = true;
+		 else if (selected == board.getCellAt(17, 11))
+		 right = true;
+		 else if (selected == board.getCellAt(16, 10))
+		 up = true;
 		 else
 		 fail("Invalid target selected");
 		 }
 		 // Ensure each target was selected at least once
-		 assertTrue(loc_12_0);
-		 assertTrue(loc_14_2);
-		 assertTrue(loc_15_1);
+		 assertTrue(left);
+		 assertTrue(right);
+		 assertTrue(up);
 	}
 	
 	@Test

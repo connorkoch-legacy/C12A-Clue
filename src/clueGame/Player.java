@@ -13,6 +13,7 @@ public class Player {
 	private Color color;
 	public Set<Card> ownedCards = new HashSet<Card>(); //Stores cards in hand
 	
+	
 	public void addCard(Card c){
 		ownedCards.add(c);
 	}
@@ -53,4 +54,7 @@ public class Player {
 		 }
 		 return color;
 		}
+
+
+	
 }

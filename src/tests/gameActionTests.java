@@ -56,8 +56,31 @@ public class gameActionTests {
 	
 	@Test
 	public void testAlwaysGoesToRoom(){
+		ComputerPlayer player = new ComputerPlayer();
+		board.calcTargets(4, 2, 1);
+		boolean up = false;
+		boolean right = false;
+		boolean down = false;
+		for(int i = 0; i < 100; i++){
+			BoardCell selected = player.pickLocation(board.getTargets());
+			if (selected == board.getCellAt(3, 2))
+				 up = true;
+				 else if (selected == board.getCellAt(4, 3))
+				 right = true;
+				 else if (selected == board.getCellAt(5, 2))
+				 down = true;
+				 else
+				 fail("Invalid target selected");
+				 }
+			assertTrue(up);
+			assertFalse(right);
+			assertFalse(down);
+			
+		}
 		
-	}
+		
+		
+	
 	
 	@Test
 	public void testPreviouslyLeftRoomRandomSelection(){

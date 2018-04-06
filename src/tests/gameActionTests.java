@@ -72,6 +72,7 @@ public class gameActionTests {
 				 else
 				 fail("Invalid target selected");
 				 }
+		// only door should have been visited
 			assertTrue(up);
 			assertFalse(right);
 			assertFalse(down);
@@ -86,7 +87,7 @@ public class gameActionTests {
 	public void testPreviouslyLeftRoomRandomSelection(){
 		ComputerPlayer player = new ComputerPlayer();
 		board.calcTargets(4, 2, 1);
-		player.setPrevRoom(board.getCellAt(3, 2));
+		player.setPrevRoom(board.getCellAt(3, 2)); // marks door as previously visited
 		boolean up = false;
 		boolean right = false;
 		boolean down = false;
@@ -101,6 +102,7 @@ public class gameActionTests {
 				 else
 				 fail("Invalid target selected");
 				 }
+		// all should be visited
 			assertTrue(up);
 			assertTrue(right);
 			assertTrue(down);

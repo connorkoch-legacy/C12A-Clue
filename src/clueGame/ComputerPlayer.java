@@ -23,7 +23,7 @@ public class ComputerPlayer extends Player{
 			}
 			indexCheck++;
 		}
-		// overrides previous target selection if set contains a door
+		// overrides previous target selection if set contains a door that hasnt been previously visited
 		for(BoardCell b: targets){
 			if(b.isDoorway() && b != prevRoom){
 				target = b;

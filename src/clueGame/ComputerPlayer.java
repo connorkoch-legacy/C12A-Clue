@@ -25,7 +25,7 @@ public class ComputerPlayer extends Player{
 		}
 		// overrides previous target selection if set contains a door
 		for(BoardCell b: targets){
-			if(b.isDoorway()){
+			if(b.isDoorway() && b != prevRoom){
 				target = b;
 			}
 		}

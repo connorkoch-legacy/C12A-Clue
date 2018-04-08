@@ -155,7 +155,6 @@ public class gameActionTests {
 			personGuess = cards[13];
 		}
 		
-		
 		assertFalse(board.checkAccusation(personGuess, weaponGuess, roomGuess));
 	}
 	

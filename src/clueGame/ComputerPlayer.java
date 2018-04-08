@@ -14,11 +14,11 @@ public class ComputerPlayer extends Player{
 	
 	
 	// makes a suggestion
-	public ArrayList<Card> createSuggestion(){
-		ArrayList<Card> suggestion = new ArrayList<Card>();
-		suggestion.add(Board.getCards()[1]);
-
-		ArrayList<Card> unseenWeapon = new ArrayList<Card>();
+	public Solution createSuggestion(){
+		Solution suggestion = new Solution();
+		suggestion.room = Board.getCards()[1].getCardName();
+		suggestion.weapon = "sdg";
+		
 		
 		
 		

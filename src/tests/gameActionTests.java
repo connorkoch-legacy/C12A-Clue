@@ -197,7 +197,7 @@ public class gameActionTests {
 	
 	
 	// Test suggestions
-	/*
+	
 	@Test
 	public void testRoomMatchesCurrentLocation(){
 		ComputerPlayer player = new ComputerPlayer();
@@ -205,20 +205,23 @@ public class gameActionTests {
 		// initializes player location because the room is dependant on it
 		player.setRow(3);
 		player.setColumn(2);
-		ArrayList<Card> suggestion = player.createSuggestion();
+		Solution suggestion = player.createSuggestion();
 		// makes sure card for room player is in is contained in the suggestion
-		boolean containsCard = false;
-		for(Card c: suggestion){
-			if(c == cards[0]){
-				containsCard = true;
-			}
-		}
-		assertTrue(containsCard);
+		
+		assertTrue(suggestion.room.equals(cards[1].getCardName()));
 	}
-	*/
+	
 	@Test
 	public void testOneWeaponUnseen(){
+		ComputerPlayer player = new ComputerPlayer();
+		Card[] cards = Board.getCards();
+		// adds all but last weapon
+		for(int i = 17; i < cards.length - 1; i++){
+			player.addSeenCards(cards[i]);
+		}
+		Solution suggestion = player.createSuggestion();
 		
+		assertTrue(suggestion.weapon.equals(cards[cards.length-1].getCardName()));
 		
 	}
 	

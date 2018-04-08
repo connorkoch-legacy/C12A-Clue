@@ -61,8 +61,8 @@ public class Player {
 	}
 
 
-	public void setSeenCards(Set<Card> seenCards) {
-		this.seenCards = seenCards;
+	public void addSeenCards(Card seen) {
+		seenCards.add(seen);
 	}
 
 

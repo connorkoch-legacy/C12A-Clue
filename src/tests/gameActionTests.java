@@ -227,7 +227,15 @@ public class gameActionTests {
 	
 	@Test
 	public void testOnePersonUnseen(){
+		ComputerPlayer player = new ComputerPlayer();
+		Card[] cards = Board.getCards();
+		// adds all but last weapon
+		for(int i = 11; i < 16; i++){
+			player.addSeenCards(cards[i]);
+		}
+		Solution suggestion = player.createSuggestion();
 		
+		assertTrue(suggestion.weapon.equals(cards[16].getCardName()));
 	}
 	
 	@Test

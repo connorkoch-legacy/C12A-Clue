@@ -12,7 +12,7 @@ public class Player {
 	private int column;
 	private Color color;
 	public Set<Card> ownedCards = new HashSet<Card>(); //Stores cards in hand
-	
+	private Set<Card> seenCards = new HashSet<Card>(); //Stores cards in hand
 	
 	public void addCard(Card c){
 		ownedCards.add(c);
@@ -54,6 +54,16 @@ public class Player {
 		 }
 		 return color;
 		}
+
+
+	public Set<Card> getSeenCards() {
+		return seenCards;
+	}
+
+
+	public void setSeenCards(Set<Card> seenCards) {
+		this.seenCards = seenCards;
+	}
 
 
 	

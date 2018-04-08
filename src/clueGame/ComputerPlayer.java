@@ -1,5 +1,6 @@
 package clueGame;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
 
@@ -8,6 +9,17 @@ public class ComputerPlayer extends Player{
 	
 	
 	
+	
+	
+	
+	
+	// makes a suggestion
+	public ArrayList<Card> createSuggestion(){
+		ArrayList<Card> suggestion = new ArrayList<Card>();
+		suggestion.add(Board.getCards()[1]);
+		
+		return suggestion;
+	}
 	
 	// chooses the target location based on a given targets set
 	public BoardCell pickLocation(Set<BoardCell> targets){
@@ -37,9 +49,7 @@ public class ComputerPlayer extends Player{
 		
 	}
 	
-	public void createSuggestion(){
-		
-	}
+	
 
 	public BoardCell getPrevRoom() {
 		return prevRoom;
@@ -49,5 +59,9 @@ public class ComputerPlayer extends Player{
 		this.prevRoom = prevRoom;
 	}
 
+	
+
+	
+	
 	
 }

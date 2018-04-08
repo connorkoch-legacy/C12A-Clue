@@ -17,7 +17,7 @@ public class Board {
 	public Map<BoardCell, Set<BoardCell>> adjMtx = new HashMap<BoardCell, Set<BoardCell>>();
 	public Set<BoardCell> targets = new HashSet<BoardCell>();
 	public Set<BoardCell> visited = new HashSet<BoardCell>();
-	private Card[] cards;
+	private static Card[] cards;
 	private ArrayList<Card> envelope = new ArrayList<Card>();
 	private Player[] players;
 	private String boardConfigFile;
@@ -450,7 +450,7 @@ public class Board {
 		return true;
 	}
 	
-	public Card[] getCards() {
+	public static Card[] getCards() {
 		return cards;
 	}
 	

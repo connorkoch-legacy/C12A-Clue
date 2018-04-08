@@ -12,6 +12,7 @@ import clueGame.HumanPlayer;
 import clueGame.ComputerPlayer;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class gameActionTests {
@@ -219,7 +220,20 @@ public class gameActionTests {
 	
 	@Test
 	public void testRoomMatchesCurrentLocation(){
-		
+		ComputerPlayer player = new ComputerPlayer();
+		Card[] cards = Board.getCards();
+		// initializes player location because the room is dependant on it
+		player.setRow(3);
+		player.setColumn(2);
+		ArrayList<Card> suggestion = player.createSuggestion();
+		// makes sure card for room player is in is contained in the suggestion
+		boolean containsCard = false;
+		for(Card c: suggestion){
+			if(c == cards[0]){
+				containsCard = true;
+			}
+		}
+		assertTrue(containsCard);
 	}
 	
 	@Test

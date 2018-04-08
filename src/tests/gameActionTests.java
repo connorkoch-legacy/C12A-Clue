@@ -184,9 +184,7 @@ public class gameActionTests {
 			weaponGuess = cards[20];
 		}
 		
-		
 		assertFalse(board.checkAccusation(personGuess, weaponGuess, roomGuess));
-		
 	}
 	
 	@Test

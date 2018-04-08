@@ -197,7 +197,7 @@ public class gameActionTests {
 	
 	
 	// Test suggestions
-	
+	/*
 	@Test
 	public void testRoomMatchesCurrentLocation(){
 		ComputerPlayer player = new ComputerPlayer();
@@ -210,7 +210,7 @@ public class gameActionTests {
 		
 		assertTrue(suggestion.room.equals(cards[1].getCardName()));
 	}
-	
+	*/
 	@Test
 	public void testOneWeaponUnseen(){
 		ComputerPlayer player = new ComputerPlayer();

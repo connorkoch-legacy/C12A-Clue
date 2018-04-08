@@ -16,9 +16,17 @@ public class ComputerPlayer extends Player{
 	// makes a suggestion
 	public Solution createSuggestion(){
 		Solution suggestion = new Solution();
-		suggestion.room = Board.getCards()[1].getCardName();
+		suggestion.room = "dasg";
 		suggestion.weapon = "sdg";
-		
+		suggestion.room = "sdfg";
+		// chooses weapon
+		ArrayList<Card> unseenWeapons = new ArrayList<Card>();
+		for(Card c: Board.getCards()){ // for everycard, adds to array if weapon and not seen
+			if(c.getCardType() == CardType.WEAPON && !getSeenCards().contains(c)){
+				unseenWeapons.add(c);
+			}
+		}
+		suggestion.weapon = unseenWeapons.get(0).getCardName();
 		
 		
 		

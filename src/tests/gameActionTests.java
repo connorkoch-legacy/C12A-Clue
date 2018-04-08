@@ -215,6 +215,7 @@ public class gameActionTests {
 		assertFalse(board.checkAccusation(personGuess, weaponGuess, roomGuess));
 	}
 	
+	
 	// Test suggestions
 	
 	@Test

@@ -235,7 +235,7 @@ public class gameActionTests {
 		}
 		Solution suggestion = player.createSuggestion();
 		
-		assertTrue(suggestion.weapon.equals(cards[16].getCardName()));
+		assertTrue(suggestion.person.equals(cards[16].getCardName()));
 	}
 	
 	@Test

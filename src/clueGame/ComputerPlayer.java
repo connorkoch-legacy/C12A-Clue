@@ -29,6 +29,14 @@ public class ComputerPlayer extends Player{
 		suggestion.weapon = unseenWeapons.get(0).getCardName();
 		
 		
+		// chooses person
+		ArrayList<Card> unseenPerson = new ArrayList<Card>();
+		for(Card c: Board.getCards()){ // for everycard, adds to array if weapon and not seen
+			if(c.getCardType() == CardType.PERSON && !getSeenCards().contains(c)){
+				unseenPerson.add(c);
+			}
+		}
+		suggestion.person = unseenPerson.get(0).getCardName();
 		
 		return suggestion;
 	}

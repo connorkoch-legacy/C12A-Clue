@@ -114,10 +114,10 @@ public class gameActionTests {
 	public void testCorrectAccusation(){
 		ArrayList<Card> envelope = new ArrayList<Card>();
 		envelope = board.getEnvelope();
-		Card[] cards = board.getCards();
 		Card personGuess = null;
 		Card weaponGuess = null;
 		Card roomGuess = null;
+		//sets the guesses based on cards in the envelope
 		for(Card c: envelope){
 			if(c.getCardType() == CardType.PERSON){
 				personGuess = c;
@@ -132,8 +132,36 @@ public class gameActionTests {
 	
 	@Test
 	public void testAccusationWithWrongPerson(){
+		ArrayList<Card> envelope = new ArrayList<Card>();
+		envelope = board.getEnvelope();
+		Card[] cards = board.getCards();
+		Card personGuess = null;
+		Card weaponGuess = null;
+		Card roomGuess = null;
+		// initially sets the guess variables to be correct
+		for(Card c: envelope){
+			if(c.getCardType() == CardType.PERSON){
+				personGuess = c;
+			}else if(c.getCardType() == CardType.WEAPON){
+				weaponGuess = c;
+			}else if(c.getCardType() == CardType.ROOM){
+				roomGuess = c;
+			}
+		}
+		// changes the person guess to be wrong
+		if(personGuess == cards[13]){
+			personGuess = cards[14];
+		} else {
+			personGuess = cards[13];
+		}
 		
+		
+		assertFalse(board.checkAccusation(personGuess, weaponGuess, roomGuess));
 	}
+	
+	
+	
+	
 	
 	@Test
 	public void testAccusationWithWrongWeapon(){

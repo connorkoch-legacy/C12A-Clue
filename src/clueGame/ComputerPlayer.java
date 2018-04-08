@@ -40,6 +40,7 @@ public class ComputerPlayer extends Player{
 				unseenPerson.add(c);
 			}
 		}
+		randomIndex = r.nextInt(unseenPerson.size());
 		suggestion.person = unseenPerson.get(0).getCardName();
 		
 		return suggestion;

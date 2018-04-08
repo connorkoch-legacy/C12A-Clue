@@ -24,7 +24,10 @@ public class Board {
 	private String roomConfigFile;
 	private String playersConfigFile;
 	private String cardsConfigFile;
+	private Solution theAnswer = new Solution();
 	
+	
+
 	// variable used for singleton pattern
 	private static Board theInstance = new Board();
 	// constructor is private to ensure only one can be created
@@ -150,6 +153,7 @@ public class Board {
 				cards[counter] = new Card();
 				cards[counter].setCardName(data);
 				cards[counter].setCardType(CardType.ROOM);
+				
 			} else if(counter > 10 && counter <= 16){
 				cards[counter] = new Card();
 				cards[counter].setCardName(data);
@@ -178,16 +182,26 @@ public class Board {
 			dealingCards.add(cards[i]);
 		}
 		
-		//Deals 3 cards to the envelope
+		String answerPerson;
+		String answerRoom;
+		String answerWeapon;
+		//Deals 3 cards to the envelope, and puts their strings in theAnswer
 		Card room = dealingCards.get(r.nextInt(11));
 		dealingCards.remove(room);
+		theAnswer.room = room.getCardName();
 		envelope.add(room);
 		Card player = dealingCards.get(r.nextInt(6)+10);
 		dealingCards.remove(player);
 		envelope.add(player);
+		theAnswer.person = player.getCardName();
 		Card weapon = dealingCards.get(r.nextInt(6)+15);
 		dealingCards.remove(weapon);
 		envelope.add(weapon);
+		theAnswer.weapon = weapon.getCardName();
+		
+		
+		
+		
 		
 		//Loops through undealt cards and deals them
 		while(dealingCards.size() > 0){
@@ -350,17 +364,17 @@ public class Board {
 	//////////////////////
 	// Tests accusation
 	//////////////////////
-	public boolean checkAccusation(Card person, Card weapon, Card room){
+	public boolean checkAccusation(Solution sol){
 		// accusationStatus initially assumes it it correct, and will turn false if contradicted by later tests
 		boolean accusationStatus = true; 
 		// for each card, checks if it is in the envelope
-		if(!envelope.contains(person)){
+		if(!theAnswer.person.equals(sol.person)){
 			accusationStatus = false;
 		}
-		if(!envelope.contains(weapon)){
+		if(!theAnswer.weapon.equals(sol.weapon)){
 			accusationStatus = false;
 		}
-		if(!envelope.contains(room)){
+		if(!theAnswer.room.equals(sol.room)){
 			accusationStatus = false;
 		}
 		
@@ -446,9 +460,7 @@ public class Board {
 		return c;
 	}
 	
-	public boolean checkAccusation(Solution accusation){
-		return true;
-	}
+	
 	
 	public static Card[] getCards() {
 		return cards;
@@ -461,5 +473,9 @@ public class Board {
 	public ArrayList<Card> getEnvelope() {
 		return envelope;
 	}
+	public Solution getTheAnswer() {
+		return theAnswer;
+	}
+	
 	
 }

@@ -8,6 +8,7 @@ import clueGame.BoardCell;
 import clueGame.Card;
 import clueGame.CardType;
 import clueGame.Player;
+import clueGame.Solution;
 import clueGame.HumanPlayer;
 import clueGame.ComputerPlayer;
 import java.awt.Color;
@@ -111,113 +112,92 @@ public class gameActionTests {
 	
 	//Accusation tests
 	
+	
 	@Test
 	public void testCorrectAccusation(){
-		ArrayList<Card> envelope = new ArrayList<Card>();
-		envelope = board.getEnvelope();
-		Card personGuess = null;
-		Card weaponGuess = null;
-		Card roomGuess = null;
-		//sets the guesses based on cards in the envelope
-		for(Card c: envelope){
-			if(c.getCardType() == CardType.PERSON){
-				personGuess = c;
-			}else if(c.getCardType() == CardType.WEAPON){
-				weaponGuess = c;
-			}else if(c.getCardType() == CardType.ROOM){
-				roomGuess = c;
-			}
-		}
-		assertTrue(board.checkAccusation(personGuess, weaponGuess, roomGuess));
+		Solution answer = board.getTheAnswer();
+		Solution sol = new Solution();
+		//sets the guesses based on theAnswer
+		sol.person = answer.person;
+		sol.weapon = answer.weapon;
+		sol.room = answer.room;
+		
+		
+		assertTrue(board.checkAccusation(sol));
 	}
 	
 	@Test
 	public void testAccusationWithWrongPerson(){
-		ArrayList<Card> envelope = new ArrayList<Card>();
-		envelope = board.getEnvelope();
+		Solution sol = new Solution();
+		Solution answer = board.getTheAnswer();
 		Card[] cards = board.getCards();
-		Card personGuess = null;
-		Card weaponGuess = null;
-		Card roomGuess = null;
-		// initially sets the guess variables to be correct
-		for(Card c: envelope){
-			if(c.getCardType() == CardType.PERSON){
-				personGuess = c;
-			}else if(c.getCardType() == CardType.WEAPON){
-				weaponGuess = c;
-			}else if(c.getCardType() == CardType.ROOM){
-				roomGuess = c;
-			}
-		}
+	
+		//sets the guesses based on theAnswer
+				sol.person = answer.person;
+				sol.weapon = answer.weapon;
+				sol.room = answer.room;
+
+		
 		// changes the person guess to be wrong
-		if(personGuess == cards[13]){
-			personGuess = cards[14];
+		if(sol.person == cards[13].getCardName()){
+			sol.person = cards[14].getCardName();
 		} else {
-			personGuess = cards[13];
+			sol.person = cards[13].getCardName();
 		}
 		
 		
-		assertFalse(board.checkAccusation(personGuess, weaponGuess, roomGuess));
+		assertFalse(board.checkAccusation(sol));
 	}
 	
 	@Test
 	public void testAccusationWithWrongWeapon(){
-		ArrayList<Card> envelope = new ArrayList<Card>();
-		envelope = board.getEnvelope();
+		Solution sol = new Solution();
+		Solution answer = board.getTheAnswer();
 		Card[] cards = board.getCards();
-		Card personGuess = null;
-		Card weaponGuess = null;
-		Card roomGuess = null;
-		// initially sets the guess variables to be correct
-		for(Card c: envelope){
-			if(c.getCardType() == CardType.PERSON){
-				personGuess = c;
-			}else if(c.getCardType() == CardType.WEAPON){
-				weaponGuess = c;
-			}else if(c.getCardType() == CardType.ROOM){
-				roomGuess = c;
-			}
-		}
-		// changes the weapon guess to be wrong
-		if(weaponGuess == cards[20]){
-			weaponGuess = cards[21];
+	
+		//sets the guesses based on theAnswer
+				sol.person = answer.person;
+				sol.weapon = answer.weapon;
+				sol.room = answer.room;
+
+		
+		// changes the person guess to be wrong
+		if(sol.weapon == cards[20].getCardName()){
+			sol.weapon = cards[21].getCardName();
 		} else {
-			weaponGuess = cards[20];
+			sol.weapon = cards[20].getCardName();
 		}
 		
-		assertFalse(board.checkAccusation(personGuess, weaponGuess, roomGuess));
+		
+		assertFalse(board.checkAccusation(sol));
 	}
 	
 	@Test
 	public void testAccusationWithWrongRoom(){
-		ArrayList<Card> envelope = new ArrayList<Card>();
-		envelope = board.getEnvelope();
+		Solution sol = new Solution();
+		Solution answer = board.getTheAnswer();
 		Card[] cards = board.getCards();
-		Card personGuess = null;
-		Card weaponGuess = null;
-		Card roomGuess = null;
-		// initially sets the guess variables to be correct
-		for(Card c: envelope){
-			if(c.getCardType() == CardType.PERSON){
-				personGuess = c;
-			}else if(c.getCardType() == CardType.WEAPON){
-				weaponGuess = c;
-			}else if(c.getCardType() == CardType.ROOM){
-				roomGuess = c;
-			}
-		}
-		// changes the room guess to be wrong
-		if(roomGuess == cards[1]){
-			roomGuess = cards[2];
+	
+		//sets the guesses based on theAnswer
+				sol.person = answer.person;
+				sol.weapon = answer.weapon;
+				sol.room = answer.room;
+
+		
+		// changes the person guess to be wrong
+		if(sol.room == cards[1].getCardName()){
+			sol.room = cards[2].getCardName();
 		} else {
-			roomGuess = cards[1];
+			sol.room = cards[1].getCardName();
 		}
-		assertFalse(board.checkAccusation(personGuess, weaponGuess, roomGuess));
+		
+		
+		assertFalse(board.checkAccusation(sol));
 	}
 	
 	
 	// Test suggestions
-	
+	/*
 	@Test
 	public void testRoomMatchesCurrentLocation(){
 		ComputerPlayer player = new ComputerPlayer();
@@ -235,7 +215,7 @@ public class gameActionTests {
 		}
 		assertTrue(containsCard);
 	}
-	
+	*/
 	@Test
 	public void testOneWeaponUnseen(){
 		

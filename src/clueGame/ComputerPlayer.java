@@ -17,6 +17,10 @@ public class ComputerPlayer extends Player{
 	public ArrayList<Card> createSuggestion(){
 		ArrayList<Card> suggestion = new ArrayList<Card>();
 		suggestion.add(Board.getCards()[1]);
+
+		ArrayList<Card> unseenWeapon = new ArrayList<Card>();
+		
+		
 		
 		return suggestion;
 	}

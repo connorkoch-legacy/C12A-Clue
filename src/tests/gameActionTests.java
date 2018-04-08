@@ -265,7 +265,7 @@ public class gameActionTests {
 		}
 		assertTrue(last);
 		assertTrue(secLast);
-		assertTrue(thirdLast);
+		assertTrue(thirdLast); // only last three should appear
 		assertFalse(fourthLast);
 		
 	}
@@ -275,7 +275,7 @@ public class gameActionTests {
 		ComputerPlayer player = new ComputerPlayer();
 		Card[] cards = Board.getCards();
 		Solution suggestion = player.createSuggestion();
-		// adds all but last three weapons
+		// adds all but last three people
 		for(int i = 11; i < 14; i++){
 			player.addSeenCards(cards[i]);
 		}
@@ -298,7 +298,7 @@ public class gameActionTests {
 		assertTrue(last);
 		assertTrue(secLast);
 		assertTrue(thirdLast);
-		assertFalse(fourthLast);
+		assertFalse(fourthLast); // makes seen one isnt added
 		
 		
 		

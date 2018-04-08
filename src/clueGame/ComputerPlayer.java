@@ -41,7 +41,7 @@ public class ComputerPlayer extends Player{
 			}
 		}
 		randomIndex = r.nextInt(unseenPerson.size());
-		suggestion.person = unseenPerson.get(0).getCardName();
+		suggestion.person = unseenPerson.get(randomIndex).getCardName();
 		
 		return suggestion;
 	}

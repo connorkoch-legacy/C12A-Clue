@@ -352,7 +352,17 @@ public class Board {
 	//////////////////////
 	public boolean checkAccusation(Card person, Card weapon, Card room){
 		// accusationStatus initially assumes it it correct, and will turn false if contradicted by later tests
-		boolean accusationStatus = false; 
+		boolean accusationStatus = true; 
+		// for each card, checks if it is in the envelope
+		if(!envelope.contains(person)){
+			accusationStatus = false;
+		}
+		if(!envelope.contains(weapon)){
+			accusationStatus = false;
+		}
+		if(!envelope.contains(room)){
+			accusationStatus = false;
+		}
 		
 		
 		return accusationStatus;

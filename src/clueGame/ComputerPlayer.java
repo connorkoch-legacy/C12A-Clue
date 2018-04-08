@@ -19,6 +19,8 @@ public class ComputerPlayer extends Player{
 		suggestion.room = "dasg";
 		suggestion.weapon = "sdg";
 		suggestion.room = "sdfg";
+		Random r = new Random();
+		
 		// chooses weapon
 		ArrayList<Card> unseenWeapons = new ArrayList<Card>();
 		for(Card c: Board.getCards()){ // for everycard, adds to array if weapon and not seen
@@ -26,7 +28,9 @@ public class ComputerPlayer extends Player{
 				unseenWeapons.add(c);
 			}
 		}
-		suggestion.weapon = unseenWeapons.get(0).getCardName();
+		// randomly selects weapon fro marray of unseen weapons
+		int randomIndex = r.nextInt(unseenWeapons.size());
+		suggestion.weapon = unseenWeapons.get(randomIndex).getCardName();
 		
 		
 		// chooses person

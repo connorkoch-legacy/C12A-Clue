@@ -240,6 +240,33 @@ public class gameActionTests {
 	
 	@Test
 	public void testWeaponRandomlySelected(){
+		ComputerPlayer player = new ComputerPlayer();
+		Card[] cards = Board.getCards();
+		Solution suggestion = player.createSuggestion();
+		// adds all but last three weapons
+		for(int i = 17; i < cards.length - 3; i++){
+			player.addSeenCards(cards[i]);
+		}
+		boolean last = false;
+		boolean secLast = false;
+		boolean thirdLast = false;
+		boolean fourthLast = false;
+		for(int i = 0; i < 100; i++){
+		suggestion = player.createSuggestion();
+		if(suggestion.weapon.equals(cards[cards.length-1].getCardName())){
+			last = true;
+		}else if(suggestion.weapon.equals(cards[cards.length-2].getCardName())){
+			secLast = true;
+		}else if(suggestion.weapon.equals(cards[cards.length-3].getCardName())){
+			thirdLast = true;
+		}else if(suggestion.weapon.equals(cards[cards.length-4].getCardName())){
+			fourthLast = true;
+		}
+		}
+		assertTrue(last);
+		assertTrue(secLast);
+		assertTrue(thirdLast);
+		assertFalse(fourthLast);
 		
 	}
 	

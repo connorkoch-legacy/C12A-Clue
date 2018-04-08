@@ -16,7 +16,7 @@ public class ComputerPlayer extends Player{
 	// makes a suggestion
 	public Solution createSuggestion(){
 		Solution suggestion = new Solution();
-		suggestion.room = "dasg";
+		suggestion.room = Board.getCards()[1].getCardName();
 		suggestion.weapon = "sdg";
 		suggestion.room = "sdfg";
 		Random r = new Random();

@@ -41,11 +41,11 @@ public class gameSetupTests{
 		assertEquals(0, players[0].getRow());
 		
 		//3rd Player (Computer Player) attribute tests
-				assertEquals("Mrs. Blanche White", players[2].getPlayerName());
-				//assertTrue(Color.WHITE.equals(players[2].getColor()));
-				assertTrue(players[2] instanceof ComputerPlayer);
-				assertEquals(15, players[2].getColumn());
-				assertEquals(24, players[2].getRow());
+		assertEquals("Mrs. Blanche White", players[2].getPlayerName());
+		//assertTrue(Color.WHITE.equals(players[2].getColor()));
+		assertTrue(players[2] instanceof ComputerPlayer);
+		assertEquals(15, players[2].getColumn());
+		assertEquals(24, players[2].getRow());
 
 	}
 	

@@ -14,6 +14,8 @@ import clueGame.ComputerPlayer;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class gameActionTests {
@@ -307,19 +309,82 @@ public class gameActionTests {
 	
 	// Test Disprove suggestion - ComputerPlayer
 	
+	ComputerPlayer p = new ComputerPlayer();
 	@Test
 	public void testOneMatchingCard(){
-		
+		//Create a test hand for the player with 1 of each type of card
+		Card c11 = new Card();
+		c11.setCardName("Knife");
+		p.addCard(c11);
+		Card c22 = new Card();
+		c22.setCardName("Bathroom");
+		p.addCard(c22);
+		Card c33 = new Card();
+		c33.setCardName("Miss Vivienne Scarlet");
+		p.addCard(c33);
+		//Create the suggestion cards
+		Card c1 = new Card();
+		Card c2 = new Card();
+		Card c3 = new Card();
+		c1.setCardName("Knife");
+		c2.setCardName("Attic");
+		c3.setCardName("Plum");
+		//Call the disprove function which tests if any of the three suggestion cards is matches the players hands, should return true for knife
+		assertTrue(c1.equals(p.disprove(c1, c2, c3)));
 	}
 	
 	@Test
 	public void testMoreThanOneMatchingCard(){
-		
+		//Create a test hand for the player with 1 of each type of card
+		Card c11 = new Card();
+		c11.setCardName("Knife");
+		p.addCard(c11);
+		Card c22 = new Card();
+		c22.setCardName("Bathroom");
+		p.addCard(c22);
+		Card c33 = new Card();
+		c33.setCardName("Miss Vivienne Scarlet");
+		p.addCard(c33);
+		//Create the suggestion cards
+		Card c1 = new Card();
+		Card c2 = new Card();
+		Card c3 = new Card();
+		c1.setCardName("Knife");
+		c2.setCardName("Bathroom");
+		c3.setCardName("Plum");
+		//Call the disprove function mutliple times to test that both knife and bathroom were selected at least once
+		boolean card1 = false;
+		boolean card2 = false;
+		for(int i = 0; i < 100; ++i) {
+			Card testC = p.disprove(c1, c2, c3);
+			if(c1.equals(testC)) card1 = true;
+			else if(c2.equals(testC)) card2 = true;
+		}
+		assertTrue(card1);
+		assertTrue(card2);
 	}
 	
 	@Test
 	public void testNoMatchingCards(){
-		
+		//Create a test hand for the player with 1 of each type of card
+		Card c11 = new Card();
+		c11.setCardName("Knife");
+		p.addCard(c11);
+		Card c22 = new Card();
+		c22.setCardName("Bathroom");
+		p.addCard(c22);
+		Card c33 = new Card();
+		c33.setCardName("Miss Vivienne Scarlet");
+		p.addCard(c33);
+		//Create the suggestion cards
+		Card c1 = new Card();
+		Card c2 = new Card();
+		Card c3 = new Card();
+		c1.setCardName("Globe");
+		c2.setCardName("Attic");
+		c3.setCardName("Plum");
+		//Check that when no cards are equal, null is returned from disprove()
+		assertEquals(null, p.disprove(c1, c2, c3));
 	}
 	
 	//Test HAndle Suggestions - Board

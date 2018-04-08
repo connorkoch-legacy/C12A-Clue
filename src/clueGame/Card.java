@@ -4,8 +4,9 @@ public class Card {
 	private String cardName;
 	private CardType cardType;
 	
-
-	public boolean equals(){
+	public boolean equals(Card card){
+		//If the passed in card has the same name, cards are equal
+		if(cardName == card.getCardName()) return true;
 		return false;
 	}
 	

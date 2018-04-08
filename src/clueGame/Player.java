@@ -13,12 +13,10 @@ public class Player {
 	private Color color;
 	public Set<Card> ownedCards = new HashSet<Card>(); //Stores cards in hand
 	private Set<Card> seenCards = new HashSet<Card>(); //Stores cards in hand
-	
+
 	public void addCard(Card c){
 		ownedCards.add(c);
 	}
-	
-	
 	public String getPlayerName() {
 		return playerName;
 	}
@@ -44,27 +42,25 @@ public class Player {
 		this.color = convertColor(color);
 	}
 	public Color convertColor(String strColor) {
-		 Color color;
-		 try {
-		 // We can use reflection to convert the string to a color
-		 Field field = Class.forName("java.awt.Color").getField(strColor.trim());
-		 color = (Color)field.get(null);
-		 } catch (Exception e) {
-		 color = null; // Not defined
-		 }
-		 return color;
+		Color color;
+		try {
+			// We can use reflection to convert the string to a color
+			Field field = Class.forName("java.awt.Color").getField(strColor.trim());
+			color = (Color)field.get(null);
+		} catch (Exception e) {
+			color = null; // Not defined
 		}
-
-
+		return color;
+	}
 	public Set<Card> getSeenCards() {
 		return seenCards;
 	}
-
-
 	public void addSeenCards(Card seen) {
 		seenCards.add(seen);
 	}
 
+	public Set<Card> getOwnedCards() {
+		return ownedCards;
+	}
 
-	
 }

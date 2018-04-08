@@ -347,6 +347,18 @@ public class Board {
 			visited.remove(adjacent);
 		}
 	}
+	//////////////////////
+	// Tests accusation
+	//////////////////////
+	public boolean checkAccusation(Card person, Card weapon, Card room){
+		// accusationStatus initially assumes it it correct, and will turn false if contradicted by later tests
+		boolean accusationStatus = false; 
+		
+		
+		return accusationStatus;
+		
+	}
+	
 
 	public void calcTargets(int i, int j, int path){
 		targets.clear();

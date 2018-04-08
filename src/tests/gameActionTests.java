@@ -111,22 +111,37 @@ public class gameActionTests {
 	//Accusation tests
 	
 	@Test
-	public void testCorrectSolution(){
+	public void testCorrectAccusation(){
+		ArrayList<Card> envelope = new ArrayList<Card>();
+		envelope = board.getEnvelope();
+		Card[] cards = board.getCards();
+		Card personGuess = null;
+		Card weaponGuess = null;
+		Card roomGuess = null;
+		for(Card c: envelope){
+			if(c.getCardType() == CardType.PERSON){
+				personGuess = c;
+			}else if(c.getCardType() == CardType.WEAPON){
+				weaponGuess = c;
+			}else if(c.getCardType() == CardType.ROOM){
+				roomGuess = c;
+			}
+		}
+		assertTrue(board.checkAccusation(personGuess, weaponGuess, roomGuess));
+	}
+	
+	@Test
+	public void testAccusationWithWrongPerson(){
 		
 	}
 	
 	@Test
-	public void testSolutionWithWrongPerson(){
+	public void testAccusationWithWrongWeapon(){
 		
 	}
 	
 	@Test
-	public void testSolutionWithWrongWeapon(){
-		
-	}
-	
-	@Test
-	public void testSolutionWithWrongRoom(){
+	public void testAccusationWithWrongRoom(){
 		
 	}
 	

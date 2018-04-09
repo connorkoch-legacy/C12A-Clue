@@ -82,7 +82,8 @@ public class ComputerPlayer extends Player{
 		this.prevRoom = prevRoom;
 	}
 
-	//Checks the suggestion to see which if the player to the left has any matching cards
+	//Checks the suggestion to see if the player has any matching cards
+	@Override
 	public Card disprove(Card card1, Card card2, Card card3) {
 		ArrayList<Card> matchingCards = new ArrayList<Card>();
 		for(Card c: ownedCards) {

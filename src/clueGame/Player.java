@@ -63,4 +63,9 @@ public class Player {
 		return ownedCards;
 	}
 
+	public Card disprove(Card card1, Card card2, Card card3) {
+		return null;
+
+	}
+
 }

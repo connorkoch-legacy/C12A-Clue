@@ -218,7 +218,16 @@ public class gameActionTests {
 		// makes sure card for room player is in is contained in the suggestion
 
 		assertTrue(suggestion.room.equals(doorToRoom.get(board.getCellAt(3,2))));
-		
+
+		// same test at a second loation
+		// initializes player location because the room is dependant on it
+		player.setRow(22);
+		player.setColumn(0);
+		suggestion = player.createSuggestion();
+		// makes sure card for room player is in is contained in the suggestion
+
+		assertTrue(suggestion.room.equals(doorToRoom.get(board.getCellAt(22,0))));
+
 	}
 	 
 	@Test

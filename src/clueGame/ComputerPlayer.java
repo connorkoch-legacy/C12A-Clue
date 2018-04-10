@@ -1,6 +1,8 @@
 package clueGame;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -12,14 +14,22 @@ public class ComputerPlayer extends Player{
 	
 	
 	
+	/**
+	 * Returns the suggestion based on what the computerPlayer has seen and the players location
+	 * @return Solution
+	 */
 	
-	// makes a suggestion
 	public Solution createSuggestion(){
 		Solution suggestion = new Solution();
 		suggestion.room = "dag";
 		suggestion.weapon = "sdg";
 		
 		Random r = new Random();
+		
+		// puts room based on current location
+		Map<BoardCell, String> doorToRoom = new HashMap<BoardCell, String>();
+		doorToRoom = Board.getDoorToRoom();
+		suggestion.room = doorToRoom.get(Board.getCellAt(getRow(),getColumn()));
 		
 		// chooses weapon
 		ArrayList<Card> unseenWeapons = new ArrayList<Card>();

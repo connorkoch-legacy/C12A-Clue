@@ -26,7 +26,7 @@ public class Board {
 	private String cardsConfigFile;
 	private Solution theAnswer = new Solution();
 	private int testIntForGameActionTests = 0;;
-	private Map<BoardCell, String> doorToRoom = new HashMap<BoardCell, String>();
+	private static Map<BoardCell, String> doorToRoom = new HashMap<BoardCell, String>();
 
 
 
@@ -267,7 +267,7 @@ public class Board {
 	
 	
 	
-	public Map<BoardCell, String> getDoorToRoom() {
+	public static Map<BoardCell, String> getDoorToRoom() {
 		return doorToRoom;
 	}
 	public void initialize() {
@@ -393,9 +393,13 @@ public class Board {
 			visited.remove(adjacent);
 		}
 	}
-	//////////////////////
-	// Tests accusation
-	//////////////////////
+	
+	/**
+	 * Compares the given Solution with theAnswer, and returns whether it is right or not
+	 * @param sol
+	 * @return boolean
+	 */
+	
 	public boolean checkAccusation(Solution sol){
 		// accusationStatus initially assumes it it correct, and will turn false if contradicted by later tests
 		boolean accusationStatus = true; 
@@ -479,7 +483,7 @@ public class Board {
 		if(numColumns != numRows) throw new BadConfigFormatException(); // throws if cols ! = rows
 	}
 
-	public clueGame.BoardCell getCellAt(int i, int j) {
+	public static clueGame.BoardCell getCellAt(int i, int j) {
 		return board[i][j];
 	}
 

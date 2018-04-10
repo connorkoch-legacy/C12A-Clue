@@ -414,7 +414,6 @@ public class Board {
 			accusationStatus = false;
 		}
 
-
 		return accusationStatus;
 
 	}

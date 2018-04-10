@@ -14,7 +14,9 @@ import clueGame.ComputerPlayer;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -201,20 +203,24 @@ public class gameActionTests {
 
 
 	// Test suggestions
-	/*
+	
 	@Test
 	public void testRoomMatchesCurrentLocation(){
 		ComputerPlayer player = new ComputerPlayer();
 		Card[] cards = Board.getCards();
+		board.populateDoorToRoomMap();
+		Map<BoardCell, String> doorToRoom = new HashMap<BoardCell, String>();
+		doorToRoom = board.getDoorToRoom();
 		// initializes player location because the room is dependant on it
 		player.setRow(3);
 		player.setColumn(2);
 		Solution suggestion = player.createSuggestion();
 		// makes sure card for room player is in is contained in the suggestion
 
-		assertTrue(suggestion.room.equals(cards[1].getCardName()));
+		assertTrue(suggestion.room.equals(doorToRoom.get(board.getCellAt(3,2))));
+		
 	}
-	 */
+	 
 	@Test
 	public void testOneWeaponUnseen(){
 		ComputerPlayer player = new ComputerPlayer();

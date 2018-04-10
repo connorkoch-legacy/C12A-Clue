@@ -16,9 +16,9 @@ public class ComputerPlayer extends Player{
 	// makes a suggestion
 	public Solution createSuggestion(){
 		Solution suggestion = new Solution();
-		suggestion.room = Board.getCards()[1].getCardName();
+		suggestion.room = "dag";
 		suggestion.weapon = "sdg";
-		suggestion.room = "sdfg";
+		
 		Random r = new Random();
 		
 		// chooses weapon
@@ -28,7 +28,7 @@ public class ComputerPlayer extends Player{
 				unseenWeapons.add(c);
 			}
 		}
-		// randomly selects weapon fro marray of unseen weapons
+		// randomly selects weapon from array of unseen weapons
 		int randomIndex = r.nextInt(unseenWeapons.size());
 		suggestion.weapon = unseenWeapons.get(randomIndex).getCardName();
 		

@@ -35,7 +35,9 @@ public class gameActionTests {
 	}
 
 	//Test Select a Target
-
+	/**
+	 * Tests the computerPlayers randomly select space to move
+	 */
 	@Test
 	public void testTargetRandomSelection(){
 		ComputerPlayer player = new ComputerPlayer();
@@ -61,7 +63,11 @@ public class gameActionTests {
 		assertTrue(right);
 		assertTrue(up);
 	}
-
+	
+	/**
+	 * Tests player will select room
+	 */
+	
 	@Test
 	public void testAlwaysGoesToRoom(){
 		ComputerPlayer player = new ComputerPlayer();
@@ -88,7 +94,9 @@ public class gameActionTests {
 	}
 
 
-
+	/**
+	 * Tests player randomly selects space if previously visited room is an option
+	 */
 
 
 	@Test
@@ -118,7 +126,9 @@ public class gameActionTests {
 
 	//Accusation tests
 
-
+	/**
+	 * Tests correct handling of correct accusation
+	 */
 	@Test
 	public void testCorrectAccusation(){
 		Solution answer = board.getTheAnswer();
@@ -132,6 +142,10 @@ public class gameActionTests {
 		assertTrue(board.checkAccusation(sol));
 	}
 
+	/**
+	 * tests correct handling of accusation with wrong person
+	 */
+	
 	@Test
 	public void testAccusationWithWrongPerson(){
 		Solution sol = new Solution();
@@ -155,6 +169,10 @@ public class gameActionTests {
 		assertFalse(board.checkAccusation(sol));
 	}
 
+	/**
+	 * tests correct handling of accusation with wrong weapon
+	 */
+	
 	@Test
 	public void testAccusationWithWrongWeapon(){
 		Solution sol = new Solution();
@@ -178,6 +196,10 @@ public class gameActionTests {
 		assertFalse(board.checkAccusation(sol));
 	}
 
+	/**
+	 * tests correct handling of accusation with wrong room
+	 */
+	
 	@Test
 	public void testAccusationWithWrongRoom(){
 		Solution sol = new Solution();
@@ -203,6 +225,10 @@ public class gameActionTests {
 
 
 	// Test suggestions
+	
+	/**
+	 * Tests that current room is used in suggestion
+	 */
 	
 	@Test
 	public void testRoomMatchesCurrentLocation(){
@@ -230,6 +256,10 @@ public class gameActionTests {
 
 	}
 	 
+	/**
+	 * tests that if only one weapon is unseen it is selected
+	 */
+	
 	@Test
 	public void testOneWeaponUnseen(){
 		ComputerPlayer player = new ComputerPlayer();
@@ -244,6 +274,10 @@ public class gameActionTests {
 
 	}
 
+	/**
+	 * tests that if only one person is unseen it is selected
+	 */
+	
 	@Test
 	public void testOnePersonUnseen(){
 		ComputerPlayer player = new ComputerPlayer();
@@ -257,6 +291,10 @@ public class gameActionTests {
 		assertTrue(suggestion.person.equals(cards[16].getCardName()));
 	}
 
+	/**
+	 * tests that weapon is randomly selected
+	 */
+	
 	@Test
 	public void testWeaponRandomlySelected(){
 		ComputerPlayer player = new ComputerPlayer();
@@ -289,6 +327,10 @@ public class gameActionTests {
 
 	}
 
+	/**
+	 * tests that person is randomly selected
+	 */
+	
 	@Test
 	public void testPersonRandomlySelected(){
 		ComputerPlayer player = new ComputerPlayer();

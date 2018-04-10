@@ -318,14 +318,13 @@ public class gameActionTests {
 		assertTrue(secLast);
 		assertTrue(thirdLast);
 		assertFalse(fourthLast); // makes seen one isnt added
-
-
-
-
 	}
 
 	// Test Disprove suggestion - ComputerPlayer
-
+	
+	/**
+	 * This test makes sure that if a player has only one matching card, it is returned
+	 */
 	ComputerPlayer p = new ComputerPlayer();
 	@Test
 	public void testOneMatchingCard(){
@@ -349,7 +348,10 @@ public class gameActionTests {
 		//Call the disprove function which tests if any of the three suggestion cards is matches the players hands, should return true for knife
 		assertTrue(c1.equals(p.disprove(c1, c2, c3)));
 	}
-
+	
+	/**
+	 * Tests that a random card is returned if a player has more than one matching card
+	 */
 	@Test
 	public void testMoreThanOneMatchingCard(){
 		//Create a test hand for the player with 1 of each type of card
@@ -380,7 +382,10 @@ public class gameActionTests {
 		assertTrue(card1);
 		assertTrue(card2);
 	}
-
+	
+	/**
+	 * Tests that if a suggestions can't be disproved, null is returned
+	 */
 	@Test
 	public void testNoMatchingCards(){
 		//Create a test hand for the player with 1 of each type of card
@@ -405,7 +410,10 @@ public class gameActionTests {
 	}
 
 	//Test HAndle Suggestions - Board
-
+	
+	/**
+	 * Suggestion that no one can disprove returns null
+	 */
 	@Test
 	public void testNoOneCanDisprove(){
 		//The stuff below is for the handle suggestions tests which require a simulated deal and less players
@@ -439,7 +447,10 @@ public class gameActionTests {
 		c6.setCardName("Donny");
 		assertEquals(null, board.handleSuggestion(testPlayer2, testPlayers, c4, c5, c6));
 	}
-
+	
+	/**
+	 * Tests that a player who is accusing cannot disprove his own suggestion
+	 */
 	@Test
 	public void testOnlyAccusingPlayerCanDisprove(){
 		//The stuff below is for the handle suggestions tests which require a simulated deal and less players
@@ -475,7 +486,10 @@ public class gameActionTests {
 		c6.setCardName("Donny");
 		assertEquals(null, board.handleSuggestion(testPlayer3, testPlayers, testC1, c5, c6));
 	}
-
+	
+	/**
+	 * Tests that a human player correctly disproves if he is the only one who can
+	 */
 	@Test
 	public void testOnlyHumanCanDisprove(){
 		//The stuff below is for the handle suggestions tests which require a simulated deal and less players
@@ -511,7 +525,10 @@ public class gameActionTests {
 		c6.setCardName("Donny");
 		assertTrue(testC1.equals(board.handleSuggestion(testPlayer2, testPlayers, testC1, c5, c6)));
 	}
-
+	
+	/**
+	 * Tests that a human player who accuses cannot disprove his own suggestion
+	 */
 	@Test
 	public void testOnlyHumanCanDisproveButAccuser(){
 		//The stuff below is for the handle suggestions tests which require a simulated deal and less players
@@ -547,7 +564,10 @@ public class gameActionTests {
 		c6.setCardName("Donny");
 		assertEquals(null, board.handleSuggestion(testPlayer1, testPlayers, testC1, c5, c6));
 	}
-
+	
+	/**
+	 * Tests that the player closest on the left to the suggesting player is the one who disproves
+	 */
 	@Test
 	public void testTwoPlayersCanDisprove(){
 		//The stuff below is for the handle suggestions tests which require a simulated deal and less players
@@ -583,7 +603,10 @@ public class gameActionTests {
 		board.handleSuggestion(testPlayer1, testPlayers, c1, c5, c6);
 		assertEquals(1, board.getTestIntForGameActionTests());
 	}
-
+	
+	/**
+	 * Tests that the human player closest on the left to the suggesting player is the one who disproves
+	 */
 	@Test
 	public void testHumanAndAnotherPlayerCanDisprove(){
 		//The stuff below is for the handle suggestions tests which require a simulated deal and less players

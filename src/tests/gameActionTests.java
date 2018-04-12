@@ -31,7 +31,6 @@ public class gameActionTests {
 		// Initialize will load BOTH config files 
 		board.initialize();
 
-
 	}
 
 	//Test Select a Target

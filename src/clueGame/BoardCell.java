@@ -1,5 +1,7 @@
 package clueGame;
 
+import java.awt.Color;
+
 public class BoardCell {
 	private int row;
 	private int col;
@@ -8,6 +10,18 @@ public class BoardCell {
 	private boolean walkway;
 	private boolean room;
 	private boolean doorway;
+	private int rowPixel, colPixel;
+	private Color color = Color.YELLOW;
+	private final int BOARD_HEIGHT = 800;
+	private final int BOARD_WIDTH = 800;
+	private final int pieceDimensions = BOARD_HEIGHT/25;
+	
+	public void draw(){
+		rowPixel = pieceDimensions * row;
+		colPixel = pieceDimensions * col;
+		
+		//drawRect(rowPixel, colPixel, pieceDimensions , pieceDimensions);
+	}
 	
 	public BoardCell() {
 	}

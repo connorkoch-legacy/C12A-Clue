@@ -2,17 +2,20 @@
 
 package clueGame;
 
+import java.awt.Graphics;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class Board {
+import javax.swing.JPanel;
+
+public class Board extends JPanel{
 
 	private int numRows;
 	private int numColumns;
 	private int numDoors;
 	public static final int MAX_BOARD_SIZE = 50;
-	public static clueGame.BoardCell[][] board = new clueGame.BoardCell[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
+	public static BoardCell[][] board = new BoardCell[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
 	public Map<Character, String> legend = new HashMap<Character, String>();
 	public Map<BoardCell, Set<BoardCell>> adjMtx = new HashMap<BoardCell, Set<BoardCell>>();
 	public Set<BoardCell> targets = new HashSet<BoardCell>();
@@ -530,6 +533,10 @@ public class Board {
 	public Solution getTheAnswer() {
 		return theAnswer;
 	}
-
+	
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		
+	}
 
 }

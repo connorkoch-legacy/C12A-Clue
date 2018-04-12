@@ -14,21 +14,19 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 
-public class clueGUI extends JPanel{
+public class LowerPanelGUI extends JPanel{
 	private String currentPlayersTurn;
 	
-	public clueGUI(){
+	public LowerPanelGUI(){
 		currentPlayersTurn = "Miss Vivienne Scarlet";
-		setLayout(new GridLayout(2,0));
-		JPanel lowerPanel = createLowerPanel();
-		add(lowerPanel);
+		add(createLowerPanel());
 	}
 	
 	public JPanel createLowerPanel(){
 		JPanel lowerPanel = new JPanel();
-		lowerPanel.setLayout(new GridLayout(2,2));
-		lowerPanel.add(createTopSubPanel(), BorderLayout.CENTER);
-		lowerPanel.add(createBottomSubPanel(), BorderLayout.CENTER);
+		lowerPanel.setLayout(new GridLayout(2,0));
+		lowerPanel.add(createTopSubPanel());
+		lowerPanel.add(createBottomSubPanel());
 		return lowerPanel;
 	}
 	
@@ -41,19 +39,18 @@ public class clueGUI extends JPanel{
 		//Create the whose turn panel within the lower panel
 		topWhoseTurnSubPanel.setLayout(new GridLayout(1,1));
 		JLabel whoseTurn = new JLabel("Whose Turn? " + currentPlayersTurn);
-		topWhoseTurnSubPanel.add(whoseTurn, BorderLayout.CENTER);
-		topSubPanel.add(topWhoseTurnSubPanel, BorderLayout.WEST);
+		topWhoseTurnSubPanel.add(whoseTurn);
+		topSubPanel.add(topWhoseTurnSubPanel);
 		
 		//Create the two buttons which will go in the upper half of the lower panel
 		JButton nextPlayerButton = new JButton("Next Player");
 		JButton accusationButton = new JButton("Make an Accusation");
-		topSubPanel.add(nextPlayerButton, BorderLayout.EAST);
-		topSubPanel.add(accusationButton, BorderLayout.EAST);
+		topSubPanel.add(nextPlayerButton);
+		topSubPanel.add(accusationButton);
 		
 		//Create the lower half of the lower panel
 		JPanel lowerSubPanel = new JPanel();
 		lowerSubPanel.setLayout(new GridLayout(1,3));
-		JPanel lowerWhoseTurnSubPanel = new JPanel();
 		
 		return topSubPanel;
 	}
@@ -65,13 +62,13 @@ public class clueGUI extends JPanel{
 		
 		// makes die box
 		JLabel die = new JLabel("Roll: ");
-		bottomSubPanel.add(die, BorderLayout.WEST);
+		bottomSubPanel.add(die);
 		TitledBorder dieTitledBorder = new TitledBorder("Die");
 		die.setBorder(dieTitledBorder);
 		
 		// makes guess box
 		JLabel guess = new JLabel("Guess: ");
-		bottomSubPanel.add(guess, BorderLayout.CENTER);
+		bottomSubPanel.add(guess);
 		TitledBorder guessTitledBorder = new TitledBorder("Guess");
 		guess.setBorder(guessTitledBorder);
 		
@@ -79,19 +76,10 @@ public class clueGUI extends JPanel{
 		JLabel response = new JLabel("Response: ");
 		TitledBorder resultTitledBorder = new TitledBorder("Guess Result");
 		response.setBorder(resultTitledBorder);
-		bottomSubPanel.add(response, BorderLayout.CENTER);
+		bottomSubPanel.add(response);
 		
 		
 		return bottomSubPanel;
 	}
-	
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Clue");
-		frame.setSize(800, 800);
-		clueGUI gui = new clueGUI();
-		frame.add(gui, BorderLayout.SOUTH);
-		frame.setVisible(true);
-	}
+
 }

@@ -27,10 +27,8 @@ public class ComputerPlayer extends Player{
 		Random r = new Random();
 		
 		// puts room based on current location
-		Map<BoardCell, String> doorToRoom = new HashMap<BoardCell, String>();
-		doorToRoom = Board.getDoorToRoom();
-		suggestion.room = doorToRoom.get(Board.getCellAt(getRow(),getColumn()));
 		
+		suggestion.room = Board.legend.get(Board.getCellAt(getRow(), getColumn()).getInitial());
 		// chooses weapon
 		ArrayList<Card> unseenWeapons = new ArrayList<Card>();
 		for(Card c: Board.getCards()){ // for everycard, adds to array if weapon and not seen

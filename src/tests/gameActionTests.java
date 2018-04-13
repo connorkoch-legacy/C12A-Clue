@@ -232,17 +232,14 @@ public class gameActionTests {
 	@Test
 	public void testRoomMatchesCurrentLocation(){
 		ComputerPlayer player = new ComputerPlayer();
-		Card[] cards = Board.getCards();
-		board.populateDoorToRoomMap();
-		Map<BoardCell, String> doorToRoom = new HashMap<BoardCell, String>();
-		doorToRoom = board.getDoorToRoom();
+		
 		// initializes player location because the room is dependant on it
 		player.setRow(3);
 		player.setColumn(2);
 		Solution suggestion = player.createSuggestion();
 		// makes sure card for room player is in is contained in the suggestion
 
-		assertTrue(suggestion.room.equals(doorToRoom.get(board.getCellAt(3,2))));
+		assertTrue(suggestion.room.equals("Attic"));
 
 		// same test at a second loation
 		// initializes player location because the room is dependant on it
@@ -251,7 +248,7 @@ public class gameActionTests {
 		suggestion = player.createSuggestion();
 		// makes sure card for room player is in is contained in the suggestion
 
-		assertTrue(suggestion.room.equals(doorToRoom.get(board.getCellAt(22,0))));
+		assertTrue(suggestion.room.equals("Laundry room"));
 
 	}
 	 

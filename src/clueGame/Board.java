@@ -16,7 +16,7 @@ public class Board extends JPanel{
 	private int numDoors;
 	public static final int MAX_BOARD_SIZE = 50;
 	public static BoardCell[][] board = new BoardCell[MAX_BOARD_SIZE][MAX_BOARD_SIZE];
-	public Map<Character, String> legend = new HashMap<Character, String>();
+	public static Map<Character, String> legend = new HashMap<Character, String>();
 	public Map<BoardCell, Set<BoardCell>> adjMtx = new HashMap<BoardCell, Set<BoardCell>>();
 	public Set<BoardCell> targets = new HashSet<BoardCell>();
 	public Set<BoardCell> visited = new HashSet<BoardCell>();
@@ -29,7 +29,7 @@ public class Board extends JPanel{
 	private String cardsConfigFile;
 	private Solution theAnswer = new Solution();
 	private int testIntForGameActionTests = 0;;
-	private static Map<BoardCell, String> doorToRoom = new HashMap<BoardCell, String>();
+	
 
 
 
@@ -243,36 +243,11 @@ public class Board extends JPanel{
 		}
 	}
 
-	/**
-	 * populateDoorToRoomMap()
-	 * Fills a map used during suggestion generation for the door
-	 */
-	public void populateDoorToRoomMap(){
-		doorToRoom.put(getCellAt(3,2), "Conservatory");
-		doorToRoom.put(getCellAt(5,8), "Kitchen");
-		doorToRoom.put(getCellAt(5,9), "Kitchen");
-		doorToRoom.put(getCellAt(2,17), "Ballroom");
-		doorToRoom.put(getCellAt(2,18), "Ballroom");
-		doorToRoom.put(getCellAt(7,19), "Billiard room");
-		doorToRoom.put(getCellAt(8,20), "Billiard room");
-		doorToRoom.put(getCellAt(13,1), "Bathroom");
-		doorToRoom.put(getCellAt(13,5), "Bathroom");
-		doorToRoom.put(getCellAt(22,0), "Cellar");
-		doorToRoom.put(getCellAt(23,8), "Laundry room");
-		doorToRoom.put(getCellAt(23,12), "Laundry room");
-		doorToRoom.put(getCellAt(17,17), "Attic");
-		doorToRoom.put(getCellAt(17,19), "Attic");
-		doorToRoom.put(getCellAt(14,23), "Vault");
-		doorToRoom.put(getCellAt(23,22), "Vault");
-		
-		
-	}
 	
 	
 	
-	public static Map<BoardCell, String> getDoorToRoom() {
-		return doorToRoom;
-	}
+	
+
 	public void initialize() {
 		// the following populates board and sets certain attributes for each BoardCell
 		File file1 = new File(boardConfigFile);

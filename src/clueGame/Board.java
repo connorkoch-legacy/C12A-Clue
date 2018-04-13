@@ -32,6 +32,8 @@ public class Board extends JPanel{
 	
 
 
+	
+	
 
 	// variable used for singleton pattern
 	private static Board theInstance = new Board();
@@ -45,6 +47,8 @@ public class Board extends JPanel{
 			}
 		}
 		calcAdjacencies();
+		setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");
+		initialize();
 	}
 	// this method returns the only Board
 	public static Board getInstance() {
@@ -288,6 +292,11 @@ public class Board extends JPanel{
 						bc.setRoom(true);
 						bc.setWalkway(false);
 						bc.setDoorway(false);
+						if(roomLine[j].length() == 2 && roomLine[j].charAt(1) == 'N'){
+							bc.setNameSpace(true);
+						}
+						
+						
 					}
 					board[i][j] = bc;
 				}

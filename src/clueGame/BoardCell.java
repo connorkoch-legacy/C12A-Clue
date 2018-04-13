@@ -1,8 +1,13 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
-public class BoardCell {
+import javax.swing.JPanel;
+
+import com.sun.javafx.charts.Legend;
+
+public class BoardCell extends JPanel {
 	private int row;
 	private int col;
 	private char initial;
@@ -12,16 +17,49 @@ public class BoardCell {
 	private boolean doorway;
 	private int rowPixel, colPixel;
 	private Color color = Color.YELLOW;
-	private final int BOARD_HEIGHT = 800;
-	private final int BOARD_WIDTH = 800;
+	private final int BOARD_HEIGHT = 600;
+	private final int BOARD_WIDTH = 600;
 	private final int pieceDimensions = BOARD_HEIGHT/25;
+	private boolean nameSpace;
+	private int doorBuffer;
 	
-	public void draw(){
+	public void draw(Graphics g){
 		rowPixel = pieceDimensions * row;
 		colPixel = pieceDimensions * col;
-		
-		//drawRect(rowPixel, colPixel, pieceDimensions , pieceDimensions);
+
+		if(walkway){
+		g.setColor(color);
+		//g.setBorder(Color.black);
+		g.fillRect(colPixel, rowPixel, pieceDimensions, pieceDimensions);
+		g.setColor(Color.black);
+		g.drawRect(colPixel, rowPixel, pieceDimensions, pieceDimensions);
+		}
+		if(nameSpace){
+			g.drawString(Board.legend.get(initial), colPixel, rowPixel);
+		}
+		if(doorway){
+			if(dir == DoorDirection.DOWN){
+				doorBuffer = pieceDimensions / 9;
+				g.setColor(Color.blue);
+				g.fillRect(colPixel, rowPixel + pieceDimensions - doorBuffer, pieceDimensions, doorBuffer);
+			} else if(dir == DoorDirection.UP){
+				doorBuffer = pieceDimensions / 9;
+				g.setColor(Color.blue);
+				g.fillRect(colPixel, rowPixel + doorBuffer, pieceDimensions, doorBuffer);
+			}else if(dir == DoorDirection.LEFT){
+				doorBuffer = pieceDimensions / 9;
+				g.setColor(Color.blue);
+				g.fillRect(colPixel + doorBuffer, rowPixel, doorBuffer, pieceDimensions);
+			}else if(dir == DoorDirection.RIGHT){
+				doorBuffer = pieceDimensions / 9;
+				g.setColor(Color.blue);
+				g.fillRect(colPixel + pieceDimensions - doorBuffer, rowPixel, doorBuffer, pieceDimensions);
+			}
+
+		}	
 	}
+	
+	
 	
 	public BoardCell() {
 	}
@@ -70,5 +108,17 @@ public class BoardCell {
 	}
 	public void setDoorDirection(DoorDirection dir) {
 		this.dir = dir;
+	}
+
+
+
+	public boolean isNameSpace() {
+		return nameSpace;
+	}
+
+
+
+	public void setNameSpace(boolean nameSpace) {
+		this.nameSpace = nameSpace;
 	}
 }

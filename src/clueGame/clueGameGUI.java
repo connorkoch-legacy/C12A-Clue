@@ -18,8 +18,12 @@ public class clueGameGUI extends JFrame{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Clue");
 		frame.setSize(800, 800);
+		// adds lower panel
 		LowerPanelGUI lowerPanelGUI= new LowerPanelGUI();
 		frame.add(lowerPanelGUI, BorderLayout.SOUTH);
+		// adds board part
+		BoardGUI boardPart = new BoardGUI();
+		frame.add(boardPart, BorderLayout.CENTER);
 		frame.setVisible(true);
 	}
 }

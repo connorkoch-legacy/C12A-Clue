@@ -2,9 +2,11 @@
 
 package clueGame;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Field;
 import java.util.*;
 
 import javax.swing.JPanel;
@@ -22,7 +24,7 @@ public class Board extends JPanel{
 	public Set<BoardCell> visited = new HashSet<BoardCell>();
 	private static Card[] cards;
 	private ArrayList<Card> envelope = new ArrayList<Card>();
-	private Player[] players;
+	private static Player[] players;
 	private String boardConfigFile;
 	private String roomConfigFile;
 	private String playersConfigFile;
@@ -507,7 +509,7 @@ public class Board extends JPanel{
 		return cards;
 	}
 
-	public Player[] getPlayers() {
+	public static Player[] getPlayers() {
 		return players;
 	}
 
@@ -522,5 +524,6 @@ public class Board extends JPanel{
 		super.paintComponent(g);
 		
 	}
+	
 
 }

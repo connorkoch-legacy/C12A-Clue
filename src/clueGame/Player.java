@@ -1,18 +1,42 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Player {
+import javax.swing.JPanel;
+
+public class Player extends JPanel{
 	private String playerName;
 	private int row;
 	private int column;
 	private Color color;
 	public Set<Card> ownedCards = new HashSet<Card>(); //Stores cards in hand
 	private Set<Card> seenCards = new HashSet<Card>(); //Stores cards in hand
+	private final int BOARD_HEIGHT = 600;
+	private final int BOARD_WIDTH = 600;
+	private final int pieceDimensions = BOARD_HEIGHT/25;
+
+	
+	/**
+	 * Draws the player at their location
+	 * @param g
+	 */
+	public void draw(Graphics g) {
+		int rowPixel = pieceDimensions * row;
+		int colPixel = pieceDimensions * column;
+		
+		g.setColor(color);
+		g.fillOval(colPixel, rowPixel, pieceDimensions, pieceDimensions);
+		
+		g.setColor(Color.black);
+		g.drawOval(colPixel, rowPixel, pieceDimensions, pieceDimensions);
+
+	}
+
 
 	public void addCard(Card c){
 		ownedCards.add(c);
@@ -38,8 +62,32 @@ public class Player {
 	public Color getColor() {
 		return color;
 	}
-	public void setColor(String color) {
-		this.color = convertColor(color);
+	public void setColor(String col) { // converts a string to the color and sets variable color to it
+		
+		Field field = null;
+		try {
+			field = Class.forName("java.awt.Color").getField(col);
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			color = (Color)field.get(null);
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		this.color = color;
 	}
 	public Color convertColor(String strColor) {
 		Color color;
@@ -67,5 +115,6 @@ public class Player {
 		return null;
 
 	}
+	
 
 }

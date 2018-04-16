@@ -29,7 +29,6 @@ public class BoardCell extends JPanel {
 
 		if(walkway){
 		g.setColor(color);
-		//g.setBorder(Color.black);
 		g.fillRect(colPixel, rowPixel, pieceDimensions, pieceDimensions);
 		g.setColor(Color.black);
 		g.drawRect(colPixel, rowPixel, pieceDimensions, pieceDimensions);

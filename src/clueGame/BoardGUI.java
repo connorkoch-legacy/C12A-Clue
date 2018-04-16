@@ -17,14 +17,14 @@ public class BoardGUI extends JPanel{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
-		for(BoardCell[] b: Board.board){
+		for(BoardCell[] b: Board.board){ // draws all board cells
 			for(BoardCell c: b){
 				c.draw(g);
 			}
 		}
-		
-		
-		
+		for(Player p: Board.getPlayers()){ // draws all players
+			p.draw(g);
+		}
 		
 	}
 	

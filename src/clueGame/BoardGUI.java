@@ -10,8 +10,6 @@ import javax.swing.JPanel;
 public class BoardGUI extends JPanel{
 	public BoardGUI(){
 		setBackground(Color.gray);
-		
-		
 	}
 	
 	public void paintComponent(Graphics g){

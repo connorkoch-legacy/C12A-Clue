@@ -24,6 +24,9 @@ public class clueGameGUI extends JFrame{
 		// adds board part
 		BoardGUI boardPart = new BoardGUI();
 		frame.add(boardPart, BorderLayout.CENTER);
+		//adds right panel
+		RightPanelGUI rightPanel = new RightPanelGUI();
+		frame.add(rightPanel, BorderLayout.EAST);
 		frame.setVisible(true);
 	}
 }

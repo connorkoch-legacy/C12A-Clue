@@ -40,7 +40,7 @@ public class Board extends JPanel{
 	// variable used for singleton pattern
 	private static Board theInstance = new Board();
 	// constructor is private to ensure only one can be created
-	private Board() {
+	Board() {
 		for(int i = 0; i < board.length; ++i){
 			for(int j = 0; j < board[i].length; ++j){
 				board[i][j] = new BoardCell();

@@ -40,39 +40,46 @@ public class RightPanelGUI extends JPanel{
 		
 		JPanel rightPanel = new JPanel();
 		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+		
 		//Create player card
 		JPanel personPanel = new JPanel();
-		TitledBorder titledBorderPerson = new TitledBorder("People");
-		personPanel.setBorder(titledBorderPerson);
 		personPanel.setLayout(new BoxLayout(personPanel, BoxLayout.Y_AXIS));
 		for(String s: personCards){
 			JLabel playerCard = new JLabel(s);
 			
 			personPanel.add(playerCard);
 		}
-		rightPanel.add(personPanel);
+		JPanel borderPanel1 = new JPanel();
+		TitledBorder titledBorderRoom1 = new TitledBorder("People");
+		borderPanel1.add(personPanel);
+		borderPanel1.setBorder(titledBorderRoom1);
+		rightPanel.add(borderPanel1);
 		//Create room card
 		JPanel roomPanel = new JPanel();
-		TitledBorder titledBorderRoom = new TitledBorder("Rooms");
-		roomPanel.setBorder(titledBorderRoom);
 		roomPanel.setLayout(new BoxLayout(roomPanel, BoxLayout.Y_AXIS));
 		for(String s: roomCards){
 			JLabel roomCard = new JLabel(s);
 			
 			roomPanel.add(roomCard);
 		}
-		rightPanel.add(roomPanel);
+		JPanel borderPanel2 = new JPanel();
+		TitledBorder titledBorderRoom = new TitledBorder("Rooms");
+		borderPanel2.add(roomPanel);
+		borderPanel2.setBorder(titledBorderRoom);
+		rightPanel.add(borderPanel2);
 		//Create weapon card
 		JPanel weaponPanel = new JPanel();
-		TitledBorder titledBorderWep = new TitledBorder("Weapons");
-		weaponPanel.setBorder(titledBorderWep);
 		weaponPanel.setLayout(new BoxLayout(weaponPanel, BoxLayout.Y_AXIS));
 		for(String s: weaponCards){
 			JLabel weaponCard = new JLabel(s);
 			
 			weaponPanel.add(weaponCard);
 		}
-		rightPanel.add(weaponPanel);
+		JPanel borderPanel3 = new JPanel();
+		TitledBorder titledBorderRoom3 = new TitledBorder("Weapons");
+		borderPanel3.add(roomPanel);
+		borderPanel3.setBorder(titledBorderRoom3);
+		rightPanel.add(borderPanel3);
 		return rightPanel;
 
 	}

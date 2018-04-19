@@ -17,11 +17,7 @@ public class ClueGameGUI extends JFrame{
 	private static DetectiveNotesGUI dialog;
 	private static boolean startOfGame = true;
 	
-	
 	public static void main(String[] args) {
-		
-		
-		
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Clue");

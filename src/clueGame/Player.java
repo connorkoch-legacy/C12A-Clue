@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 import javax.swing.JPanel;
@@ -19,6 +20,7 @@ public class Player extends JPanel{
 	private final int BOARD_HEIGHT = 600;
 	private final int BOARD_WIDTH = 600;
 	private final int pieceDimensions = BOARD_HEIGHT/25;
+	private int roll;
 
 	
 	/**
@@ -37,7 +39,12 @@ public class Player extends JPanel{
 
 	}
 
-
+	public int rollDie(){
+		Random r = new Random();
+		roll = r.nextInt(6) + 1;
+		return roll;
+	}
+	
 	public void addCard(Card c){
 		ownedCards.add(c);
 	}
@@ -114,6 +121,9 @@ public class Player extends JPanel{
 	public Card disprove(Card card1, Card card2, Card card3) {
 		return null;
 
+	}
+	public int getRoll() {
+		return roll;
 	}
 	
 

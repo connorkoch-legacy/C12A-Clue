@@ -26,7 +26,6 @@ public class BoardGUI extends JPanel{
 		
 	}
 	
-
 	public JPanel createBoardGUI() {
 		JPanel boardPanel = new JPanel();
 		

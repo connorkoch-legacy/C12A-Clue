@@ -54,6 +54,7 @@ public class RightPanelGUI extends JPanel{
 		borderPanel1.add(personPanel);
 		borderPanel1.setBorder(titledBorderRoom1);
 		rightPanel.add(borderPanel1);
+		
 		//Create room card
 		JPanel roomPanel = new JPanel();
 		roomPanel.setLayout(new BoxLayout(roomPanel, BoxLayout.Y_AXIS));
@@ -67,6 +68,7 @@ public class RightPanelGUI extends JPanel{
 		borderPanel2.add(roomPanel);
 		borderPanel2.setBorder(titledBorderRoom);
 		rightPanel.add(borderPanel2);
+		
 		//Create weapon card
 		JPanel weaponPanel = new JPanel();
 		weaponPanel.setLayout(new BoxLayout(weaponPanel, BoxLayout.Y_AXIS));
@@ -77,7 +79,7 @@ public class RightPanelGUI extends JPanel{
 		}
 		JPanel borderPanel3 = new JPanel();
 		TitledBorder titledBorderRoom3 = new TitledBorder("Weapons");
-		borderPanel3.add(roomPanel);
+		borderPanel3.add(weaponPanel);
 		borderPanel3.setBorder(titledBorderRoom3);
 		rightPanel.add(borderPanel3);
 		return rightPanel;

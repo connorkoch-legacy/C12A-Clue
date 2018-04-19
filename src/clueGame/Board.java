@@ -33,10 +33,6 @@ public class Board extends JPanel{
 	private int testIntForGameActionTests = 0;;
 	
 
-
-	
-	
-
 	// variable used for singleton pattern
 	private static Board theInstance = new Board();
 	// constructor is private to ensure only one can be created
@@ -524,6 +520,11 @@ public class Board extends JPanel{
 		super.paintComponent(g);
 		
 	}
+	
+	public void startGame(){
+		ClueGameGUI start = new ClueGameGUI();
+	}
+	
 	
 
 }

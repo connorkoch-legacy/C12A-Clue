@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
 
 public class HumanPlayer extends Player{
@@ -22,6 +23,16 @@ public class HumanPlayer extends Player{
 		} else if(matchingCards.size() == 3) {
 			return matchingCards.get(r.nextInt(3));
 		} else return null;
+	}
+	
+	public void makeMove(){
+		rollDie();
+		Board board = new Board();
+		board.calcTargets(getRow(), getColumn(), getRoll());
+		for(BoardCell b: board.getTargets()){
+			b.setTarget(true);
+		}
+		repaint();
 	}
 	
 }

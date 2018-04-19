@@ -15,6 +15,8 @@ public class BoardCell extends JPanel {
 	private boolean walkway;
 	private boolean room;
 	private boolean doorway;
+
+
 	private int rowPixel, colPixel;
 	private Color color = Color.YELLOW;
 	private final int BOARD_HEIGHT = 600;
@@ -22,21 +24,25 @@ public class BoardCell extends JPanel {
 	private final int pieceDimensions = BOARD_HEIGHT/25;
 	private boolean nameSpace;
 	private int doorBuffer;
-	
+	private boolean isTarget = false;
+
 	public void draw(Graphics g){
+		Board board = new Board();
 		rowPixel = pieceDimensions * row;
 		colPixel = pieceDimensions * col;
 
 		if(walkway){
-		g.setColor(color);
-		g.fillRect(colPixel, rowPixel, pieceDimensions, pieceDimensions);
-		g.setColor(Color.black);
-		g.drawRect(colPixel, rowPixel, pieceDimensions, pieceDimensions);
+			g.setColor(color);
+			g.fillRect(colPixel, rowPixel, pieceDimensions, pieceDimensions);
+			g.setColor(Color.black);
+			g.drawRect(colPixel, rowPixel, pieceDimensions, pieceDimensions);
 		}
 		if(nameSpace){
 			g.drawString(Board.legend.get(initial), colPixel, rowPixel);
 		}
 		if(doorway){
+			g.setColor(Color.GRAY);
+			g.fillRect(colPixel, rowPixel, pieceDimensions, pieceDimensions);
 			if(dir == DoorDirection.DOWN){
 				doorBuffer = pieceDimensions / 9;
 				g.setColor(Color.blue);
@@ -54,12 +60,19 @@ public class BoardCell extends JPanel {
 				g.setColor(Color.blue);
 				g.fillRect(colPixel + pieceDimensions - doorBuffer, rowPixel, doorBuffer, pieceDimensions);
 			}
-
-		}	
+		}
+		if(isTarget){
+			g.setColor(Color.WHITE);
+			g.fillRect(colPixel, rowPixel, pieceDimensions, pieceDimensions);
+		}
 	}
-	
-	
-	
+	//Paints the target boardcells blue
+	public void drawBlue(Graphics g){
+		rowPixel = pieceDimensions * row;
+		colPixel = pieceDimensions * col;
+
+	}
+
 	public BoardCell() {
 	}
 	@Override
@@ -109,15 +122,19 @@ public class BoardCell extends JPanel {
 		this.dir = dir;
 	}
 
-
-
 	public boolean isNameSpace() {
 		return nameSpace;
 	}
 
-
-
 	public void setNameSpace(boolean nameSpace) {
 		this.nameSpace = nameSpace;
 	}
+	public boolean isTarget() {
+		return isTarget;
+	}
+	public void setTarget(boolean isTarget) {
+		this.isTarget = isTarget;
+	}
+
+
 }

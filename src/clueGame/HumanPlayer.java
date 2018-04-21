@@ -25,14 +25,6 @@ public class HumanPlayer extends Player{
 		} else return null;
 	}
 	
-	public void makeMove(){
-		rollDie();
-		Board board = new Board();
-		board.calcTargets(getRow(), getColumn(), getRoll());
-		for(BoardCell b: board.getTargets()){
-			b.setTarget(true);
-		}
-		repaint();
-	}
+	
 	
 }

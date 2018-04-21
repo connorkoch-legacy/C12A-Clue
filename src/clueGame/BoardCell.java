@@ -27,7 +27,7 @@ public class BoardCell extends JPanel {
 	private boolean isTarget = false;
 
 	public void draw(Graphics g){
-		Board board = new Board();
+		//Board board = new Board();
 		rowPixel = pieceDimensions * row;
 		colPixel = pieceDimensions * col;
 
@@ -65,13 +65,14 @@ public class BoardCell extends JPanel {
 			g.setColor(Color.WHITE);
 			g.fillRect(colPixel, rowPixel, pieceDimensions, pieceDimensions);
 		}
+		repaint();
 	}
 	//Paints the target boardcells blue
-	public void drawBlue(Graphics g){
+	/*public void drawBlue(Graphics g){
 		rowPixel = pieceDimensions * row;
 		colPixel = pieceDimensions * col;
 
-	}
+	}*/
 
 	public BoardCell() {
 	}
@@ -134,6 +135,7 @@ public class BoardCell extends JPanel {
 	}
 	public void setTarget(boolean isTarget) {
 		this.isTarget = isTarget;
+		
 	}
 
 

@@ -39,10 +39,23 @@ public class Player extends JPanel{
 
 	}
 
-	public int rollDie(){
+	public void makeMove(){
+		rollDie();
+		Board board = new Board();
+		board.calcTargets(getRow(), getColumn(), getRoll());
+		
+		for(BoardCell b: board.getTargets()){
+			b.setTarget(true);
+			repaint();
+		}
+		
+	}
+	
+	
+	public void rollDie(){
 		Random r = new Random();
 		roll = r.nextInt(6) + 1;
-		return roll;
+		
 	}
 	
 	public void addCard(Card c){

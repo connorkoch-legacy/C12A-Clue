@@ -31,7 +31,7 @@ public class Board extends JPanel{
 	private String cardsConfigFile;
 	private Solution theAnswer = new Solution();
 	private int testIntForGameActionTests = 0;;
-	
+	public int currentPlayerIterator = 0;
 
 	// variable used for singleton pattern
 	private static Board theInstance = new Board();
@@ -524,7 +524,6 @@ public class Board extends JPanel{
 	public void startGame(){
 		ClueGameGUI start = new ClueGameGUI();
 	}
-	
-	
+
 
 }

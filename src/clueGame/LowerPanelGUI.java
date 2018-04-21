@@ -38,7 +38,7 @@ public class LowerPanelGUI extends JPanel{
 		
 		//Create the whose turn panel within the lower panel
 		topWhoseTurnSubPanel.setLayout(new GridLayout(1,1));
-		JLabel whoseTurn = new JLabel("Whose Turn? " + currentPlayersTurn);
+		JLabel whoseTurn = new JLabel("Whose Turn? " + Board.getPlayers()[0].getName());
 		topWhoseTurnSubPanel.add(whoseTurn);
 		topSubPanel.add(topWhoseTurnSubPanel);
 		
@@ -61,7 +61,7 @@ public class LowerPanelGUI extends JPanel{
 		bottomSubPanel.setLayout(new GridLayout(1,3));
 		
 		// makes die box
-		JLabel die = new JLabel("Roll: ");
+		JLabel die = new JLabel("Roll: " + Board.getPlayers()[0].getRoll());
 		bottomSubPanel.add(die);
 		TitledBorder dieTitledBorder = new TitledBorder("Die");
 		die.setBorder(dieTitledBorder);

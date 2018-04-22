@@ -10,6 +10,23 @@ public class ComputerPlayer extends Player{
 	private BoardCell prevRoom; // tracks the last room player was in
 	
 	
+	@Override
+	public void makeMove(){
+		for(BoardCell[] b: Board.getInstance().board){ // makes sure no cells are marked as targets
+			for(BoardCell c: b){
+				c.setTarget(false);
+			}
+		}
+		
+		BoardCell newSpot = new BoardCell(); // moves the player to a cell in its target list
+		rollDie();
+		Board.getInstance().calcTargets(getRow(), getColumn(), getRoll());
+		newSpot = pickLocation(Board.getInstance().getTargets());
+		setRow(newSpot.getRow());
+		setColumn(newSpot.getCol());
+		
+	}
+	
 	
 	
 	

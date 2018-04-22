@@ -20,7 +20,7 @@ public class Player extends JPanel{
 	private final int BOARD_HEIGHT = 600;
 	private final int BOARD_WIDTH = 600;
 	private final int pieceDimensions = BOARD_HEIGHT/25;
-	private int roll;
+	private int roll = 6;
 
 	
 	/**
@@ -40,21 +40,13 @@ public class Player extends JPanel{
 	}
 
 	public void makeMove(){
-		rollDie();
-		Board board = new Board();
-		board.calcTargets(getRow(), getColumn(), getRoll());
-		
-		for(BoardCell b: board.getTargets()){
-			b.setTarget(true);
-			repaint();
-		}
 		
 	}
 	
 	
 	public void rollDie(){
 		Random r = new Random();
-		roll = r.nextInt(6) + 1;
+		this.roll = r.nextInt(6) + 1;
 		
 	}
 	

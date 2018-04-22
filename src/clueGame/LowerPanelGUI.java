@@ -3,6 +3,8 @@ package clueGame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,7 +18,9 @@ import javax.swing.border.TitledBorder;
 
 public class LowerPanelGUI extends JPanel{
 	private String currentPlayersTurn;
-	
+	public JButton nextPlayerButton = new JButton("Next Player");
+	public JButton accusationButton = new JButton("Make an Accusation");
+	public int currentRoll = 5;
 	public LowerPanelGUI(){
 		currentPlayersTurn = "Miss Vivienne Scarlet";
 		add(createLowerPanel());
@@ -26,7 +30,8 @@ public class LowerPanelGUI extends JPanel{
 		JPanel lowerPanel = new JPanel();
 		lowerPanel.setLayout(new GridLayout(2,0));
 		lowerPanel.add(createTopSubPanel());
-		lowerPanel.add(createBottomSubPanel());
+		lowerPanel.add(createBottomSubPanel(Board.getInstance().currentPlayerIterator));
+		
 		return lowerPanel;
 	}
 	
@@ -43,8 +48,10 @@ public class LowerPanelGUI extends JPanel{
 		topSubPanel.add(topWhoseTurnSubPanel);
 		
 		//Create the two buttons which will go in the upper half of the lower panel
-		JButton nextPlayerButton = new JButton("Next Player");
-		JButton accusationButton = new JButton("Make an Accusation");
+		//JButton nextPlayerButton = new JButton("Next Player");
+		nextPlayerButton.addActionListener(new NextButtonListener());
+		
+		accusationButton.addActionListener(new NextButtonListener());
 		topSubPanel.add(nextPlayerButton);
 		topSubPanel.add(accusationButton);
 		
@@ -52,16 +59,19 @@ public class LowerPanelGUI extends JPanel{
 		JPanel lowerSubPanel = new JPanel();
 		lowerSubPanel.setLayout(new GridLayout(1,3));
 		
+		
+		
 		return topSubPanel;
 	}
 	
-	public JPanel createBottomSubPanel(){
+	public JPanel createBottomSubPanel(int currentPlayerIterator){
 		//Creates the upper half of the lower panel
 		JPanel bottomSubPanel = new JPanel();
 		bottomSubPanel.setLayout(new GridLayout(1,3));
-		
+		currentRoll = Board.getInstance().getPlayers()[Board.getInstance().currentPlayerIterator].getRoll();
 		// makes die box
-		JLabel die = new JLabel("Roll: " + Board.getPlayers()[0].getRoll());
+		//currentRoll = 7;
+		JLabel die = new JLabel("Roll: " + currentRoll);
 		bottomSubPanel.add(die);
 		TitledBorder dieTitledBorder = new TitledBorder("Die");
 		die.setBorder(dieTitledBorder);
@@ -81,5 +91,26 @@ public class LowerPanelGUI extends JPanel{
 		
 		return bottomSubPanel;
 	}
+	
+	private class NextButtonListener implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			if(e.getSource() == nextPlayerButton){
+				
+				Board.getInstance().doMove();
+				//boardPart = new BoardGUI();
+				//frame.add(boardPart, BorderLayout.CENTER);
+				//frame.setVisible(true);
+				currentRoll = Board.getInstance().getPlayers()[Board.getInstance().currentPlayerIterator].getRoll();
+				Board.getInstance().repaint();
+			}else if(e.getSource() == accusationButton){
+				System.out.println("acussation pressed");
+			}
+			
+		}
+	}
+	
 
 }
+
+
+

@@ -24,7 +24,19 @@ public class HumanPlayer extends Player{
 			return matchingCards.get(r.nextInt(3));
 		} else return null;
 	}
-	
+	@Override
+	public void makeMove(){ // shows cells in target list
+		rollDie();
+		//Board board = new Board();
+		Board.getInstance().calcTargets(getRow(), getColumn(), getRoll());
+		
+		for(BoardCell b: Board.getInstance().getTargets()){
+			b.setTarget(true);
+			
+		}
+		
+		Board.getInstance().repaint();
+	}
 	
 	
 }

@@ -47,6 +47,7 @@ public class Board extends JPanel{
 		calcAdjacencies();
 		setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");
 		initialize();
+		
 	}
 	// this method returns the only Board
 	public static Board getInstance() {
@@ -524,6 +525,11 @@ public class Board extends JPanel{
 	public void startGame(){
 		ClueGameGUI start = new ClueGameGUI();
 	}
-
+	
+	public void doMove(){
+		players[currentPlayerIterator].makeMove();
+		currentPlayerIterator++;
+		currentPlayerIterator = currentPlayerIterator % players.length;
+	}
 
 }

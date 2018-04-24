@@ -20,7 +20,8 @@ public class LowerPanelGUI extends JPanel{
 	private String currentPlayersTurn;
 	public JButton nextPlayerButton = new JButton("Next Player");
 	public JButton accusationButton = new JButton("Make an Accusation");
-	public int currentRoll = 5;
+	private static int currentRoll;
+	
 	private JPanel lowerPanel = new JPanel();
 	private JPanel topSubPanel;
 	private JPanel topWhoseTurnSubPanel;
@@ -72,9 +73,10 @@ public class LowerPanelGUI extends JPanel{
 		//Creates the upper half of the lower panel
 		bottomSubPanel = new JPanel();
 		bottomSubPanel.setLayout(new GridLayout(1,3));
-		currentRoll = Board.getInstance().getPlayers()[Board.getInstance().currentPlayerIterator].getRoll();
+		//currentRoll = Board.getInstance().getPlayers()[Board.getInstance().currentPlayerIterator].getRoll();
+		
 		// makes die box
-		//currentRoll = 7;
+		
 		JLabel die = new JLabel("Roll: " + currentRoll);
 		bottomSubPanel.add(die);
 		TitledBorder dieTitledBorder = new TitledBorder("Die");
@@ -102,6 +104,8 @@ public class LowerPanelGUI extends JPanel{
 				
 				Board.getInstance().doMove();
 				currentRoll = Board.getInstance().getPlayers()[Board.getInstance().currentPlayerIterator].getRoll();
+				//System.out.println(currentRoll);
+				//ClueGameGUI.updateBottomPanel();
 				lowerPanel.validate();
 				lowerPanel.repaint();
 				Board.getInstance().repaint();
@@ -111,6 +115,7 @@ public class LowerPanelGUI extends JPanel{
 			
 		}
 	}
+	
 	
 
 }

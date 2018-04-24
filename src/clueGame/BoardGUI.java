@@ -52,6 +52,7 @@ public class BoardGUI extends JPanel implements MouseListener{
 		for(BoardCell b : Board.getInstance().getTargets()){
 			Rectangle imageBounds = new Rectangle(b.getColPixel(), b.getRowPixel(), b.getPieceDimensions(), b.getPieceDimensions());
 			if(imageBounds.contains(point)){
+				Board.getInstance().setHumanTurnEnded(true); // used to track if humans turn has finished
 				Board.getInstance().getPlayers()[0].setRow(b.getRow());	//Updates the position of player when a cell in the target list is clicked
 				Board.getInstance().getPlayers()[0].setColumn(b.getCol());
 				wrongClick = false;
@@ -69,6 +70,7 @@ public class BoardGUI extends JPanel implements MouseListener{
 			JPanel panel = new JPanel();
 			JOptionPane.showMessageDialog(panel, "Invalid move. Please try again.", "", JOptionPane.PLAIN_MESSAGE);
 		}
+		
 	}
 	@Override
 	public void mouseEntered(MouseEvent arg0) {

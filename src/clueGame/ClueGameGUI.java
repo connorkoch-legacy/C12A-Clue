@@ -16,6 +16,7 @@ import javax.swing.border.TitledBorder;
 public class ClueGameGUI extends JFrame{
 	private static DetectiveNotesGUI dialog;
 	private static boolean startOfGame = true;
+	private static LowerPanelGUI lowerPanelGUI= new LowerPanelGUI();
 	static JFrame frame = new JFrame();
 	/*public static void updateBottomPanel(){
 		// adds lower panel
@@ -30,8 +31,7 @@ public class ClueGameGUI extends JFrame{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Clue");
 		frame.setSize(800, 800);
-		// adds lower panel
-		LowerPanelGUI lowerPanelGUI= new LowerPanelGUI();
+
 		frame.add(lowerPanelGUI, BorderLayout.SOUTH);
 		// adds board part
 		BoardGUI boardPart = new BoardGUI();
@@ -74,11 +74,22 @@ public class ClueGameGUI extends JFrame{
 			JOptionPane.showMessageDialog(frame, "You are Miss Scarlet. Press Next Player to begin.", "Welcome to Clue", JOptionPane.PLAIN_MESSAGE);
 		}
 		////////////////////
-		
-		
-		
+	
 		
 	}
+	
+	public void update(){
+		lowerPanelGUI.setLabel();
+	}
+
+	public static boolean isStartOfGame() {
+		return startOfGame;
+	}
+
+	public static void setStartOfGame(boolean startOfGame) {
+		ClueGameGUI.startOfGame = startOfGame;
+	}
+	
 	
 	
 }

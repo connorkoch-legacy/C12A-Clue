@@ -30,11 +30,12 @@ public class Board extends JPanel{
 	private String playersConfigFile;
 	private String cardsConfigFile;
 	private Solution theAnswer = new Solution();
-	private int testIntForGameActionTests = 0;;
+	private int testIntForGameActionTests = 0;
 	public int currentPlayerIterator = 0;
-	//private ClueGameGUI start;
+	private ClueGameGUI start = new ClueGameGUI();
 	private boolean humanTurnEnded = true;
-	
+	private boolean firstMove = true;
+
 	public boolean isHumanTurnEnded() {
 		return humanTurnEnded;
 	}
@@ -55,7 +56,7 @@ public class Board extends JPanel{
 		calcAdjacencies();
 		setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");
 		initialize();
-		
+
 	}
 	// this method returns the only Board
 	public static Board getInstance() {
@@ -254,10 +255,10 @@ public class Board extends JPanel{
 		}
 	}
 
-	
-	
-	
-	
+
+
+
+
 
 	public void initialize() {
 		// the following populates board and sets certain attributes for each BoardCell
@@ -302,8 +303,8 @@ public class Board extends JPanel{
 						if(roomLine[j].length() == 2 && roomLine[j].charAt(1) == 'N'){
 							bc.setNameSpace(true);
 						}
-						
-						
+
+
 					}
 					board[i][j] = bc;
 				}
@@ -387,13 +388,13 @@ public class Board extends JPanel{
 			visited.remove(adjacent);
 		}
 	}
-	
+
 	/**
 	 * Compares the given Solution with theAnswer, and returns whether it is right or not
 	 * @param sol
 	 * @return boolean
 	 */
-	
+
 	public boolean checkAccusation(Solution sol){
 		// accusationStatus initially assumes it it correct, and will turn false if contradicted by later tests
 		boolean accusationStatus = true; 
@@ -524,27 +525,36 @@ public class Board extends JPanel{
 	public Solution getTheAnswer() {
 		return theAnswer;
 	}
-	
+
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		
+
 	}
-	
-	public void startGame(){
-		//start = new ClueGameGUI();
-	}
-	
+
+	/**
+	 * calls players to do their moves and iterates to the next player
+	 */
 	public void doMove(){
 		if(humanTurnEnded){ // make sure humans turn is over before proceeding
-			players[currentPlayerIterator].makeMove();
-			currentPlayerIterator++;
-			currentPlayerIterator = currentPlayerIterator % players.length;
-			
+			if(firstMove == false){
+				currentPlayerIterator++;
+				currentPlayerIterator = currentPlayerIterator % players.length;
+				players[currentPlayerIterator].makeMove();
+				
+				
+				if(!start.isStartOfGame()) start.update();
+			} else {
+				firstMove = false;
+				players[currentPlayerIterator].makeMove();
+				currentPlayerIterator = currentPlayerIterator % players.length;
+				if(!start.isStartOfGame()) start.update();
+				//currentPlayerIterator++;
+			}
 		}
 	}
 	public int getCurrentPlayerIterator() {
 		return currentPlayerIterator;
 	}
-	
+
 
 }

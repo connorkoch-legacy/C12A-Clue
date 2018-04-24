@@ -26,7 +26,8 @@ public class LowerPanelGUI extends JPanel{
 	private JPanel topSubPanel;
 	private JPanel topWhoseTurnSubPanel;
 	private JPanel bottomSubPanel;
-	
+	private JLabel whoseTurn = new JLabel("Whose Turn? " + Board.getInstance().getPlayers()[Board.getInstance().getCurrentPlayerIterator()].getPlayerName());
+	private JLabel die = new JLabel("Roll: " + Board.getInstance().getPlayers()[Board.getInstance().getCurrentPlayerIterator()].getRoll());
 	public LowerPanelGUI(){
 		currentPlayersTurn = "Miss Vivienne Scarlet";
 		add(createLowerPanel());
@@ -49,7 +50,6 @@ public class LowerPanelGUI extends JPanel{
 		
 		//Create the whose turn panel within the lower panel
 		topWhoseTurnSubPanel.setLayout(new GridLayout(1,1));
-		JLabel whoseTurn = new JLabel("Whose Turn? " + Board.getInstance().getPlayers()[Board.getInstance().getCurrentPlayerIterator()].getPlayerName());
 		System.out.println(Board.getInstance().getCurrentPlayerIterator());
 		topWhoseTurnSubPanel.add(whoseTurn);
 		topSubPanel.add(topWhoseTurnSubPanel);
@@ -77,7 +77,7 @@ public class LowerPanelGUI extends JPanel{
 		
 		// makes die box
 		
-		JLabel die = new JLabel("Roll: " + currentRoll);
+		
 		bottomSubPanel.add(die);
 		TitledBorder dieTitledBorder = new TitledBorder("Die");
 		die.setBorder(dieTitledBorder);
@@ -114,6 +114,13 @@ public class LowerPanelGUI extends JPanel{
 			}
 			
 		}
+	}
+	/**
+	 * updates the roll and players name for the bottom subpanles
+	 */
+	public void setLabel(){
+		whoseTurn.setText("Whose Turn? " + Board.getInstance().getPlayers()[Board.getInstance().getCurrentPlayerIterator()].getPlayerName());
+		die.setText(("Roll: " + Board.getInstance().getPlayers()[Board.getInstance().getCurrentPlayerIterator()].getRoll()));
 	}
 	
 	

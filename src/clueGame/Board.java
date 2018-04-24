@@ -205,16 +205,16 @@ public class Board extends JPanel{
 		//Deals 3 cards to the envelope, and puts their strings in theAnswer
 		Card room = dealingCards.get(r.nextInt(11));
 		dealingCards.remove(room);
-		theAnswer.room = room.getCardName();
+		theAnswer.room = room;
 		envelope.add(room);
 		Card player = dealingCards.get(r.nextInt(6)+10);
 		dealingCards.remove(player);
 		envelope.add(player);
-		theAnswer.person = player.getCardName();
+		theAnswer.person = player;
 		Card weapon = dealingCards.get(r.nextInt(6)+15);
 		dealingCards.remove(weapon);
 		envelope.add(weapon);
-		theAnswer.weapon = weapon.getCardName();
+		theAnswer.weapon = weapon;
 
 
 
@@ -485,7 +485,7 @@ public class Board extends JPanel{
 
 	}
 
-	public Card handleSuggestion(Player suggestingPlayer, Player[] players, Card c1, Card c2, Card c3){
+	public Card handleSuggestion(Player suggestingPlayer, Card c1, Card c2, Card c3){
 		int index = 0;
 		for(int i = 0; i < players.length; ++i) {
 			if(players[i] == suggestingPlayer) index = i;
@@ -498,7 +498,6 @@ public class Board extends JPanel{
 				index++;
 				continue;
 			} else {
-				System.out.println(index+1);
 				testIntForGameActionTests = index+1;
 				return revealedCard;
 			}

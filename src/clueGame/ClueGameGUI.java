@@ -16,7 +16,7 @@ import javax.swing.border.TitledBorder;
 public class ClueGameGUI extends JFrame{
 	private static DetectiveNotesGUI dialog;
 	private static boolean startOfGame = true;
-	private static LowerPanelGUI lowerPanelGUI= new LowerPanelGUI();
+	private static LowerPanelGUI lowerPanelGUI = new LowerPanelGUI();
 	static JFrame frame = new JFrame();
 	/*public static void updateBottomPanel(){
 		// adds lower panel

@@ -1,9 +1,9 @@
 package clueGame;
 
 public class Solution {
-	public String person;
-	public String room;
-	public String weapon;
+	public Card person;
+	public Card room;
+	public Card weapon;
 	
 	/*public Solution(String person, String room, String weapon) {
 		super();

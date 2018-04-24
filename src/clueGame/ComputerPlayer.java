@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class ComputerPlayer extends Player{
 	private BoardCell prevRoom; // tracks the last room player was in
-	
+	private boolean inRoom = false;
 	
 	@Override
 	public void makeMove(){
@@ -25,11 +25,17 @@ public class ComputerPlayer extends Player{
 		setRow(newSpot.getRow());
 		setColumn(newSpot.getCol());
 		
+		if(inRoom){
+			Solution suggestion = new Solution();
+			suggestion = createSuggestion();
+			Board.getInstance().handleSuggestion(Board.getInstance().getPlayers()[Board.getInstance().getCurrentPlayerIterator()],
+					suggestion.person, suggestion.room, suggestion.weapon);
+//			if(3 cards left){
+//				makeAccusation();
+//			}
+		}
+		
 	}
-	
-	
-	
-	
 	
 	/**
 	 * Returns the suggestion based on what the computerPlayer has seen and the players location
@@ -43,8 +49,11 @@ public class ComputerPlayer extends Player{
 		Random r = new Random();
 		
 		// puts room based on current location
-		
-		suggestion.room = Board.legend.get(Board.getCellAt(getRow(), getColumn()).getInitial());
+		String roomName = Board.legend.get(Board.getCellAt(getRow(), getColumn()).getInitial());
+		//Loops through cards and searched for the card that the current player is in and suggests it
+		for(Card c : Board.getInstance().getCards()){
+			if(roomName == c.getCardName()) suggestion.room = c;
+		}
 		// chooses weapon
 		ArrayList<Card> unseenWeapons = new ArrayList<Card>();
 		for(Card c: Board.getCards()){ // for everycard, adds to array if weapon and not seen
@@ -54,7 +63,7 @@ public class ComputerPlayer extends Player{
 		}
 		// randomly selects weapon from array of unseen weapons
 		int randomIndex = r.nextInt(unseenWeapons.size());
-		suggestion.weapon = unseenWeapons.get(randomIndex).getCardName();
+		suggestion.weapon = unseenWeapons.get(randomIndex);
 		
 		
 		// chooses person
@@ -65,7 +74,7 @@ public class ComputerPlayer extends Player{
 			}
 		}
 		randomIndex = r.nextInt(unseenPerson.size());
-		suggestion.person = unseenPerson.get(randomIndex).getCardName();
+		suggestion.person = unseenPerson.get(randomIndex);
 		
 		return suggestion;
 	}

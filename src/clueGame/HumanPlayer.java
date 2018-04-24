@@ -1,11 +1,13 @@
 package clueGame;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 
 public class HumanPlayer extends Player{
-	
+	private boolean hasMoved = false;
 	@Override
 	public Card disprove(Card card1, Card card2, Card card3) {
 		ArrayList<Card> matchingCards = new ArrayList<Card>();
@@ -24,6 +26,7 @@ public class HumanPlayer extends Player{
 			return matchingCards.get(r.nextInt(3));
 		} else return null;
 	}
+	
 	@Override
 	public void makeMove(){ // shows cells in target list
 		rollDie();
@@ -32,11 +35,16 @@ public class HumanPlayer extends Player{
 		
 		for(BoardCell b: Board.getInstance().getTargets()){
 			b.setTarget(true);
-			
-		}
-		
+		}		
 		Board.getInstance().repaint();
 	}
+	
+	public void updatePosition(int row, int col){
+		setRow(row);
+		setColumn(col);
+		repaint();
+	}
+	
 	
 	
 }

@@ -2,12 +2,14 @@ package clueGame;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
 import com.sun.javafx.charts.Legend;
 
-public class BoardCell extends JPanel {
+public class BoardCell extends JPanel{
 	private int row;
 	private int col;
 	private char initial;
@@ -67,12 +69,6 @@ public class BoardCell extends JPanel {
 		}
 		repaint();
 	}
-	//Paints the target boardcells blue
-	/*public void drawBlue(Graphics g){
-		rowPixel = pieceDimensions * row;
-		colPixel = pieceDimensions * col;
-
-	}*/
 
 	public BoardCell() {
 	}
@@ -137,6 +133,24 @@ public class BoardCell extends JPanel {
 		this.isTarget = isTarget;
 		
 	}
+	
+	public int getRowPixel() {
+		return rowPixel;
+	}
 
+	public void setRowPixel(int rowPixel) {
+		this.rowPixel = rowPixel;
+	}
+
+	public int getColPixel() {
+		return colPixel;
+	}
+
+	public void setColPixel(int colPixel) {
+		this.colPixel = colPixel;
+	}
+	public int getPieceDimensions() {
+		return pieceDimensions;
+	}
 
 }

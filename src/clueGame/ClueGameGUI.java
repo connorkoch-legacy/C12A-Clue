@@ -66,10 +66,9 @@ public class ClueGameGUI extends JFrame{
 		
 		if(startOfGame){
 			startOfGame = false;
-			JOptionPane.showMessageDialog(frame, "You are Miss Scarlet", "Welcome to Clue", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(frame, "You are Miss Scarlet. Press Next Player to begin.", "Welcome to Clue", JOptionPane.PLAIN_MESSAGE);
 		}
 		////////////////////
-		
 		
 		
 		

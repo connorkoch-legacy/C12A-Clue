@@ -20,7 +20,7 @@ public class Player extends JPanel{
 	private final int BOARD_HEIGHT = 600;
 	private final int BOARD_WIDTH = 600;
 	private final int pieceDimensions = BOARD_HEIGHT/25;
-	private int roll = 6;
+	private int roll;
 
 	
 	/**
@@ -46,7 +46,7 @@ public class Player extends JPanel{
 	
 	public void rollDie(){
 		Random r = new Random();
-		this.roll = r.nextInt(6) + 1;
+		roll = r.nextInt(6) + 1;
 		
 	}
 	
@@ -101,6 +101,7 @@ public class Player extends JPanel{
 		
 		this.color = color;
 	}
+	
 	public Color convertColor(String strColor) {
 		Color color;
 		try {

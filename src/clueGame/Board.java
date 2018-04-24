@@ -32,7 +32,8 @@ public class Board extends JPanel{
 	private Solution theAnswer = new Solution();
 	private int testIntForGameActionTests = 0;;
 	public int currentPlayerIterator = 0;
-
+	private ClueGameGUI start;
+	
 	// variable used for singleton pattern
 	private static Board theInstance = new Board();
 	// constructor is private to ensure only one can be created
@@ -523,7 +524,7 @@ public class Board extends JPanel{
 	}
 	
 	public void startGame(){
-		ClueGameGUI start = new ClueGameGUI();
+		start = new ClueGameGUI();
 	}
 	
 	public void doMove(){
@@ -531,5 +532,9 @@ public class Board extends JPanel{
 		currentPlayerIterator++;
 		currentPlayerIterator = currentPlayerIterator % players.length;
 	}
+	public int getCurrentPlayerIterator() {
+		return currentPlayerIterator;
+	}
+	
 
 }

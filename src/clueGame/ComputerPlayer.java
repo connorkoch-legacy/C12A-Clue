@@ -52,7 +52,7 @@ public class ComputerPlayer extends Player{
 		String roomName = Board.legend.get(Board.getCellAt(getRow(), getColumn()).getInitial());
 		//Loops through cards and searched for the card that the current player is in and suggests it
 		for(Card c : Board.getInstance().getCards()){
-			if(roomName == c.getCardName()) suggestion.room = c;
+			if(roomName.equals(c.getCardName())) suggestion.room = c;
 		}
 		// chooses weapon
 		ArrayList<Card> unseenWeapons = new ArrayList<Card>();

@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel{
 
+	
 	private int numRows;
 	private int numColumns;
 	private int numDoors;
@@ -488,7 +489,7 @@ public class Board extends JPanel{
 	public Card handleSuggestion(Player suggestingPlayer, Card c1, Card c2, Card c3){
 		int index = 0;
 		for(int i = 0; i < players.length; ++i) {
-			if(players[i] == suggestingPlayer) index = i;
+			if(players[i] == suggestingPlayer) index = i; // finds index of suggesting player
 		}
 		for(int i = 0; i < players.length-1; ++i) {
 			if(index+1 > players.length-1) index = -1;

@@ -28,6 +28,9 @@ public class LowerPanelGUI extends JPanel{
 	private JPanel bottomSubPanel;
 	private JLabel whoseTurn = new JLabel("Whose Turn? " + Board.getInstance().getPlayers()[Board.getInstance().getCurrentPlayerIterator()].getPlayerName());
 	private JLabel die = new JLabel("Roll: " + Board.getInstance().getPlayers()[Board.getInstance().getCurrentPlayerIterator()].getRoll());
+	private JLabel guess = new JLabel("Guess: ");
+	private JLabel response = new JLabel("Response: ");
+	private String responseStatus = "Success";
 	public LowerPanelGUI(){
 		currentPlayersTurn = "Miss Vivienne Scarlet";
 		add(createLowerPanel());
@@ -83,16 +86,15 @@ public class LowerPanelGUI extends JPanel{
 		die.setBorder(dieTitledBorder);
 		
 		// makes guess box
-		JLabel guess = new JLabel("Guess: ");
 		bottomSubPanel.add(guess);
 		TitledBorder guessTitledBorder = new TitledBorder("Guess");
 		guess.setBorder(guessTitledBorder);
 		
 		// makes Guess Result box
-		JLabel response = new JLabel("Response: ");
+		bottomSubPanel.add(response);
 		TitledBorder resultTitledBorder = new TitledBorder("Guess Result");
 		response.setBorder(resultTitledBorder);
-		bottomSubPanel.add(response);
+		
 		
 		
 		return bottomSubPanel;
@@ -112,7 +114,6 @@ public class LowerPanelGUI extends JPanel{
 			}else if(e.getSource() == accusationButton){
 				System.out.println("acussation pressed");
 			}
-			
 		}
 	}
 	/**
@@ -121,6 +122,40 @@ public class LowerPanelGUI extends JPanel{
 	public void setLabel(){
 		whoseTurn.setText("Whose Turn? " + Board.getInstance().getPlayers()[Board.getInstance().getCurrentPlayerIterator()].getPlayerName());
 		die.setText(("Roll: " + Board.getInstance().getPlayers()[Board.getInstance().getCurrentPlayerIterator()].getRoll()));
+		Solution s = new Solution();
+		s = Board.getInstance().getPlayers()[Board.getInstance().getCurrentPlayerIterator()].getSuggestion();
+		if(!(s == null)){
+			guess.setText(("Guess: " + s.person.getCardName() + "," + s.weapon.getCardName() + "," + s.room.getCardName()));
+		}
+		responseStatus = Board.getInstance().getRevCard();
+		response.setText("Response: " + responseStatus);
+	}
+	
+	/**
+	 * Updates guess and result in case of accusation
+	 * @return
+	 */
+	public void setAccusationInfo(Boolean status){
+		
+		Solution s = new Solution();
+		s = Board.getInstance().getPlayers()[Board.getInstance().getCurrentPlayerIterator()].getAccusation();
+		if(!(s == null)){
+			guess.setText(("Guess: " + s.person.getCardName() + "," + s.weapon.getCardName() + "," + s.room.getCardName()));
+		}
+		responseStatus = "Accusation was wrong.";
+		if(status){
+			responseStatus = "Accusation was right!!";
+		}
+		response.setText("accusation");
+	}
+	
+	
+	public String getResponseStatus() {
+		return responseStatus;
+	}
+
+	public void setResponseStatus(String responseStatus) {
+		this.responseStatus = responseStatus;
 	}
 	
 	

@@ -21,6 +21,9 @@ public class Player extends JPanel{
 	private final int BOARD_WIDTH = 600;
 	private final int pieceDimensions = BOARD_HEIGHT/25;
 	private int roll;
+	private Solution accusation;
+	private Solution suggestion;
+	//private Card lastSeenCard;
 
 	
 	/**
@@ -52,6 +55,8 @@ public class Player extends JPanel{
 	
 	public void addCard(Card c){
 		ownedCards.add(c);
+		addSeenCards(c);
+		
 	}
 	public String getPlayerName() {
 		return playerName;
@@ -118,6 +123,7 @@ public class Player extends JPanel{
 	}
 	public void addSeenCards(Card seen) {
 		seenCards.add(seen);
+		//setLastSeenCard(seen);
 	}
 
 	public Set<Card> getOwnedCards() {
@@ -130,6 +136,24 @@ public class Player extends JPanel{
 	}
 	public int getRoll() {
 		return roll;
+	}
+
+	public Solution getAccusation() {
+		return accusation;
+	}
+
+	public void setAccusation(Solution accusation) {
+		this.accusation = accusation;
+	}
+
+	
+
+	public Solution getSuggestion() {
+		return suggestion;
+	}
+
+	public void setSuggestion(Solution suggestion) {
+		this.suggestion = suggestion;
 	}
 	
 

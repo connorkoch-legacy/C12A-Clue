@@ -12,29 +12,57 @@ public class ComputerPlayer extends Player{
 	
 	@Override
 	public void makeMove(){
+		// clears out Guess and Result fields, doesnt really effect players move
+		Solution sol = new Solution();
+		Card card = new Card();
+		card.setCardName(" ");
+		sol.person = card;
+		sol.weapon = card;
+		sol.room = card;
+		setSuggestion(sol);
+		Board.getInstance().setRevCard("No knew Clue");
+		/////////////////
+		
+		
 		for(BoardCell[] b: Board.getInstance().board){ // makes sure no cells are marked as targets
 			for(BoardCell c: b){
 				c.setTarget(false);
 			}
 		}
 		
-		BoardCell newSpot = new BoardCell(); // moves the player to a cell in its target list
-		rollDie();
-		Board.getInstance().calcTargets(getRow(), getColumn(), getRoll());
-		newSpot = pickLocation(Board.getInstance().getTargets());
-		setRow(newSpot.getRow());
-		setColumn(newSpot.getCol());
-		
-		if(inRoom){
-			Solution suggestion = new Solution();
-			suggestion = createSuggestion();
-			Board.getInstance().handleSuggestion(Board.getInstance().getPlayers()[Board.getInstance().getCurrentPlayerIterator()],
-					suggestion.person, suggestion.room, suggestion.weapon);
-//			if(3 cards left){
-//				makeAccusation();
-//			}
+		boolean continueTurn = true; // used to skip rest of trun if bad accusation is made
+		// if only three cards unseen, makes accusation
+		if((Board.getInstance().getCards().length - getSeenCards().size()) == 3){
+			continueTurn = makeAccusation();
 		}
+		makeAccusation();
 		
+		if(continueTurn){ // if false means failed accusation was made, and ends turn
+			BoardCell newSpot = new BoardCell(); // moves the player to a cell in its target list
+			rollDie();
+			Board.getInstance().calcTargets(getRow(), getColumn(), getRoll());
+			newSpot = pickLocation(Board.getInstance().getTargets());
+			setRow(newSpot.getRow());
+			setColumn(newSpot.getCol());
+
+			if(Board.getInstance().getCellAt(getRow(), getColumn()).isDoorway()){
+				inRoom = true; // checks if in room and sets inRoom bool accordingly
+			} else {
+				inRoom = false;
+			}
+
+			if(inRoom){ // if in room makes a suggestion adds revealed card to seen cards
+				Solution suggestion = new Solution();
+				suggestion = createSuggestion();
+				setSuggestion(suggestion); // sets variable in parent to local suggestion
+				Card revCard = new Card();
+				revCard = Board.getInstance().handleSuggestion(Board.getInstance().getPlayers()[Board.getInstance().getCurrentPlayerIterator()],
+						suggestion.person, suggestion.room, suggestion.weapon);
+				addSeenCards(revCard); // adds the revealed card to the seen cards set
+
+
+			}
+		}
 	}
 	
 	/**
@@ -103,8 +131,30 @@ public class ComputerPlayer extends Player{
 		return target;
 	}
 	
-	public void makeAccusation(){
+	public boolean makeAccusation(){
+		Solution accusation = new Solution();
+		for(Card c: Board.getInstance().getCards()){
+			if(!getSeenCards().contains(c)){
+				if(c.getCardType() == CardType.PERSON){
+					accusation.person = c;
+				} else if(c.getCardType() == CardType.WEAPON){
+					accusation.weapon = c;
+				} else if(c.getCardType() == CardType.ROOM){
+					accusation.room = c;
+				}	
+			}
+		}
+		setAccusation(accusation); // sets accusation variable in Plater.java to local variable
 		
+		System.out.println(getPlayerName() + "Made an accusation: " + accusation.person.getCardName() + accusation.weapon.getCardName() + accusation.room.getCardName());
+		// checks accusation and outputs accordingly
+		boolean result = Board.getInstance().checkAccusation(accusation);
+		if(result){
+			System.out.println(getPlayerName() + " won the game");
+		}else{
+			System.out.println(getPlayerName() + " was wrong");
+		}
+		return result;
 	}
 
 	public BoardCell getPrevRoom() {

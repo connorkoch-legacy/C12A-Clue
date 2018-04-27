@@ -30,7 +30,7 @@ public class ClueGameGUI extends JFrame{
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Clue");
-		frame.setSize(800, 800);
+		frame.setSize(1000, 1000);
 
 		frame.add(lowerPanelGUI, BorderLayout.SOUTH);
 		// adds board part
@@ -76,6 +76,10 @@ public class ClueGameGUI extends JFrame{
 		////////////////////
 	
 		
+	}
+	
+	public void updateAccusationInfo(Boolean status){
+		lowerPanelGUI.setAccusationInfo(status);
 	}
 	
 	public void update(){

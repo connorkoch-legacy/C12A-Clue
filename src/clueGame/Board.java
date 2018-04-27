@@ -36,7 +36,7 @@ public class Board extends JPanel{
 	private ClueGameGUI start = new ClueGameGUI();
 	private boolean humanTurnEnded = true;
 	private boolean firstMove = true;
-
+	private String revCard = "No new clue";
 	public boolean isHumanTurnEnded() {
 		return humanTurnEnded;
 	}
@@ -409,7 +409,7 @@ public class Board extends JPanel{
 		if(!theAnswer.room.equals(sol.room)){
 			accusationStatus = false;
 		}
-
+		start.updateAccusationInfo(accusationStatus); // will update lower panel
 		return accusationStatus;
 
 	}
@@ -500,9 +500,11 @@ public class Board extends JPanel{
 				continue;
 			} else {
 				testIntForGameActionTests = index+1;
+				revCard = revealedCard.getCardName(); // used for updating lower panel
 				return revealedCard;
 			}
 		}
+		revCard = "No new Clue"; // used to update lower panel
 		return null;
 	}
 
@@ -554,6 +556,12 @@ public class Board extends JPanel{
 	}
 	public int getCurrentPlayerIterator() {
 		return currentPlayerIterator;
+	}
+	public String getRevCard() {
+		return revCard;
+	}
+	public void setRevCard(String revealedCard) {
+		this.revCard = revealedCard;
 	}
 
 

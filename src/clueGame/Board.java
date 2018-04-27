@@ -35,6 +35,9 @@ public class Board extends JPanel{
 	public int currentPlayerIterator = 0;
 	private ClueGameGUI start = new ClueGameGUI();
 	private boolean humanTurnEnded = true;
+	public ClueGameGUI getStart() {
+		return start;
+	}
 	private boolean firstMove = true;
 	private String revCard = "No new clue";
 	public boolean isHumanTurnEnded() {

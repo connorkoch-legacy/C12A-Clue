@@ -35,7 +35,7 @@ public class ComputerPlayer extends Player{
 		if((Board.getInstance().getCards().length - getSeenCards().size()) == 3){
 			continueTurn = makeAccusation();
 		}
-		makeAccusation();
+		
 		
 		if(continueTurn){ // if false means failed accusation was made, and ends turn
 			BoardCell newSpot = new BoardCell(); // moves the player to a cell in its target list
@@ -146,14 +146,22 @@ public class ComputerPlayer extends Player{
 		}
 		setAccusation(accusation); // sets accusation variable in Plater.java to local variable
 		
-		System.out.println(getPlayerName() + "Made an accusation: " + accusation.person.getCardName() + accusation.weapon.getCardName() + accusation.room.getCardName());
-		// checks accusation and outputs accordingly
+		
+		// checks accusation and sets boolean result accordingly
 		boolean result = Board.getInstance().checkAccusation(accusation);
-		if(result){
-			System.out.println(getPlayerName() + " won the game");
-		}else{
-			System.out.println(getPlayerName() + " was wrong");
+//		if(result){
+//			System.out.println(getPlayerName() + " won the game");
+//		}else{
+//			System.out.println(getPlayerName() + " was wrong");
+//		}
+		String accResult = getPlayerName() + " " + "was CORRECT and WON the game!!";;
+		if(!result){
+			accResult = getPlayerName() + " was WRONG.";
 		}
+		// alerts human of accusation and status
+		Board.getInstance().getStart().displayAccusation(getPlayerName() + " accused " + getAccusation().person.getCardName() 
+				+ " with " + getAccusation().weapon.getCardName() + " in the " + getAccusation().room.getCardName()
+				+ "\n" + accResult);
 		return result;
 	}
 

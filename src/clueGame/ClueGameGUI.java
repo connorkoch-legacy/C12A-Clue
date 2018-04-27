@@ -27,7 +27,7 @@ public class ClueGameGUI extends JFrame{
 	
 	
 	public static void main(String[] args) {
-		JFrame frame = new JFrame();
+		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Clue");
 		frame.setSize(1000, 1000);
@@ -77,7 +77,17 @@ public class ClueGameGUI extends JFrame{
 	
 		
 	}
-	
+	/**
+	 * makes pop-up window displaying accusation result
+	 * @param info
+	 */
+	public void displayAccusation(String info){
+		JOptionPane.showMessageDialog(frame, info, "An Accusation was made.", JOptionPane.PLAIN_MESSAGE);
+	}
+	/**
+	 * updates lower panel to display accusation info
+	 * @param status
+	 */
 	public void updateAccusationInfo(Boolean status){
 		lowerPanelGUI.setAccusationInfo(status);
 	}

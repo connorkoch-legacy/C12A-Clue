@@ -23,6 +23,7 @@ public class Player extends JPanel{
 	private int roll;
 	private Solution accusation;
 	private Solution suggestion;
+	private BoardCell currentCell;
 	//private Card lastSeenCard;
 
 	
@@ -145,9 +146,7 @@ public class Player extends JPanel{
 	public void setAccusation(Solution accusation) {
 		this.accusation = accusation;
 	}
-
 	
-
 	public Solution getSuggestion() {
 		return suggestion;
 	}
@@ -155,6 +154,5 @@ public class Player extends JPanel{
 	public void setSuggestion(Solution suggestion) {
 		this.suggestion = suggestion;
 	}
-	
 
 }

@@ -17,16 +17,17 @@ import javafx.util.Pair;
 public class BoardGUI extends JPanel implements MouseListener{
 	private boolean hasMoved;
 	private static BoardGUI theInstance = new BoardGUI();
-	
+	private GuessBoxGUI guessBox;
+
 	public BoardGUI(){
 		hasMoved = true;
 		setBackground(Color.gray);
 		addMouseListener(this);
 	}
-	
+
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		
+
 		for(BoardCell[] b: Board.getInstance().board){ // draws all board cells
 			for(BoardCell c: b){
 				c.draw(g);
@@ -37,13 +38,13 @@ public class BoardGUI extends JPanel implements MouseListener{
 		}
 		repaint();
 	}
-	
+
 	public JPanel createBoardGUI() {
 		JPanel boardPanel = new JPanel();
 		repaint();
 		return boardPanel;
 	}
-	
+
 	//Checks to see if the Mouse is clicked in the region of a target cell
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -56,11 +57,16 @@ public class BoardGUI extends JPanel implements MouseListener{
 				Board.getInstance().getPlayers()[0].setRow(b.getRow());	//Updates the position of player when a cell in the target list is clicked
 				Board.getInstance().getPlayers()[0].setColumn(b.getCol());
 				wrongClick = false;
-				for(BoardCell b2 : Board.getInstance().getTargets()){	//Goes through target list and makes sure they arent colored white anymore
+				for(BoardCell b2 : Board.getInstance().getTargets()){	//Goes through target list and makes sure they aren't colored white anymore
 					b2.setTarget(false);
 				}
 				repaint();
-				//Board.getInstance().doMove();
+				//If the cell that the player is in is a room. make a guess. Make sure the player submits a guess
+				if(Board.getBoard()[Board.getInstance().getPlayers()[0].getRow()][Board.getInstance().getPlayers()[0].getColumn()].isDoorway()){
+					guessBox = new GuessBoxGUI();
+					guessBox.setVisible(true);
+				}
+
 				break;
 			}
 			wrongClick = true;
@@ -70,27 +76,27 @@ public class BoardGUI extends JPanel implements MouseListener{
 			JPanel panel = new JPanel();
 			JOptionPane.showMessageDialog(panel, "Invalid move. Please try again.", "", JOptionPane.PLAIN_MESSAGE);
 		}
-		
+
 	}
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public boolean isHasMoved() {
@@ -104,6 +110,7 @@ public class BoardGUI extends JPanel implements MouseListener{
 	public static BoardGUI getTheInstance() {
 		return theInstance;
 	}
-	
-	
+
+
+
 }

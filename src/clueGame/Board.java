@@ -35,6 +35,7 @@ public class Board extends JPanel{
 	public int currentPlayerIterator = 0;
 	private ClueGameGUI start = new ClueGameGUI();
 	private boolean humanTurnEnded = true;
+	
 	public ClueGameGUI getStart() {
 		return start;
 	}
@@ -566,6 +567,10 @@ public class Board extends JPanel{
 	public void setRevCard(String revealedCard) {
 		this.revCard = revealedCard;
 	}
+	public static BoardCell[][] getBoard() {
+		return board;
+	}
+	
 
 
 }

@@ -18,13 +18,6 @@ public class ClueGameGUI extends JFrame{
 	private static boolean startOfGame = true;
 	private static LowerPanelGUI lowerPanelGUI = new LowerPanelGUI();
 	static JFrame frame = new JFrame();
-	/*public static void updateBottomPanel(){
-		// adds lower panel
-		LowerPanelGUI lowerPanelGUI= new LowerPanelGUI();
-		frame.add(lowerPanelGUI, BorderLayout.SOUTH);
-		frame.setVisible(true);
-	}*/
-	
 	
 	public static void main(String[] args) {
 		frame = new JFrame();

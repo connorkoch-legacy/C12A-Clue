@@ -17,8 +17,6 @@ public class BoardCell extends JPanel{
 	private boolean walkway;
 	private boolean room;
 	private boolean doorway;
-
-
 	private int rowPixel, colPixel;
 	private Color color = Color.YELLOW;
 	private final int BOARD_HEIGHT = 600;

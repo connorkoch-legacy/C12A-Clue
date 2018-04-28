@@ -5,23 +5,25 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class GuessBoxGUI extends JDialog{
+
+public class AccusationBoxGUI extends JDialog{
 	private JButton submitButton;
 	private JButton cancelButton;
+	JComboBox<String> roomGuess = new JComboBox<String>();
 	JComboBox<String> personGuess = new JComboBox<String>();
 	JComboBox<String> weaponGuess = new JComboBox<String>();
 	String roomString = new String();
 
-	public GuessBoxGUI() {
-		setTitle("Make a Guess");
+	public AccusationBoxGUI() {
+		setTitle("Make an Accusation");
 		setSize(300, 200);
 		add(leftColumn(), BorderLayout.WEST);
 		add(rightColumn(), BorderLayout.EAST);
@@ -33,7 +35,7 @@ public class GuessBoxGUI extends JDialog{
 		JPanel left = new JPanel();
 		left.setLayout(new GridLayout(4,1));
 
-		JLabel yourRoom = new JLabel("Your room");
+		JLabel yourRoom = new JLabel("Room");
 		left.add(yourRoom);
 		JLabel person = new JLabel("Person");
 		left.add(person);
@@ -53,30 +55,16 @@ public class GuessBoxGUI extends JDialog{
 		right.setLayout(new GridLayout(4,1));
 
 		//Selects the room the player is in based on the initial of the boardcell at their current location
-		char roomChar = Board.getBoard()[Board.getInstance().getPlayers()[0].getRow()][Board.getInstance().getPlayers()[0].getColumn()].getInitial();
-		switch(roomChar){
-			case 'C':	roomString = "Conservatory";
-						break;
-			case 'K':	roomString = "Kitchen";
-						break;
-			case 'B':	roomString = "Ballroom";
-						break;
-			case 'R':	roomString = "Billiard room";
-						break;
-			case 'T':	roomString = "Bathroom";
-						break;
-			case 'L':	roomString = "Cellar";
-						break;
-			case 'D':	roomString = "Laundry room";
-						break;
-			case 'A':	roomString = "Attic";
-						break;
-			case 'V':	roomString = "Vault";
-						break;
-			default:	roomString = "null";
-		}
-		JLabel yourRoom = new JLabel(roomString);
-		right.add(yourRoom);
+		roomGuess.addItem("Conservatory");
+		roomGuess.addItem("Kitchen");
+		roomGuess.addItem("Ballroom");
+		roomGuess.addItem("Billiard room");
+		roomGuess.addItem("Bathroom");
+		roomGuess.addItem("Cellar");
+		roomGuess.addItem("Laundry room");
+		roomGuess.addItem("Attic");
+		roomGuess.addItem("Vault");
+		right.add(roomGuess);
 		//set the options for person box
 		personGuess.addItem("Miss Vivienne Scarlet");
 		personGuess.addItem("Colonel Michael Mustard");
@@ -100,7 +88,7 @@ public class GuessBoxGUI extends JDialog{
 
 		return right;
 	}
-
+	
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			if(e.getSource() == submitButton){	//checks to see if other players can disprove the suggestion
@@ -111,26 +99,31 @@ public class GuessBoxGUI extends JDialog{
 				for(Card c : Board.getInstance().getCards()){
 					if(c.getCardName().equals(personGuess.getSelectedItem())) personSuggest = c; 
 					else if(c.getCardName().equals(weaponGuess.getSelectedItem())) weaponSuggest = c;
-					else if(c.getCardName().equals(roomString)) roomSuggest = c;
+					else if(c.getCardName().equals(roomGuess.getSelectedItem())) roomSuggest = c;
 				}
-				Card disprovedCard = new Card();
-				disprovedCard = Board.getInstance().handleSuggestion(Board.getInstance().getPlayers()[0], personSuggest, weaponSuggest, roomSuggest); 
-				if(disprovedCard != null) giveAnswer(disprovedCard);
+				//Make a solution with the inputs from the user
+				Solution theAnswer = new Solution();
+				theAnswer = Board.getInstance().getTheAnswer();
+				boolean correctGuess = false;
+				Solution sol = new Solution(personSuggest, roomSuggest, weaponSuggest);
+				correctGuess = Board.getInstance().checkAccusation(sol);
+				endGame(correctGuess);	//call the endgame function to see if the accusation is correct
 				setVisible(false);
 			}else if(e.getSource() == cancelButton){
 				setVisible(false);
 			}
 		}
 	}
-
-	public void giveAnswer(Card c) {
-		JOptionPane.showMessageDialog(this, c.getCardName() + " is not correct.", "Disproved", JOptionPane.PLAIN_MESSAGE);
+	
+	//Ends the game if the accusation is correct, otherwise continues on
+	public void endGame(boolean correctGuess) {
+		if(correctGuess) {
+			JOptionPane.showMessageDialog(this, "Correct. Congratulations, you win!", "Accusation", JOptionPane.PLAIN_MESSAGE);
+			Board.getInstance().getStart().end();
+		}
+		else {
+			JOptionPane.showMessageDialog(this, "This accusation is not correct.", "Accusation", JOptionPane.PLAIN_MESSAGE);
+		}
 	}
 	
-	
-
-
-
-
 }
-

@@ -61,7 +61,6 @@ public class Board extends JPanel{
 		calcAdjacencies();
 		setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");
 		initialize();
-
 	}
 	// this method returns the only Board
 	public static Board getInstance() {
@@ -220,8 +219,6 @@ public class Board extends JPanel{
 		dealingCards.remove(weapon);
 		envelope.add(weapon);
 		theAnswer.weapon = weapon;
-
-
 
 
 
@@ -404,13 +401,13 @@ public class Board extends JPanel{
 		// accusationStatus initially assumes it it correct, and will turn false if contradicted by later tests
 		boolean accusationStatus = true; 
 		// for each card, checks if it is in the envelope
-		if(!theAnswer.person.equals(sol.person)){
+		if(!theAnswer.person.getCardName().equals(sol.person.getCardName())){
 			accusationStatus = false;
 		}
-		if(!theAnswer.weapon.equals(sol.weapon)){
+		if(!theAnswer.weapon.getCardName().equals(sol.weapon.getCardName())){
 			accusationStatus = false;
 		}
-		if(!theAnswer.room.equals(sol.room)){
+		if(!theAnswer.room.getCardName().equals(sol.room.getCardName())){
 			accusationStatus = false;
 		}
 		start.updateAccusationInfo(accusationStatus); // will update lower panel

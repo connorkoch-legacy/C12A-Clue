@@ -30,6 +30,7 @@ public class HumanPlayer extends Player{
 	@Override
 	public void makeMove(){ // shows cells in target list
 		Board.getInstance().setHumanTurnEnded(false);
+		Board.getInstance().getStart().getLowerPanelGUI().setMadeAccusation(false);
 		rollDie();
 		//Board board = new Board();
 		Board.getInstance().calcTargets(getRow(), getColumn(), getRoll());

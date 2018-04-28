@@ -20,6 +20,7 @@ public class LowerPanelGUI extends JPanel{
 	private String currentPlayersTurn;
 	public JButton nextPlayerButton = new JButton("Next Player");
 	public JButton accusationButton = new JButton("Make an Accusation");
+	private boolean madeAccusation = false;
 	private static int currentRoll;
 	
 	private JPanel lowerPanel = new JPanel();
@@ -112,7 +113,11 @@ public class LowerPanelGUI extends JPanel{
 				lowerPanel.repaint();
 				Board.getInstance().repaint();
 			}else if(e.getSource() == accusationButton){
-				System.out.println("acussation pressed");
+				if(madeAccusation == false) {
+					AccusationBoxGUI accu = new AccusationBoxGUI();
+					accu.setVisible(true);
+					madeAccusation = true;
+				}
 			}
 		}
 	}
@@ -156,6 +161,14 @@ public class LowerPanelGUI extends JPanel{
 
 	public void setResponseStatus(String responseStatus) {
 		this.responseStatus = responseStatus;
+	}
+
+	public boolean isMadeAccusation() {
+		return madeAccusation;
+	}
+
+	public void setMadeAccusation(boolean madeAccusation) {
+		this.madeAccusation = madeAccusation;
 	}
 	
 	

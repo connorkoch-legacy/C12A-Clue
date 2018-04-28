@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 import clueGame.Board;
 import clueGame.Card;
 import clueGame.CardType;
+import clueGame.ClueGameGUI;
 import clueGame.Player;
 import clueGame.HumanPlayer;
 import clueGame.ComputerPlayer;
@@ -13,22 +14,25 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 public class gameSetupTests{
-	
+	private ClueGameGUI start = new ClueGameGUI();
 	private static Board board;
 	@BeforeClass
 	public static void setUp() {
 		// Board is singleton, get the only instance
-		board = Board.getInstance();
+		//board = Board.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("CTest_ClueLayout.csv", "CTest_ClueLegend.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
+		//board.setConfigFiles("CTest_ClueLayout.csv", "CTest_ClueLegend.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
 		// Initialize will load BOTH config files 
-		board.initialize();
+		//board.initialize();
+		ClueGameGUI start = new ClueGameGUI();
 	}
 	
 	//Test that players are loaded correctly
 	@Test
 	public void testPlayerLoading(){
-		
+//		board = Board.getInstance();
+//		board.setConfigFiles("CTest_ClueLayout.csv", "CTest_ClueLegend.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");
+//		board.initialize();
 		//Make a player array called players
 		Player[] players = board.getPlayers();
 		//Check correct number of players are loaded
@@ -80,8 +84,11 @@ public class gameSetupTests{
 	// tests envelope has correct cards in it
 	@Test
 	public void testEnvelope(){
-		ArrayList<Card> testEnvelope = board.getEnvelope();
-		assertEquals(3, board.getEnvelope().size());
+		//board = Board.getInstance();
+		//board.setConfigFiles("CTest_ClueLayout.csv", "CTest_ClueLegend.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");
+		//board.initialize();
+		ArrayList<Card> testEnvelope = Board.getInstance().getEnvelope();
+		assertEquals(3, Board.getInstance().getEnvelope().size());
 		assertTrue(testEnvelope.get(0).getCardType() == CardType.ROOM);
 		assertTrue(testEnvelope.get(1).getCardType() == CardType.PERSON);
 		assertTrue(testEnvelope.get(2).getCardType() == CardType.WEAPON);

@@ -220,7 +220,8 @@ public class Board extends JPanel{
 		dealingCards.remove(weapon);
 		envelope.add(weapon);
 		theAnswer.weapon = weapon;
-
+		
+		
 
 
 		//Loops through undealt cards and deals them

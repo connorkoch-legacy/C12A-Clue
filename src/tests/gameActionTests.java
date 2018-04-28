@@ -7,6 +7,7 @@ import clueGame.Board;
 import clueGame.BoardCell;
 import clueGame.Card;
 import clueGame.CardType;
+import clueGame.ClueGameGUI;
 import clueGame.Player;
 import clueGame.Solution;
 import clueGame.HumanPlayer;
@@ -19,18 +20,21 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import javax.swing.JPanel;
 
-public class gameActionTests {
+
+public class gameActionTests extends JPanel {
 	private static Board board;
+	private ClueGameGUI start = new ClueGameGUI();
 	@BeforeClass
 	public static void setUp() {
 		// Board is singleton, get the only instance
-		board = Board.getInstance();
+		//board = Board.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
+		//board.setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
 		// Initialize will load BOTH config files 
-		board.initialize();
-
+		//board.initialize();
+		ClueGameGUI start = new ClueGameGUI();
 	}
 
 	//Test Select a Target
@@ -531,6 +535,10 @@ public class gameActionTests {
 	@Test
 	public void testOnlyHumanCanDisprove(){
 		//The stuff below is for the handle suggestions tests which require a simulated deal and less players
+		board = Board.getInstance();
+		board.setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
+		//Initialize will load BOTH config files 
+		board.initialize();
 		HumanPlayer testPlayer1 = new HumanPlayer();
 		ComputerPlayer testPlayer2 = new ComputerPlayer();
 		ComputerPlayer testPlayer3 = new ComputerPlayer();
@@ -648,6 +656,7 @@ public class gameActionTests {
 	@Test
 	public void testHumanAndAnotherPlayerCanDisprove(){
 		//The stuff below is for the handle suggestions tests which require a simulated deal and less players
+		board = Board.getInstance();
 		HumanPlayer testPlayer1 = new HumanPlayer();
 		ComputerPlayer testPlayer2 = new ComputerPlayer();
 		ComputerPlayer testPlayer3 = new ComputerPlayer();

@@ -25,13 +25,14 @@ public class FileInitTests {
 	private ClueGameGUI start = new ClueGameGUI();
 	@BeforeClass
 	public static void setUp() {
+		ClueGameGUI start = new ClueGameGUI();
 		// Board is singleton, get the only instance
 		//board = Board.getInstance();
 		// set the file names to use my config files
 		//board.setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
 		// Initialize will load BOTH config files 
 		//board.initialize();
-		ClueGameGUI start = new ClueGameGUI();
+		//ClueGameGUI start = new ClueGameGUI();
 	}
 	
 	@Test

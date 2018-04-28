@@ -34,6 +34,7 @@ public class CTest_FileInitTests {
 	
 	@BeforeClass
 	public static void setUp() {
+		//ClueGameGUI start = new ClueGameGUI();
 		// Board is singleton, get the only instance
 		//board = Board.getInstance();
 		// set the file names to use my config files

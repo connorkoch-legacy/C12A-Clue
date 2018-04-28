@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import clueGame.Board;
 import clueGame.BoardCell;
+import clueGame.ClueGameGUI;
 
 public class OurTargetTests {
 	public static final int LEGEND_SIZE = 11;
@@ -18,20 +19,23 @@ public class OurTargetTests {
 	public static final int NUM_DOORS = 16;
 	
 	private static Board board;
-	
+	private ClueGameGUI start = new ClueGameGUI();
 	@BeforeClass
 	public static void setUp() {
 		// Board is singleton, get the only instance
-		board = Board.getInstance();
+	//	board = Board.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
+		//board.setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
 		// Initialize will load BOTH config files 
-		board.initialize();
+		//board.initialize();
+		ClueGameGUI start = new ClueGameGUI();
 	}
 	// The following tests targets along a walkway
 	@Test
 	public void testTargetsAlongWalkway() {
 		// tests block (5,24) with pathLength 2
+		Board board = Board.getInstance();
+		board.calcTargets(13, 5, 2);
 		board.calcTargets(24, 5, 2);
 		Set<BoardCell> targets = board.getTargets();
 		assertTrue(targets.contains(board.getCellAt(22, 5)));
@@ -72,6 +76,8 @@ public class OurTargetTests {
 	@Test
 	public void testEnterRoom(){
 		// folowing tests in front of a left-facing door
+		Board board = Board.getInstance();
+		board.calcTargets(13, 5, 2);
 		board.calcTargets(13, 0, 1);
 		Set<BoardCell> targets = board.getTargets();
 		assertEquals(3, targets.size());
@@ -88,6 +94,7 @@ public class OurTargetTests {
 	@Test
 	public void testLeavingRoom(){
 		// following tests leaving a right-facing door
+		Board board = Board.getInstance();
 		board.calcTargets(13, 5, 2);
 		Set<BoardCell> targets = board.getTargets();
 		assertEquals(3, targets.size());

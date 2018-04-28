@@ -14,19 +14,22 @@ import org.junit.Test;
 
 import clueGame.Board;
 import clueGame.BoardCell;
+import clueGame.ClueGameGUI;
 
 public class CTest_BoardAdjTargetTests {
 	// We make the Board static because we can load it one time and 
 	// then do all the tests. 
 	private static Board board;
+	private ClueGameGUI start = new ClueGameGUI();
 	@BeforeClass
 	public static void setUp() {
 		// Board is singleton, get the only instance
-		board = Board.getInstance();
+	//	board = Board.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("CTest_ClueLayout.csv", "CTest_ClueLegend.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
+		//board.setConfigFiles("CTest_ClueLayout.csv", "CTest_ClueLegend.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
 		// Initialize will load BOTH config files 
-		board.initialize();
+		//board.initialize();
+		ClueGameGUI start = new ClueGameGUI();
 	}
 
 	// Ensure that player does not move around within room
@@ -34,6 +37,7 @@ public class CTest_BoardAdjTargetTests {
 	@Test
 	public void testAdjacenciesInsideRooms()
 	{
+		Board board = Board.getInstance();
 		// Test a corner
 		Set<BoardCell> testList = board.getAdjList(0, 0);
 		assertEquals(0, testList.size());
@@ -61,6 +65,7 @@ public class CTest_BoardAdjTargetTests {
 	@Test
 	public void testAdjacencyRoomExit()
 	{
+		Board board = Board.getInstance();
 		// TEST DOORWAY RIGHT 
 		Set<BoardCell> testList = board.getAdjList(11, 6);
 		assertEquals(1, testList.size());
@@ -89,6 +94,7 @@ public class CTest_BoardAdjTargetTests {
 	@Test
 	public void testAdjacencyDoorways()
 	{
+		Board board = Board.getInstance();
 		// Test beside a door direction RIGHT
 		Set<BoardCell> testList = board.getAdjList(4, 4);
 		assertTrue(testList.contains(board.getCellAt(4, 3)));
@@ -122,6 +128,7 @@ public class CTest_BoardAdjTargetTests {
 	@Test
 	public void testAdjacencyWalkways()
 	{
+		Board board = Board.getInstance();
 		// Test on top edge of board, just one walkway piece
 		Set<BoardCell> testList = board.getAdjList(0, 4);
 		assertTrue(testList.contains(board.getCellAt(0, 5)));
@@ -177,6 +184,7 @@ public class CTest_BoardAdjTargetTests {
 	// These are LIGHT BLUE on the planning spreadsheet
 	@Test
 	public void testTargetsOneStep() {
+		Board board = Board.getInstance();
 		board.calcTargets(21, 7, 1);
 		Set<BoardCell> targets= board.getTargets();
 		assertEquals(2, targets.size());
@@ -195,6 +203,7 @@ public class CTest_BoardAdjTargetTests {
 	// These are LIGHT BLUE on the planning spreadsheet
 	@Test
 	public void testTargetsTwoSteps() {
+		Board board = Board.getInstance();
 		board.calcTargets(21, 7, 2);
 		Set<BoardCell> targets= board.getTargets();
 		assertEquals(2, targets.size());
@@ -213,6 +222,7 @@ public class CTest_BoardAdjTargetTests {
 	// These are LIGHT BLUE on the planning spreadsheet
 	@Test
 	public void testTargetsFourSteps() {
+		Board board = Board.getInstance();
 		board.calcTargets(21, 7, 4);
 		Set<BoardCell> targets= board.getTargets();
 		assertEquals(4, targets.size());
@@ -236,6 +246,7 @@ public class CTest_BoardAdjTargetTests {
 
 	@Test
 	public void testTargetsSixSteps() {
+		Board board = Board.getInstance();
 		board.calcTargets(14, 0, 6);
 		Set<BoardCell> targets= board.getTargets();
 		assertEquals(7, targets.size());
@@ -254,6 +265,7 @@ public class CTest_BoardAdjTargetTests {
 	@Test 
 	public void testTargetsIntoRoom()
 	{
+		Board board = Board.getInstance();
 		// One room is exactly 2 away
 		board.calcTargets(17, 16, 2);
 		Set<BoardCell> targets= board.getTargets();
@@ -275,6 +287,7 @@ public class CTest_BoardAdjTargetTests {
 	@Test
 	public void testTargetsIntoRoomShortcut() 
 	{
+		Board board = Board.getInstance();
 		board.calcTargets(12, 7, 3);
 		Set<BoardCell> targets= board.getTargets();
 		assertEquals(12, targets.size());
@@ -305,6 +318,7 @@ public class CTest_BoardAdjTargetTests {
 	@Test
 	public void testRoomExit()
 	{
+		Board board = Board.getInstance();
 		// Take one step, essentially just the adj list
 		board.calcTargets(4, 20, 1);
 		Set<BoardCell> targets= board.getTargets();

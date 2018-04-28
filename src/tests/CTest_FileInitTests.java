@@ -18,6 +18,7 @@ import org.junit.Test;
 
 import clueGame.Board;
 import clueGame.BoardCell;
+import clueGame.ClueGameGUI;
 import clueGame.DoorDirection;
 
 public class CTest_FileInitTests {
@@ -29,18 +30,21 @@ public class CTest_FileInitTests {
 	// NOTE: I made Board static because I only want to set it up one 
 	// time (using @BeforeClass), no need to do setup before each test.
 	private static Board board;
+	private ClueGameGUI start = new ClueGameGUI();
 	
 	@BeforeClass
 	public static void setUp() {
 		// Board is singleton, get the only instance
-		board = Board.getInstance();
+		//board = Board.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("CTest_ClueLayout.csv", "CTest_ClueLegend.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
+		//board.setConfigFiles("CTest_ClueLayout.csv", "CTest_ClueLegend.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
 		// Initialize will load BOTH config files 
-		board.initialize();
+		//board.initialize();
+		ClueGameGUI start = new ClueGameGUI();
 	}
 	@Test
 	public void testRooms() {
+		Board board = Board.getInstance();
 		// Get the map of initial => room 
 		Map<Character, String> legend = board.getLegend();
 		// Ensure we read the correct number of rooms
@@ -58,6 +62,7 @@ public class CTest_FileInitTests {
 	@Test
 	public void testBoardDimensions() {
 		// Ensure we have the proper number of rows and columns
+		Board board = Board.getInstance();
 		assertEquals(NUM_ROWS, board.getNumRows());
 		assertEquals(NUM_COLUMNS, board.getNumColumns());		
 	}
@@ -92,6 +97,7 @@ public class CTest_FileInitTests {
 	@Test
 	public void testNumberOfDoorways() 
 	{
+		Board board = Board.getInstance();
 		int numDoors = 0;
 		for (int row=0; row<board.getNumRows(); row++)
 			for (int col=0; col<board.getNumColumns(); col++) {
@@ -106,6 +112,7 @@ public class CTest_FileInitTests {
 	@Test
 	public void testRoomInitials() {
 		// Test first cell in room
+		Board board = Board.getInstance();
 		assertEquals('C', board.getCellAt(0, 0).getInitial());
 		assertEquals('R', board.getCellAt(4, 8).getInitial());
 		assertEquals('B', board.getCellAt(9, 0).getInitial());

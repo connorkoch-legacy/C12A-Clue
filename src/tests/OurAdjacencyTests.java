@@ -13,6 +13,7 @@ import org.junit.Test;
 import clueGame.BadConfigFormatException;
 import clueGame.Board;
 import clueGame.BoardCell;
+import clueGame.ClueGameGUI;
 import clueGame.DoorDirection;
 
 public class OurAdjacencyTests {
@@ -22,21 +23,23 @@ public class OurAdjacencyTests {
 	public static final int NUM_DOORS = 16;
 	
 	private static Board board;
-	
+	private ClueGameGUI start = new ClueGameGUI();
 	@BeforeClass
 	public static void setUp() {
 		// Board is singleton, get the only instance
-		board = Board.getInstance();
+		//board = Board.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
+		//board.setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
 		// Initialize will load BOTH config files 
-		board.initialize();
+		//board.initialize();
+		ClueGameGUI start = new ClueGameGUI();
 	}
 	
 	//Location within room should have empty adj list
 	@Test
 	public void TestAdjacenciesInsideRoom(){
 		//Test to see adjacency lists in rooms are empty
+		Board board = Board.getInstance();
 		Set<BoardCell> tester = board.getAdjList(1, 0);
 		assertEquals(0, tester.size());
 		tester = board.getAdjList(12, 3);
@@ -51,6 +54,7 @@ public class OurAdjacencyTests {
 	@Test
 	public void testAdjacenciesWalkway(){
 		//Test to see that walkway near room and wall only contains two adj cells
+		Board board = Board.getInstance();
 		Set<BoardCell> testList = board.getAdjList(0, 5);
 		assertTrue(testList.contains(board.getCellAt(0, 6)));
 		assertTrue(testList.contains(board.getCellAt(1, 5)));
@@ -73,6 +77,7 @@ public class OurAdjacencyTests {
 	@Test
 	public void testEdgeAdjacencies(){
 		//Test top left corner has 0 adjacencies because its in room
+		Board board = Board.getInstance();
 		Set<BoardCell> testList = board.getAdjList(0, 0);
 		assertEquals(0, testList.size());
 		
@@ -92,6 +97,7 @@ public class OurAdjacencyTests {
 	@Test
 	public void testBesideADoor(){
 		// tests by an upward doorway
+		Board board = Board.getInstance();
 		Set<BoardCell> testList = board.getAdjList(21,0);
 		assertEquals(2, testList.size());
 		assertTrue(testList.contains(board.getCellAt(20, 0)));
@@ -122,6 +128,7 @@ public class OurAdjacencyTests {
 	@Test
 	public void testDoorWays(){
 		// tests adjacency of left facing door
+		Board board = Board.getInstance();
 		Set<BoardCell> testList = board.getAdjList(13,1);
 		assertEquals(1, testList.size());
 		assertTrue(testList.contains(board.getCellAt(13, 0)));
@@ -142,6 +149,7 @@ public class OurAdjacencyTests {
 	@Test
 	public void besideARoom(){
 		// tests below a room
+		Board board = Board.getInstance();
 		Set<BoardCell> testList = board.getAdjList(6,0);
 		assertEquals(2, testList.size());
 		assertTrue(testList.contains(board.getCellAt(7, 0)));

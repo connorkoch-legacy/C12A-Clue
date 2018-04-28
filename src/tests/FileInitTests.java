@@ -12,6 +12,7 @@ import org.junit.Test;
 import clueGame.BadConfigFormatException;
 import clueGame.Board;
 import clueGame.BoardCell;
+import clueGame.ClueGameGUI;
 import clueGame.DoorDirection;
 
 public class FileInitTests {
@@ -21,20 +22,22 @@ public class FileInitTests {
 	public static final int NUM_DOORS = 16;
 	
 	private static Board board;
-	
+	private ClueGameGUI start = new ClueGameGUI();
 	@BeforeClass
 	public static void setUp() {
 		// Board is singleton, get the only instance
-		board = Board.getInstance();
+		//board = Board.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
+		//board.setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");		
 		// Initialize will load BOTH config files 
-		board.initialize();
+		//board.initialize();
+		ClueGameGUI start = new ClueGameGUI();
 	}
 	
 	@Test
 	public void testRooms() {
 		// Get the map of initial => room 
+		Board board = Board.getInstance();
 		Map<Character, String> legend = board.getLegend();
 		// Ensure we read the correct number of rooms
 		assertEquals(LEGEND_SIZE, legend.size());
@@ -56,6 +59,7 @@ public class FileInitTests {
 	@Test
 	public void testBoardDimensions() {
 		// Ensure we have the proper number of rows and columns
+		Board board = Board.getInstance();
 		assertEquals(NUM_ROWS, board.getNumRows());
 		assertEquals(NUM_COLUMNS, board.getNumColumns());		
 	}
@@ -88,6 +92,7 @@ public class FileInitTests {
 	public void testNumDoors(){
 		//esnsure the number of doors read = 16
 		int numDoors = 0;
+		Board board = Board.getInstance();
 		for (int row=0; row<board.getNumRows(); row++)
 			for (int col=0; col<board.getNumColumns(); col++) {
 				BoardCell cell = board.getCellAt(row, col);

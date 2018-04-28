@@ -11,9 +11,10 @@ import org.junit.Test;
 
 import clueGame.BadConfigFormatException;
 import clueGame.Board;
+import clueGame.ClueGameGUI;
 
 public class CTest_ExceptionTests {
-
+	private ClueGameGUI start = new ClueGameGUI();
 	// Test that an exception is thrown for a config file that does not 
 	// have the same number of columns for each row
 	@Test (expected = BadConfigFormatException.class)

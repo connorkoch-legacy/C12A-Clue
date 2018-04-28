@@ -569,7 +569,7 @@ public class gameActionTests extends JPanel {
 		c5.setCardName("Conservatory");
 		Card c6 = new Card();
 		c6.setCardName("Donny");
-		assertTrue(testC1.equals(board.handleSuggestion(testPlayer2, testC1, c5, c6)));
+		assertTrue(testC1.equals(Board.getInstance().handleSuggestion(testPlayer2, testC1, c5, c6)));
 	}
 	
 	/**
@@ -647,7 +647,7 @@ public class gameActionTests extends JPanel {
 		c6.setCardName("Donny");
 		//The below lines test that, for a suggestion that more than one player can disprove, the index of the player that returns a revealed card is the person closest to the suggesting player
 		board.handleSuggestion(testPlayer1, c1, c5, c6);
-		assertEquals(1, board.getTestIntForGameActionTests());
+		assertEquals(1, Board.getInstance().getTestIntForGameActionTests());
 	}
 	
 	/**

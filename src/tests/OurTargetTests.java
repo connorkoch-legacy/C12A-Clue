@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import clueGame.Board;
 import clueGame.BoardCell;
+import clueGame.ClueGameGUI;
 
 public class OurTargetTests {
 	public static final int LEGEND_SIZE = 11;
@@ -21,6 +22,7 @@ public class OurTargetTests {
 	
 	@BeforeClass
 	public static void setUp() {
+		ClueGameGUI start = new ClueGameGUI();
 		// Board is singleton, get the only instance
 		board = Board.getInstance();
 		// set the file names to use my config files

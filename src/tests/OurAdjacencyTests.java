@@ -13,6 +13,7 @@ import org.junit.Test;
 import clueGame.BadConfigFormatException;
 import clueGame.Board;
 import clueGame.BoardCell;
+import clueGame.ClueGameGUI;
 import clueGame.DoorDirection;
 
 public class OurAdjacencyTests {
@@ -25,6 +26,7 @@ public class OurAdjacencyTests {
 	
 	@BeforeClass
 	public static void setUp() {
+		ClueGameGUI start = new ClueGameGUI();
 		// Board is singleton, get the only instance
 		board = Board.getInstance();
 		// set the file names to use my config files

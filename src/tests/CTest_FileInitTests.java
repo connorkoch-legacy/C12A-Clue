@@ -18,6 +18,7 @@ import org.junit.Test;
 
 import clueGame.Board;
 import clueGame.BoardCell;
+import clueGame.ClueGameGUI;
 import clueGame.DoorDirection;
 
 public class CTest_FileInitTests {
@@ -32,6 +33,7 @@ public class CTest_FileInitTests {
 	
 	@BeforeClass
 	public static void setUp() {
+		ClueGameGUI start = new ClueGameGUI();
 		// Board is singleton, get the only instance
 		board = Board.getInstance();
 		// set the file names to use my config files

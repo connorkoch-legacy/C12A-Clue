@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
@@ -117,6 +118,8 @@ public class LowerPanelGUI extends JPanel{
 					AccusationBoxGUI accu = new AccusationBoxGUI();
 					accu.setVisible(true);
 					madeAccusation = true;
+				}else {
+					JOptionPane.showMessageDialog(lowerPanel, "You cannot make an accusation now.", "", JOptionPane.PLAIN_MESSAGE);
 				}
 			}
 		}

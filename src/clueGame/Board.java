@@ -50,7 +50,7 @@ public class Board extends JPanel{
 	// variable used for singleton pattern
 	private static Board theInstance = new Board();
 	// constructor is private to ensure only one can be created
-	Board() {
+	public Board() {
 		for(int i = 0; i < board.length; ++i){
 			for(int j = 0; j < board[i].length; ++j){
 				board[i][j] = new BoardCell();
@@ -61,6 +61,7 @@ public class Board extends JPanel{
 		calcAdjacencies();
 		setConfigFiles("Data/OurClueBoardCSV.csv", "Data/ClueRooms.txt", "Data/CTest_CluePlayers.txt", "Data/CTest_ClueCards.txt");
 		initialize();
+		start = new ClueGameGUI();
 	}
 	// this method returns the only Board
 	public static Board getInstance() {
@@ -538,6 +539,7 @@ public class Board extends JPanel{
 	 * calls players to do their moves and iterates to the next player
 	 */
 	public void doMove(){
+		
 		if(humanTurnEnded){ // make sure humans turn is over before proceeding
 			if(firstMove == false){
 				currentPlayerIterator++;

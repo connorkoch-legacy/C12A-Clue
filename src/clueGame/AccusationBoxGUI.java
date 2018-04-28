@@ -13,6 +13,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * This class is used for making an accusation
+ *
+ */
+
 
 public class AccusationBoxGUI extends JDialog{
 	private JButton submitButton;
